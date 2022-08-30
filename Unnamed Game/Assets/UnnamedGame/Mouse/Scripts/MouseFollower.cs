@@ -4,11 +4,17 @@ namespace UnnamedGame.Mouse.Scripts
 {
     public class MouseFollower : MonoBehaviour
     {
-        [SerializeField] private new Camera camera;
-        
+        [SerializeField] private new UnityEngine.Camera camera;
+
+        private void Start()
+        {
+            transform.position = Vector3.zero;
+        }
+
         private void Update()
         {
-            transform.position = camera.ScreenToWorldPoint(Input.mousePosition);
+            var newMousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = newMousePosition;
         }
     }
 }

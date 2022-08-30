@@ -8,6 +8,7 @@ namespace UnnamedGame.LivingEntities.Player.Scripts
         public Vector2 EnteredMovementDirection { get; private set; }
 
         public event Action<Vector2> EnteredMovementDirectionChangedEvent;
+        public event Action AttackButtonClickedEvent;
 
         private void Update()
         {
@@ -15,6 +16,8 @@ namespace UnnamedGame.LivingEntities.Player.Scripts
             EnteredMovementDirection = GetEnteredMovementDirection();
             if (EnteredMovementDirection != storedDirection)
                 EnteredMovementDirectionChangedEvent?.Invoke(EnteredMovementDirection);
+            if (Input.GetButtonDown("Fire1"))
+                AttackButtonClickedEvent?.Invoke();
         }
 
         private static Vector2 GetEnteredMovementDirection()

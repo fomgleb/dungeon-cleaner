@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ship
+  - asteroid
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -49,4 +52,7 @@ TagManager:
     locked: 0
   - name: Non-lightable
     uniqueID: 4178581165
+    locked: 0
+  - name: UI
+    uniqueID: 2902483347
     locked: 0
