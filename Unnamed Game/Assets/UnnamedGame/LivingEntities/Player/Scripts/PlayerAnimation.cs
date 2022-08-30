@@ -1,16 +1,13 @@
 using UnityEngine;
-using UnnamedGame.Mouse.Scripts;
 
 namespace UnnamedGame.LivingEntities.Player.Scripts
 {
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerAnimation : MonoBehaviour
     {
-        [SerializeField] private MouseFollower mouseFollower;
-        
+        [SerializeField] private Transform mouseTransform;
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private new Camera camera;
         
         private PlayerInput _playerInput;
         
@@ -33,7 +30,7 @@ namespace UnnamedGame.LivingEntities.Player.Scripts
 
         private void Update()
         {
-            spriteRenderer.flipX = mouseFollower.transform.position.x < transform.position.x;
+            spriteRenderer.flipX = mouseTransform.position.x < transform.position.x;
         }
         
         private void OnMovementDirectionChanged(Vector2 enteredMovementDirection)

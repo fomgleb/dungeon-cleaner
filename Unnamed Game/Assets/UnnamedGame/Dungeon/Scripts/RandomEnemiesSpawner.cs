@@ -5,6 +5,8 @@ using MyExtensions;
 using NTC.Global.Pool;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnnamedGame.LivingEntities.Enemies.Scripts;
+using UnnamedGame.LivingEntities.Scripts;
 using Random = UnityEngine.Random;
 
 namespace UnnamedGame.Dungeon.Scripts
@@ -18,6 +20,7 @@ namespace UnnamedGame.Dungeon.Scripts
         [Tooltip("Inclusive")] [SerializeField] private uint minNumberOfEnemies;
         [Tooltip("Inclusive")] [SerializeField] private uint maxNumberOfEnemies;
         [SerializeField] private SpawningEnemyData[] spawningEnemiesData;
+        [SerializeField] private Damageable enemiesTarget;
 
         private List<GameObject> _spawnedEnemies;
         private DungeonGeneratorBase _dungeonGenerator;
@@ -53,7 +56,6 @@ namespace UnnamedGame.Dungeon.Scripts
         private void SpawnEnemies()
         {
             var randomNumberOfSpawningEnemies = Random.Range((int)minNumberOfEnemies, (int)(maxNumberOfEnemies + 1));
-            Debug.Log(randomNumberOfSpawningEnemies);
             var cellPositionsOfAllTiles = GetCellPositionsOfAllTiles(spawningZoneTilemap);
 
             var availableSpawnCellPositions = cellPositionsOfAllTiles.Except(forbiddenSpawnPositions).ToList();
@@ -74,8 +76,10 @@ namespace UnnamedGame.Dungeon.Scripts
                 var numberOfThisTypeEnemies = (int)Mathf.Round(spawningEnemyData.SpawnChance * randomNumberOfSpawningEnemies);
                 for (var j = 0; j < numberOfThisTypeEnemies; j++)
                 {
-                    _spawnedEnemies.Add(NightPool.Spawn(spawningEnemyData.EnemyPrefab, enemiesParentOnScene));
-                    _spawnedEnemies[^1].transform.position = randomSpawnWorldPositionsQueue.Dequeue();
+                    var spawnedEnemy = NightPool.Spawn(spawningEnemyData.EnemyPrefab, enemiesParentOnScene);
+                    spawnedEnemy.GetComponent<EnemyMeleeAttack>().Player = enemiesTarget;
+                    spawnedEnemy.transform.position = randomSpawnWorldPositionsQueue.Dequeue();
+                    _spawnedEnemies.Add(spawnedEnemy);
                 }
             }
         }
