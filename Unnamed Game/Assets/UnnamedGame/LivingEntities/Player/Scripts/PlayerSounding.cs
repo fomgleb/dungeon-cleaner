@@ -20,14 +20,15 @@ namespace UnnamedGame.LivingEntities.Player.Scripts
 
         private void OnEnable()
         {
-            _damageable.GotDamageEvent += OnPlayerGotDamage;
+            _damageable.GotDamageEvent += OnGotDamage;
         }
 
         private void OnDisable()
         {
-            _damageable.GotDamageEvent -= OnPlayerGotDamage;
+            _damageable.GotDamageEvent -= OnGotDamage;
         }
 
-        private void OnPlayerGotDamage() => _audioSource.PlayOneShot(gotDamageSound);
+        private void OnGotDamage() => _audioSource.PlayOneShot(gotDamageSound);
+
     }
 }

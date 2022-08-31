@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnnamedGame.LivingEntities.Enemies.Scripts;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
@@ -26,6 +27,8 @@ namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
         private Vector2 _lastTargetPosition;
         private Collider2D _targetCollider;
 
+        [Inject] private GameObject _playerGameObject;
+
         private CancellationTokenSource _cancellationTokenSource;
 
         private void Awake()
@@ -35,7 +38,7 @@ namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
 
         private void Start()
         {
-            _targetCollider = GetComponent<EnemyMeleeAttack>().Player.GetComponent<Collider2D>();
+            _targetCollider = _playerGameObject.GetComponent<Collider2D>();
             SearchPlayerAsync(_cancellationTokenSource.Token);
             MakeImpulseAndReloadAsync(_cancellationTokenSource.Token);
         }

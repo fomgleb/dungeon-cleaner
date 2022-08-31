@@ -25,14 +25,14 @@ namespace UnnamedGame.Weapon.Scripts
         {
             _weaponAttack.AttackedEvent += OnAttacked;
             _certainWeaponAttack.HitEnemyEvent += OnHitEnemy;
-            _certainWeaponAttack.HitWallEvent += OnHitWall;
+            //_certainWeaponAttack.HitWallEvent += OnHitWall;
         }
 
         private void OnDisable()
         {
             _weaponAttack.AttackedEvent -= OnAttacked;
             _certainWeaponAttack.HitEnemyEvent -= OnHitEnemy;
-            _certainWeaponAttack.HitWallEvent -= OnHitWall;
+            //_certainWeaponAttack.HitWallEvent -= OnHitWall;
         }
         
         private void OnAttacked() => PlayAttackSound();

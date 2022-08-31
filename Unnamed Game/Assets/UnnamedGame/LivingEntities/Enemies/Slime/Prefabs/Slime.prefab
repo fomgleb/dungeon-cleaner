@@ -16,9 +16,12 @@ GameObject:
   - component: {fileID: 5964941617880463763}
   - component: {fileID: 7320433434772038572}
   - component: {fileID: -2595983136264127334}
+  - component: {fileID: 6003337747442796768}
+  - component: {fileID: -8220523287237223519}
+  - component: {fileID: -2564039120984863868}
   m_Layer: 2
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da5d6c3cbba48fa8e1e26061e26cacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0.5
+  damage: 1
 --- !u!114 &5964941617880463763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +227,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 643f793caae64c4d82d2ffd770483e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6003337747442796768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741614333764520516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e855da30004e86bf3b869cde41407b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  maxHealth: 1
+--- !u!114 &-8220523287237223519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741614333764520516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035ece40b4c0aed4d835be7527a6f591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  corpsePrefab: {fileID: 3543175294948656529, guid: 2077d44e556d6584e9ad93725449406c, type: 3}
+--- !u!114 &-2564039120984863868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741614333764520516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb496276db3a0447b834c44a3cce26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8663071779756496331

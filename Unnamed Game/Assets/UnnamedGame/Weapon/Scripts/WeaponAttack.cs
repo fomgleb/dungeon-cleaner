@@ -8,7 +8,10 @@ namespace UnnamedGame.Weapon.Scripts
     public class WeaponAttack : MonoBehaviour
     {
         [SerializeField] private float reloadTime;
+        [SerializeField] private float damage;
 
+        public float Damage => damage;
+        
         public event Action AttackedEvent; 
 
         private UniTask _reloadTask;

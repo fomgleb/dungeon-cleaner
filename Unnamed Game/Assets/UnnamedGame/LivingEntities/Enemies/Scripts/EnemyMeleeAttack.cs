@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnnamedGame.LivingEntities.Scripts;
+using Zenject;
 
 namespace UnnamedGame.LivingEntities.Enemies.Scripts
 {
@@ -11,13 +12,20 @@ namespace UnnamedGame.LivingEntities.Enemies.Scripts
 
         public event Action PlayerGotDamageEvent;
         
-        public Damageable Player { get; set; }
+        [Inject] private GameObject playerGameObject;
+        private Damageable _playerDamageable;
         
+        
+        private void Awake()
+        {
+            _playerDamageable = playerGameObject.GetComponent<Damageable>();
+        }
+
         private void OnCollisionEnter2D(Collision2D other)
         {
             var otherDamageable = other.collider.GetComponent<Damageable>();
             if (!other.collider.CompareTag("Player") || otherDamageable == null) return;
-            Player.PerformDamage(damage);
+            _playerDamageable.PerformDamage(damage);
             PlayerGotDamageEvent?.Invoke();
         }
     }
