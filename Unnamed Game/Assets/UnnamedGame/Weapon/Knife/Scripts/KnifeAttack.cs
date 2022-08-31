@@ -1,7 +1,6 @@
 using System;
-using NTC.Global.Pool;
 using UnityEngine;
-using UnnamedGame.LivingEntities.Enemies.Slime.Scripts;
+using UnnamedGame.LivingEntities.Scripts;
 using UnnamedGame.Weapon.Scripts;
 
 namespace UnnamedGame.Weapon.Knife.Scripts
@@ -12,6 +11,13 @@ namespace UnnamedGame.Weapon.Knife.Scripts
         public event Action HitEnemyEvent;
         public event Action HitWallEvent;
 
+        private WeaponAttack _weaponAttack;
+        
+        private void Awake()
+        {
+            _weaponAttack = GetComponent<WeaponAttack>();
+        }
+
         public void Attack()
         {
             
@@ -19,9 +25,10 @@ namespace UnnamedGame.Weapon.Knife.Scripts
 
         private void OnTriggerEnter2D(Collider2D otherCollider)
         {
-            if (otherCollider.GetComponent<SlimeAI>() != null)
+            if (otherCollider.CompareTag("Enemy"))
             {
-                NightPool.Despawn(otherCollider);
+                var enemyDamageable = otherCollider.GetComponent<Damageable>();
+                enemyDamageable.PerformDamage(_weaponAttack.Damage);
                 HitEnemyEvent?.Invoke();
             }
             else if (otherCollider.CompareTag("Wall"))

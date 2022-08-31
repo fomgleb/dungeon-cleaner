@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnnamedGame.LivingEntities.Enemies.Scripts;
 using UnnamedGame.LivingEntities.Scripts;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace UnnamedGame.Dungeon.Scripts
@@ -24,6 +25,8 @@ namespace UnnamedGame.Dungeon.Scripts
 
         private List<GameObject> _spawnedEnemies;
         private DungeonGeneratorBase _dungeonGenerator;
+
+        [Inject] private DiContainer _diContainer;
         
         private void Awake()
         {
@@ -77,7 +80,8 @@ namespace UnnamedGame.Dungeon.Scripts
                 for (var j = 0; j < numberOfThisTypeEnemies; j++)
                 {
                     var spawnedEnemy = NightPool.Spawn(spawningEnemyData.EnemyPrefab, enemiesParentOnScene);
-                    spawnedEnemy.GetComponent<EnemyMeleeAttack>().Player = enemiesTarget;
+                    _diContainer.InstantiatePrefab(spawningEnemyData.EnemyPrefab, enemiesParentOnScene);
+                    //spawnedEnemy.GetComponent<EnemyMeleeAttack>().Player = enemiesTarget;
                     spawnedEnemy.transform.position = randomSpawnWorldPositionsQueue.Dequeue();
                     _spawnedEnemies.Add(spawnedEnemy);
                 }
