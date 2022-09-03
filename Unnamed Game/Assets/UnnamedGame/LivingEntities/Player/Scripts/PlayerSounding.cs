@@ -1,21 +1,22 @@
 using UnityEngine;
+using UnnamedGame.Audio.Scripts;
 using UnnamedGame.LivingEntities.Scripts;
+using Zenject;
 
 namespace UnnamedGame.LivingEntities.Player.Scripts
 {
-    [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(Damageable))]
     public class PlayerSounding : MonoBehaviour
     {
         [SerializeField] private AudioClip gotDamageSound;
 
+        [Inject] private GlobalAudioPlayer _globalAudioPlayer;
+        
         private Damageable _damageable;
-        private AudioSource _audioSource;
         
         private void Awake()
         {
             _damageable = GetComponent<Damageable>();
-            _audioSource = GetComponent<AudioSource>();
         }
 
         private void OnEnable()
@@ -28,7 +29,7 @@ namespace UnnamedGame.LivingEntities.Player.Scripts
             _damageable.GotDamageEvent -= OnGotDamage;
         }
 
-        private void OnGotDamage() => _audioSource.PlayOneShot(gotDamageSound);
+        private void OnGotDamage() => _globalAudioPlayer.PlayAudio(gotDamageSound, transform.position);
 
     }
 }

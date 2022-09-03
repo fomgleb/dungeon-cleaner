@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnnamedGame.LivingEntities.Enemies.Scripts;
+using UnnamedGame.LivingEntities.Player.Scripts;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -27,7 +28,7 @@ namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
         private Vector2 _lastTargetPosition;
         private Collider2D _targetCollider;
 
-        [Inject] private GameObject _playerGameObject;
+        [Inject] private PlayerInput _playerGameObject;
 
         private CancellationTokenSource _cancellationTokenSource;
 
@@ -88,6 +89,7 @@ namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
 
         private void OnDrawGizmos()
         {
+            if (_targetCollider == null) return;
             var myPosition = transform.position;
             var directionToTarget = _targetCollider.bounds.center - myPosition;
             Gizmos.DrawLine(myPosition, directionToTarget * 100);
@@ -95,6 +97,7 @@ namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
 
         private bool IsSeeTarget()
         {
+            if (_targetCollider == null) return false;
             var myPosition = transform.position;
             var directionToTarget = _targetCollider.bounds.center - myPosition;
             var hit = Physics2D.Raycast(myPosition, directionToTarget * 100);

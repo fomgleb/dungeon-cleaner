@@ -393,7 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163e385944b9fe64383161c178c145cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseTransform: {fileID: 0}
   animator: {fileID: 5413983319979346744}
   spriteRenderer: {fileID: 5413983319979346745}
 --- !u!114 &5413983320158967791
@@ -460,7 +459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b1fb34b75184ae1b9eb15016ca9c33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraShaker: {fileID: 0}
   intensity: 8
   time: 0.15
 --- !u!114 &5413983320158967785
@@ -546,15 +544,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5413983320888183140}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7874194, w: 0.6164177}
-  m_LocalPosition: {x: 0.02, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: -0.017, y: -0.271, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5413983320071139054}
   m_Father: {fileID: 5413983321153193521}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 103.89}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!95 &5413983320888183138
 Animator:
   serializedVersion: 4
@@ -600,11 +598,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.2240782, y: 0.6014986}
-      - {x: 0.7195108, y: 0.31424913}
-      - {x: 0.24210809, y: -0.14994915}
-      - {x: 0.34205818, y: -0.2439345}
-      - {x: 0.80441296, y: 0.121299304}
+    - - {x: 0.93072677, y: -0.070360854}
+      - {x: 1.1977484, y: 0.35109913}
+      - {x: 0.67498845, y: 0.23156485}
+      - {x: 0.14034286, y: -0.3025971}
 --- !u!82 &5413983320888183145
 AudioSource:
   m_ObjectHideFlags: 0
@@ -877,7 +874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5413983321153193522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -897,7 +894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164d00df895c07841ab1bb1ac9a90a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTransform: {fileID: 0}
 --- !u!114 &5413983321153193535
 MonoBehaviour:
   m_ObjectHideFlags: 0

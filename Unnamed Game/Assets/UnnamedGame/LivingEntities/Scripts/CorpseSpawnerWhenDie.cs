@@ -28,7 +28,7 @@ namespace UnnamedGame.LivingEntities.Scripts
             _damageable.DiedEvent -= OnDied;
         }
 
-        private void OnDied() => SpawnCorpse();
+        private void OnDied(Damageable damageable) => SpawnCorpse();
 
         private void SpawnCorpse()
         {

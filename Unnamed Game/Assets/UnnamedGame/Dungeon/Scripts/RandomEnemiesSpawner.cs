@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using MyExtensions;
 using NTC.Global.Pool;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnnamedGame.LivingEntities.Enemies.Scripts;
 using UnnamedGame.LivingEntities.Scripts;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -21,16 +21,15 @@ namespace UnnamedGame.Dungeon.Scripts
         [Tooltip("Inclusive")] [SerializeField] private uint minNumberOfEnemies;
         [Tooltip("Inclusive")] [SerializeField] private uint maxNumberOfEnemies;
         [SerializeField] private SpawningEnemyData[] spawningEnemiesData;
-        [SerializeField] private Damageable enemiesTarget;
 
-        private List<GameObject> _spawnedEnemies;
         private DungeonGeneratorBase _dungeonGenerator;
 
+        public ObservableCollection<GameObject> SpawnedEnemies { get; private set; } = new();
+
         [Inject] private DiContainer _diContainer;
-        
+
         private void Awake()
         {
-            _spawnedEnemies = new List<GameObject>();
             _dungeonGenerator = GetComponent<DungeonGeneratorBase>();
         }
 
@@ -51,9 +50,9 @@ namespace UnnamedGame.Dungeon.Scripts
 
         private void DespawnEnemies()
         {
-            foreach (var spawnedEnemy in _spawnedEnemies)
+            foreach (var spawnedEnemy in SpawnedEnemies)
                 NightPool.Despawn(spawnedEnemy);
-            _spawnedEnemies.Clear();
+            SpawnedEnemies.Clear();
         }
 
         private void SpawnEnemies()
@@ -79,13 +78,17 @@ namespace UnnamedGame.Dungeon.Scripts
                 var numberOfThisTypeEnemies = (int)Mathf.Round(spawningEnemyData.SpawnChance * randomNumberOfSpawningEnemies);
                 for (var j = 0; j < numberOfThisTypeEnemies; j++)
                 {
-                    var spawnedEnemy = NightPool.Spawn(spawningEnemyData.EnemyPrefab, enemiesParentOnScene);
-                    _diContainer.InstantiatePrefab(spawningEnemyData.EnemyPrefab, enemiesParentOnScene);
-                    //spawnedEnemy.GetComponent<EnemyMeleeAttack>().Player = enemiesTarget;
+                    var spawnedEnemy = _diContainer.InstantiatePrefab(spawningEnemyData.EnemyPrefab, enemiesParentOnScene);
                     spawnedEnemy.transform.position = randomSpawnWorldPositionsQueue.Dequeue();
-                    _spawnedEnemies.Add(spawnedEnemy);
+                    SpawnedEnemies.Add(spawnedEnemy);
+                    spawnedEnemy.GetComponent<Damageable>().DiedEvent += OnEnemyDied;
                 }
             }
+        }
+
+        private void OnEnemyDied(Damageable enemyDamageable)
+        {
+            SpawnedEnemies.Remove(enemyDamageable.gameObject);
         }
 
         private static IEnumerable<Vector2Int> GetCellPositionsOfAllTiles(Tilemap tilemap)

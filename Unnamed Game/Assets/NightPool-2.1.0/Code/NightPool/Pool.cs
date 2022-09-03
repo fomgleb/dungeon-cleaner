@@ -6,6 +6,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace NTC.Global.Pool
 {
@@ -14,7 +15,7 @@ namespace NTC.Global.Pool
     {
         public GameObject Prefab { get; private set; }
         public Transform PoolablesParent { get; private set; }
-        
+
         public IReadOnlyList<Poolable> Poolables => pooledGameObjects;
 
         private readonly List<Poolable> pooledGameObjects = new List<Poolable>(64);
