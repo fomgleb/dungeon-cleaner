@@ -1,27 +1,33 @@
 using TMPro;
 using UnityEngine;
 using UnnamedGame.LivingEntities.Scripts;
+using Zenject;
 
-public class PlayerHealthUI : MonoBehaviour
+namespace UnnamedGame.LivingEntities.Player.Scripts
 {
-    [SerializeField] private Damageable playerDamageable;
+    public class PlayerHealthUI : MonoBehaviour
+    {
+        [SerializeField] private TMP_Text healthText;
 
-    private TMP_Text _text; 
+        [Inject] private PlayerInput _playerInput;
+
+        private Damageable _playerDamageable;
     
-    private void Start()
-    {
-        _text = GetComponent<TMP_Text>();
-    }
+        private void Awake()
+        {
+            _playerDamageable = _playerInput.GetComponent<Damageable>();
+        }
 
-    private void OnEnable()
-    {
-        playerDamageable.GotDamageEvent += OnGotDamage;
-    }
+        private void OnEnable()
+        {
+            _playerDamageable.GotDamageEvent += OnGotDamage;
+        }
 
-    private void OnDisable()
-    {
-        playerDamageable.GotDamageEvent -= OnGotDamage;
-    }
+        private void OnDisable()
+        {
+            _playerDamageable.GotDamageEvent -= OnGotDamage;
+        }
 
-    private void OnGotDamage() => _text.text = $"{playerDamageable.Health} / {playerDamageable.MaxHealth}";
+        private void OnGotDamage() => healthText.text = $"{_playerDamageable.Health} / {_playerDamageable.MaxHealth}";
+    }
 }

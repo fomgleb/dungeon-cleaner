@@ -1,16 +1,18 @@
 using UnityEngine;
 using UnnamedGame.Camera.Scripts;
 using UnnamedGame.Weapon.Scripts;
+using Zenject;
 
 namespace UnnamedGame.LivingEntities.Player.Scripts
 {
     [RequireComponent(typeof(PlayerAttack))]
     public class PlayerCameraShaking : MonoBehaviour
     {
-        [SerializeField] private CameraShaker cameraShaker;
         [SerializeField] private float intensity;
         [SerializeField] private float time;
 
+        [Inject] private CameraShaker _cameraShaker;
+        
         private PlayerAttack _playerAttack;
         private WeaponAttack _weaponAttack;
         
@@ -30,6 +32,6 @@ namespace UnnamedGame.LivingEntities.Player.Scripts
             _weaponAttack.AttackedEvent -= OnAttacked;
         }
 
-        private void OnAttacked() => cameraShaker.ShakeCameraAsync(intensity, time);
+        private void OnAttacked() => _cameraShaker.ShakeCameraAsync(intensity, time);
     }
 }

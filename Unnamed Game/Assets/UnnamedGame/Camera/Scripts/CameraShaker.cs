@@ -4,17 +4,16 @@ using UnityEngine;
 
 namespace UnnamedGame.Camera.Scripts
 {
-    [RequireComponent(typeof(CinemachineVirtualCamera))]
     public class CameraShaker : MonoBehaviour
     {
-        private CinemachineVirtualCamera _cinemachineVirtualCamera;
+        [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
         private CinemachineBasicMultiChannelPerlin _cinemachineBasicMultiChannelPerlin;
 
         private void Awake()
         {
-            _cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
-            _cinemachineBasicMultiChannelPerlin =
-                _cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+             _cinemachineBasicMultiChannelPerlin =
+                cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         }
 
         public async void ShakeCameraAsync(float intensity, float time)

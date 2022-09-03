@@ -23,6 +23,6 @@ namespace UnnamedGame.LivingEntities.Scripts
             _corpseSpawnerWhenDie.CorpseSpawnedEvent -= OnCorpseSpawned;
         }
 
-        private void OnCorpseSpawned() => NightPool.Despawn(gameObject);
+        private void OnCorpseSpawned() => Destroy(gameObject);
     }
 }

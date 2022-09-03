@@ -1,15 +1,18 @@
 using UnityEngine;
+using UnnamedGame.Mouse.Scripts;
+using Zenject;
 
 namespace UnnamedGame.LivingEntities.Player.Scripts
 {
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerAnimation : MonoBehaviour
     {
-        [SerializeField] private Transform mouseTransform;
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
+
+        [Inject] private MouseFollower _mouseFollower; 
         
-        private PlayerInput _playerInput;
+         private PlayerInput _playerInput;
         
         private static readonly int IsMoving = Animator.StringToHash("IsMoving");
 
@@ -30,7 +33,7 @@ namespace UnnamedGame.LivingEntities.Player.Scripts
 
         private void Update()
         {
-            spriteRenderer.flipX = mouseTransform.position.x < transform.position.x;
+            spriteRenderer.flipX = _mouseFollower.transform.position.x < transform.position.x;
         }
         
         private void OnMovementDirectionChanged(Vector2 enteredMovementDirection)

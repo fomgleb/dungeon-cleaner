@@ -11,7 +11,7 @@ namespace UnnamedGame.LivingEntities.Scripts
         public float Health => health;
         public float MaxHealth => maxHealth;
 
-        public event Action DiedEvent;
+        public event Action<Damageable> DiedEvent;
         public event Action GotDamageEvent;
 
         public void PerformDamage(float damage)
@@ -20,7 +20,7 @@ namespace UnnamedGame.LivingEntities.Scripts
             GotDamageEvent?.Invoke();
             if (health > 0) return;
             health = 0;
-            DiedEvent?.Invoke();
+            DiedEvent?.Invoke(this);
         }
     }
 }

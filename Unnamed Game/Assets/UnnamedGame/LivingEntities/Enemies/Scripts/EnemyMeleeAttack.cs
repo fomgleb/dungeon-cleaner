@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnnamedGame.LivingEntities.Player.Scripts;
 using UnnamedGame.LivingEntities.Scripts;
 using Zenject;
 
@@ -12,13 +13,13 @@ namespace UnnamedGame.LivingEntities.Enemies.Scripts
 
         public event Action PlayerGotDamageEvent;
         
-        [Inject] private GameObject playerGameObject;
+        [Inject] private PlayerInput playerInput;
         private Damageable _playerDamageable;
         
         
         private void Awake()
         {
-            _playerDamageable = playerGameObject.GetComponent<Damageable>();
+            _playerDamageable = playerInput.GetComponent<Damageable>();
         }
 
         private void OnCollisionEnter2D(Collision2D other)
