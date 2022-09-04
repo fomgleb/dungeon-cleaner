@@ -7,8 +7,8 @@ namespace UnnamedGame.Dungeon.Scripts
 {
     public abstract class DungeonGeneratorBase : MonoBehaviour
     {
-        public event Action DungeonGeneratedEvent;
-        public event Action DungeonDestroyedEvent;
+        public static event Action DungeonGeneratedEvent;
+        public static event Action DungeonDestroyedEvent;
         
         [Header("Dungeon Generator Base")]
         [SerializeField] protected Vector2Int startPosition = Vector2Int.zero;

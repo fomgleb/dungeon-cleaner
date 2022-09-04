@@ -12,7 +12,6 @@ using Random = UnityEngine.Random;
 
 namespace UnnamedGame.Dungeon.Scripts
 {
-    [RequireComponent(typeof(DungeonGeneratorBase))]
     public class RandomEnemiesSpawner : MonoBehaviour
     {
         [SerializeField] private Tilemap spawningZoneTilemap;
@@ -22,27 +21,20 @@ namespace UnnamedGame.Dungeon.Scripts
         [Tooltip("Inclusive")] [SerializeField] private uint maxNumberOfEnemies;
         [SerializeField] private SpawningEnemyData[] spawningEnemiesData;
 
-        private DungeonGeneratorBase _dungeonGenerator;
-
-        public ObservableCollection<GameObject> SpawnedEnemies { get; private set; } = new();
+        public static ObservableCollection<GameObject> SpawnedEnemies { get; } = new();
 
         [Inject] private DiContainer _diContainer;
 
-        private void Awake()
-        {
-            _dungeonGenerator = GetComponent<DungeonGeneratorBase>();
-        }
-
         private void OnEnable()
         {
-            _dungeonGenerator.DungeonGeneratedEvent += OnDungeonGenerated;
-            _dungeonGenerator.DungeonDestroyedEvent += OnDungeonDestroyed;
+            DungeonGeneratorBase.DungeonGeneratedEvent += OnDungeonGenerated;
+            DungeonGeneratorBase.DungeonDestroyedEvent += OnDungeonDestroyed;
         }
 
         private void OnDisable()
         {
-            _dungeonGenerator.DungeonGeneratedEvent -= OnDungeonGenerated;
-            _dungeonGenerator.DungeonDestroyedEvent -= OnDungeonDestroyed;
+            DungeonGeneratorBase.DungeonGeneratedEvent -= OnDungeonGenerated;
+            DungeonGeneratorBase.DungeonDestroyedEvent -= OnDungeonDestroyed;
         }
 
         private void OnDungeonGenerated() => SpawnEnemies();
