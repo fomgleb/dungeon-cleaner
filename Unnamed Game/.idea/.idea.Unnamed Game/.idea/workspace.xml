@@ -16,7 +16,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cd953b8fb97946ec96d4a808bc44e727128c00/7f/d98c4176/MouseCaptureDispatchingStrategy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cd953b8fb97946ec96d4a808bc44e727128c00/ae/c245e0f9/BaseVisualElementPanel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ff6e05c3b7e54a81ac5168c986783b6277800/9f/552d6a46/InspectorElement.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ExitMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Audio/Scripts/GlobalAudioPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Audio/Scripts/GlobalAudioPlayerInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Camera/Scripts/CameraShaker.cs" root0="FORCE_HIGHLIGHTING" />
@@ -29,11 +28,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/LivingEntities/Player/Scripts/PlayerInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/LivingEntities/Scripts/DespawnerWhenCorpseSpawned.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/LivingEntities/Scripts/LinearPhysicalMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Mouse/Installers/MouseFollowerInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Mouse/Scripts/MouseFollower.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Mouse/Scripts/MouseFollowerInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/UI/Scripts/ExitMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/UI/Scripts/WinMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Weapon/Scripts/WeaponAnimation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Weapon/Scripts/WeaponSounding.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/WinMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Editor/TMPro_FontAssetCreatorWindow.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -107,6 +107,7 @@
       <workItem from="1661582967380" duration="33575000" />
       <workItem from="1661754193967" duration="30582000" />
       <workItem from="1661882819295" duration="11306000" />
+      <workItem from="1662264939885" duration="7692000" />
     </task>
     <servers />
   </component>
