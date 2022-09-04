@@ -9,8 +9,9 @@ namespace UnnamedGame.Audio.Scripts
         
         public void PlayAudio(AudioClip audioClip, Vector2 position)
         {
-            var spawnAudioUnit = LeanPool.Spawn(audioUnitPrefab, position, Quaternion.identity, transform);
-            spawnAudioUnit.PlayOneShot(audioClip);
+            var spawnedAudioUnit = LeanPool.Spawn(audioUnitPrefab, position, Quaternion.identity, transform);
+            spawnedAudioUnit.PlayOneShot(audioClip);
+            LeanPool.Despawn(spawnedAudioUnit, audioClip.length);
         }
     }
 }

@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnnamedGame.Audio.Scripts;
 using Zenject;
 
-public class GlobalAudioPlayerInstaller : MonoInstaller
+namespace UnnamedGame.Audio.Scripts
 {
-    [SerializeField] private GlobalAudioPlayer globalAudioPlayer;
-
-    public override void InstallBindings()
+    public class GlobalAudioPlayerInstaller : MonoInstaller
     {
-        Container
-            .Bind<GlobalAudioPlayer>()
-            .FromInstance(globalAudioPlayer)
-            .AsSingle();
+        [SerializeField] private GlobalAudioPlayer globalAudioPlayer;
+
+        public override void InstallBindings()
+        {
+            Container
+                .Bind<GlobalAudioPlayer>()
+                .FromInstance(globalAudioPlayer)
+                .AsSingle();
+        }
     }
 }
