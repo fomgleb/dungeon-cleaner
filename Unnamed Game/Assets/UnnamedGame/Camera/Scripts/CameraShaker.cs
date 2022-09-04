@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace UnnamedGame.Camera.Scripts
 {
+    [RequireComponent(typeof(CinemachineVirtualCamera))]
     public class CameraShaker : MonoBehaviour
     {
         [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
