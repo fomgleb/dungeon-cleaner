@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TorchAnimation
+  m_Name: TorchFiring
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -30,7 +30,7 @@ AnimationClip:
     - time: 0.2
       value: {fileID: 21300000, guid: 4f6089e966a55d245a2beaad5a8dda86, type: 3}
     attribute: m_Sprite
-    path: 
+    path: Graphics
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -41,7 +41,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 968875534
       attribute: 0
       script: {fileID: 0}
       typeID: 212
