@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -23,12 +22,12 @@ namespace UnnamedGame.Dungeon.Scripts
                     dungeonGenerationData.StepsForOneDirection, dungeonGenerationData.ChanceToTurn);
             var wallPositions = GetWallPositions(floorPositions);
             
-            PaintTiles(floorPositions, floorTilemap, floorRuleTile);
-            PaintTiles(wallPositions, wallTilemap, wallRuleTile);
-            PaintTiles(floorPositions, wallShadowTilemap, wallShadowRuleTile);
+            TilesPainter.PaintTiles(floorPositions, floorTilemap, floorRuleTile);
+            TilesPainter.PaintTiles(wallPositions, wallTilemap, wallRuleTile);
+            TilesPainter.PaintTiles(floorPositions, wallShadowTilemap, wallShadowRuleTile);
         }
 
-        private HashSet<Vector2Int> GetWallPositions(HashSet<Vector2Int> floorPositions)
+        private static HashSet<Vector2Int> GetWallPositions(HashSet<Vector2Int> floorPositions)
         {
             var leftTopWallPosition = new Vector2Int(floorPositions.Min(position => position.x),
                 floorPositions.Max(position => position.y)) + new Vector2Int(-10, 10);

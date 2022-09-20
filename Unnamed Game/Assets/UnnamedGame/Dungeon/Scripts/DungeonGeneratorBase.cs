@@ -34,15 +34,6 @@ namespace UnnamedGame.Dungeon.Scripts
             wallShadowTilemap.ClearAllTiles();
         }
 
-        protected static void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
-        {
-            foreach (var position in positions)
-            {
-                var tilePosition = tilemap.WorldToCell((Vector3Int)position);
-                tilemap.SetTile(tilePosition, tile);
-            }
-        }
-
         protected abstract void RunProceduralGeneration();
     }
 }

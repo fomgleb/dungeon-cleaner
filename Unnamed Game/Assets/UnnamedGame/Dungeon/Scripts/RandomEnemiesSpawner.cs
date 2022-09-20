@@ -50,7 +50,7 @@ namespace UnnamedGame.Dungeon.Scripts
         private void SpawnEnemies()
         {
             var randomNumberOfSpawningEnemies = Random.Range((int)minNumberOfEnemies, (int)(maxNumberOfEnemies + 1));
-            var cellPositionsOfAllTiles = GetCellPositionsOfAllTiles(spawningZoneTilemap);
+            var cellPositionsOfAllTiles = spawningZoneTilemap.GetCellPositionsOfAllTiles();
 
             var availableSpawnCellPositions = cellPositionsOfAllTiles.Except(forbiddenSpawnPositions).ToList();
             availableSpawnCellPositions.Shuffle();
@@ -81,15 +81,6 @@ namespace UnnamedGame.Dungeon.Scripts
         private void OnEnemyDied(Damageable enemyDamageable)
         {
             SpawnedEnemies.Remove(enemyDamageable.gameObject);
-        }
-
-        private static IEnumerable<Vector2Int> GetCellPositionsOfAllTiles(Tilemap tilemap)
-        {
-            var allTilesPositions = new List<Vector2Int>();
-            foreach (var tileCellPositionInBounds in tilemap.cellBounds.allPositionsWithin)
-                if (tilemap.HasTile(tileCellPositionInBounds))
-                    allTilesPositions.Add((Vector2Int)tileCellPositionInBounds);
-            return allTilesPositions;
         }
 
         [Serializable]
