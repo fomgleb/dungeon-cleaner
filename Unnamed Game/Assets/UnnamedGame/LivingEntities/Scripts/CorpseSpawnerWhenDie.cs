@@ -1,5 +1,5 @@
 using System;
-using NTC.Global.Pool;
+using Lean.Pool;
 using UnityEngine;
 
 namespace UnnamedGame.LivingEntities.Scripts
@@ -32,7 +32,7 @@ namespace UnnamedGame.LivingEntities.Scripts
 
         private void SpawnCorpse()
         {
-            NightPool.Spawn(corpsePrefab, transform.position);
+            LeanPool.Spawn(corpsePrefab, transform.position, Quaternion.identity);
             CorpseSpawnedEvent?.Invoke();
         }
     }

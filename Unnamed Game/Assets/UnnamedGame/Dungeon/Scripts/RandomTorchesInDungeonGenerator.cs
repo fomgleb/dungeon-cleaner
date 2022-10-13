@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Lean.Pool;
@@ -13,30 +12,13 @@ namespace UnnamedGame.Dungeon.Scripts
         [Header("Settings")]
         [Range(0, 1)] [SerializeField] private float occurrenceFrequency;
         [Header("Tilemaps")]
-        [SerializeField] private Tilemap dungeonFloorTilemap;
-        [SerializeField] private Tilemap torchTilemap;
-        [SerializeField] private Tilemap sideTorchTilemap;
         [SerializeField] private Tilemap floorTilemap;
         [SerializeField] private Tilemap wallTilemap;
         [Header("Tiles")]
-        [SerializeField] private TileBase torchTileBase;
-        [SerializeField] private TileBase sideTileBase;
         [SerializeField] private GameObject torchPrefab;
         [SerializeField] private GameObject sideTorchPrefab;
 
         private List<GameObject> _spawnedTorches = new();
-
-        private void OnEnable()
-        {
-            DungeonGeneratorBase.DungeonGeneratedEvent += OnDungeonGenerated;
-        }
-
-        private void OnDisable()
-        {
-            DungeonGeneratorBase.DungeonGeneratedEvent -= OnDungeonGenerated;
-        }
-
-        private void OnDungeonGenerated() => GenerateTorches();
 
         private List<Vector2Int> GetRandomTorchPositions()
         {
@@ -99,15 +81,19 @@ namespace UnnamedGame.Dungeon.Scripts
         //     }
         // }
 
-        private void GenerateTorches()
+        public void _GenerateTorches()
         {
             foreach (var spawnedTorch in _spawnedTorches)
-                LeanPool.Despawn(spawnedTorch);
+                if (Application.isEditor)
+                    DestroyImmediate(spawnedTorch);
+                else
+                    LeanPool.Despawn(spawnedTorch);
             foreach (var torchData in GetRandomInitTorchData())
             {
                 var spawningPrefab = torchData.torchDirection == TorchDirection.Down ? torchPrefab : sideTorchPrefab;
-                var spawnedTorch = LeanPool.Spawn(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor,
-                    Quaternion.identity, transform);
+                var spawnedTorch = Application.isEditor
+                    ? Instantiate(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform)
+                    : LeanPool.Spawn(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform);
                 if (torchData.torchDirection == TorchDirection.Left)
                     spawnedTorch.transform.localScale = new Vector3(-1, 1, 1);
                 _spawnedTorches.Add((spawnedTorch));

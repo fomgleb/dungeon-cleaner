@@ -1,4 +1,3 @@
-using NTC.Global.Pool;
 using UnityEngine;
 
 namespace UnnamedGame.LivingEntities.Scripts

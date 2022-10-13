@@ -1,16 +1,26 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnnamedGame.Scene_Transition;
 
 namespace UnnamedGame.Scripts
 {
     public class GameStateChanger : MonoBehaviour
     {
-        public void RestartGame()
+        public void _MainMenu()
         {
-            SceneManager.LoadScene("DungeonScene");
+            SceneTransition.SwitchScene("MainMenuScene");
+        }
+        
+        public void _RestartGame()
+        {
+            SceneTransition.SwitchScene("DungeonScene");
         }
 
-        public void ExitGame()
+        public void _StartGame()
+        {
+            SceneTransition.SwitchScene("DungeonScene");
+        }
+
+        public void _ExitGame()
         {
             Application.Quit();
         }

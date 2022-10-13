@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using MyExtensions;
-using NTC.Global.Pool;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnnamedGame.LivingEntities.Scripts;
@@ -25,29 +24,14 @@ namespace UnnamedGame.Dungeon.Scripts
 
         [Inject] private DiContainer _diContainer;
 
-        private void OnEnable()
-        {
-            DungeonGeneratorBase.DungeonGeneratedEvent += OnDungeonGenerated;
-            DungeonGeneratorBase.DungeonDestroyedEvent += OnDungeonDestroyed;
-        }
-
-        private void OnDisable()
-        {
-            DungeonGeneratorBase.DungeonGeneratedEvent -= OnDungeonGenerated;
-            DungeonGeneratorBase.DungeonDestroyedEvent -= OnDungeonDestroyed;
-        }
-
-        private void OnDungeonGenerated() => SpawnEnemies();
-        private void OnDungeonDestroyed() => DespawnEnemies();
-
-        private void DespawnEnemies()
+        public void _DespawnEnemies()
         {
             foreach (var spawnedEnemy in SpawnedEnemies)
-                NightPool.Despawn(spawnedEnemy);
+                Destroy(spawnedEnemy);
             SpawnedEnemies.Clear();
         }
 
-        private void SpawnEnemies()
+        public void _SpawnEnemies()
         {
             var randomNumberOfSpawningEnemies = Random.Range((int)minNumberOfEnemies, (int)(maxNumberOfEnemies + 1));
             var cellPositionsOfAllTiles = spawningZoneTilemap.GetCellPositionsOfAllTiles();
