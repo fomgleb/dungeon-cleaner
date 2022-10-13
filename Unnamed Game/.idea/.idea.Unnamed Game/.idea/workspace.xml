@@ -8,20 +8,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49f5e6c9b2cc484294cc26c588653ef0284000/89/e8498e24/Stopwatch.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/25/243a3852/ObservableCollection`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/45/7a401a64/Random.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cd953b8fb97946ec96d4a808bc44e727128c00/21/31c3e78c/EventDispatcher.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cd953b8fb97946ec96d4a808bc44e727128c00/38/b138b926/IMGUIContainer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cd953b8fb97946ec96d4a808bc44e727128c00/7f/d98c4176/MouseCaptureDispatchingStrategy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cd953b8fb97946ec96d4a808bc44e727128c00/ae/c245e0f9/BaseVisualElementPanel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2b940ae3a684d9a8833e2f4628085939800/a4/54b00beb/Tilemap.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ff6e05c3b7e54a81ac5168c986783b6277800/9f/552d6a46/InspectorElement.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/TilesPainter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Audio/Scripts/GlobalAudioPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Audio/Scripts/GlobalAudioPlayerInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Camera/Scripts/CameraShaker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/CameraTarget/Scripts/CameraTarget.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Dungeon/Scripts/DungeonGenerationController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Dungeon/Scripts/RandomEnemiesSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Dungeon/Scripts/RandomTorchesInDungeonGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/LivingEntities/Player/Scripts/PlayerAnimation.cs" root0="FORCE_HIGHLIGHTING" />
@@ -32,11 +23,24 @@
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/LivingEntities/Scripts/LinearPhysicalMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Mouse/Scripts/MouseFollower.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Mouse/Scripts/MouseFollowerInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Scene Transition/SceneTransition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/UI/MainMenu/Scripts/Editor/MainMenuGenerationControllerEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/UI/Scripts/ExitMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/UI/Scripts/WinMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Weapon/Scripts/WeaponAnimation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Weapon/Scripts/WeaponSounding.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Editor/TMPro_FontAssetCreatorWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49f5e6c9b2cc484294cc26c588653ef0284000/89/e8498e24/Stopwatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/0c/b86bb2b8/Action.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/25/243a3852/ObservableCollection`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/45/7a401a64/Random.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cd953b8fb97946ec96d4a808bc44e727128c00/21/31c3e78c/EventDispatcher.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cd953b8fb97946ec96d4a808bc44e727128c00/38/b138b926/IMGUIContainer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cd953b8fb97946ec96d4a808bc44e727128c00/7f/d98c4176/MouseCaptureDispatchingStrategy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cd953b8fb97946ec96d4a808bc44e727128c00/ae/c245e0f9/BaseVisualElementPanel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f1212ad1dec44ce7b7147976b91869c3157800/64/7f3aa016/Vector2Int.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2b940ae3a684d9a8833e2f4628085939800/a4/54b00beb/Tilemap.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ff6e05c3b7e54a81ac5168c986783b6277800/9f/552d6a46/InspectorElement.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -85,10 +89,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="14448">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="14448" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -110,6 +114,7 @@
       <workItem from="1661754193967" duration="30582000" />
       <workItem from="1661882819295" duration="11306000" />
       <workItem from="1662264939885" duration="7692000" />
+      <workItem from="1664866978741" duration="20668000" />
     </task>
     <servers />
   </component>

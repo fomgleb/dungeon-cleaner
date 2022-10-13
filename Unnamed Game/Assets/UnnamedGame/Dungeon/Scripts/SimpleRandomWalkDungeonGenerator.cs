@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using MyExtensions;
 using UnityEngine;
 using UnnamedGame.Dungeon.Data.Scripts;
 
@@ -10,17 +11,18 @@ namespace UnnamedGame.Dungeon.Scripts
         [Space]
         [SerializeField] private DungeonGenerationData dungeonGenerationData;
 
-        private void Start()
-        {
-            _GenerateDungeon();
-        }
-
         protected override void RunProceduralGeneration()
         {
             var floorPositions =
                 ProceduralGenerationAlgorithms.SimpleRandomWalk(startPosition, dungeonGenerationData.NumberOfSteps,
                     dungeonGenerationData.StepsForOneDirection, dungeonGenerationData.ChanceToTurn);
             var wallPositions = GetWallPositions(floorPositions);
+
+            if (!clearBeforeGenerate)
+            {
+                wallPositions.ExceptWith(floorTilemap.GetCellPositionsOfAllTiles());
+                TilesPainter.PaintTiles(floorPositions.Where(pos => wallTilemap.HasTile((Vector3Int)pos)), wallTilemap, null);
+            }
             
             TilesPainter.PaintTiles(floorPositions, floorTilemap, floorRuleTile);
             TilesPainter.PaintTiles(wallPositions, wallTilemap, wallRuleTile);

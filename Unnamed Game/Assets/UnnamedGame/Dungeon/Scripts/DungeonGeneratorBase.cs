@@ -9,8 +9,9 @@ namespace UnnamedGame.Dungeon.Scripts
     {
         public static event Action DungeonGeneratedEvent;
         public static event Action DungeonDestroyedEvent;
-        
+
         [Header("Dungeon Generator Base")]
+        [SerializeField] protected bool clearBeforeGenerate;
         [SerializeField] protected Vector2Int startPosition = Vector2Int.zero;
         [SerializeField] protected Tilemap floorTilemap;
         [SerializeField] protected Tilemap wallTilemap;
@@ -21,8 +22,11 @@ namespace UnnamedGame.Dungeon.Scripts
 
         public void _GenerateDungeon()
         {
-            ClearDungeon();
-            DungeonDestroyedEvent?.Invoke();
+            if (clearBeforeGenerate)
+            {
+                ClearDungeon();
+                DungeonDestroyedEvent?.Invoke();
+            }
             RunProceduralGeneration();
             DungeonGeneratedEvent?.Invoke();
         }
