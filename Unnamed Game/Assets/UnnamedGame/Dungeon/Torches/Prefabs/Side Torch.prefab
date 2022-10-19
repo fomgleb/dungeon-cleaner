@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 765316282239738629}
   - component: {fileID: 765316282239738631}
   - component: {fileID: 765316282239738632}
+  - component: {fileID: -3630905697880573435}
+  - component: {fileID: 712936394226964840}
   m_Layer: 0
   m_Name: Side Torch
   m_TagString: Untagged
@@ -184,3 +186,29 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &-3630905697880573435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765316282239738628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b58beaaefa4f84ebfc8da8b0b8d8de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &712936394226964840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765316282239738628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14dd8fa4c5fd25340bee7ae4e4dd415c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakingOffset: 0.1
+  secondsBetweenShakes: 0.15

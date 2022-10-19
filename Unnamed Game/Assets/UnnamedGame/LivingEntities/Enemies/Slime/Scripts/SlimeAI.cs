@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnnamedGame.LivingEntities.Enemies.Scripts;
 using UnnamedGame.LivingEntities.Player.Scripts;
+using UnnamedGame.Pause;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -29,6 +30,7 @@ namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
         private Collider2D _targetCollider;
 
         [Inject] private PlayerInput _playerGameObject;
+        [Inject] private Pauser pauser;
 
         private CancellationTokenSource _cancellationTokenSource;
 
@@ -68,7 +70,13 @@ namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
         {
             while (true)
             {
+                await UniTask.Delay((int)(Random.Range(minReloadTime, maxReloadTime) * 1000));
+                
+                if (pauser.IsPaused)
+                    continue;
+                
                 if (token.IsCancellationRequested) return;
+                
                 Vector2 impulseDirection;
                 if (_lastTargetPosition != Vector2.zero)
                 {
@@ -76,14 +84,12 @@ namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
                     _lastTargetPosition = Vector2.zero;
                 }
                 else
-                    impulseDirection = Random.insideUnitCircle.normalized; 
+                    impulseDirection = Random.insideUnitCircle.normalized;
                 ReadyToMakeImpulseEvent?.Invoke(this, new ReadyToMakeImpulseEventArgs()
                 {
                     direction = impulseDirection,
                     force = Random.Range(minForce, maxForce)
                 });
-
-                await UniTask.Delay((int)(Random.Range(minReloadTime, maxReloadTime) * 1000));
             }
         }
 

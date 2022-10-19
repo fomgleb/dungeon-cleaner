@@ -8,6 +8,8 @@ namespace UnnamedGame.Scene_Transition
 {
     public class SceneTransition : MonoBehaviour
     {
+        private event Action startAnimationEnded;
+        
         private static SceneTransition instance;
         private static bool playEndAnimation = false;
 

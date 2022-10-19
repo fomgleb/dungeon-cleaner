@@ -1,44 +1,57 @@
 using UnityEngine;
 using UnnamedGame.Mouse.Scripts;
+using UnnamedGame.Pause;
 using Zenject;
 
 namespace UnnamedGame.LivingEntities.Player.Scripts
 {
     [RequireComponent(typeof(PlayerInput))]
-    public class PlayerAnimation : MonoBehaviour
+    public class PlayerAnimation : MonoBehaviour, IPauseHandler
     {
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
-        [Inject] private MouseFollower _mouseFollower; 
+        [Inject] private MouseFollower mouseFollower;
+        [Inject] private Pauser pauser;
         
-         private PlayerInput _playerInput;
-        
+        private PlayerInput playerInput;
+         
         private static readonly int IsMoving = Animator.StringToHash("IsMoving");
 
         private void OnEnable()
         {
-            _playerInput.EnteredMovementDirectionChangedEvent += OnMovementDirectionChanged;
+            playerInput.EnteredMovementDirectionChangedEvent += OnMovementDirectionChanged;
         }
 
         private void OnDisable()
         {
-            _playerInput.EnteredMovementDirectionChangedEvent -= OnMovementDirectionChanged;
+            playerInput.EnteredMovementDirectionChangedEvent -= OnMovementDirectionChanged;
         }
         
         private void Awake()
         {
-            _playerInput = GetComponent<PlayerInput>();
+            playerInput = GetComponent<PlayerInput>();
+            pauser.Register(this);
         }
 
         private void Update()
         {
-            spriteRenderer.flipX = _mouseFollower.transform.position.x < transform.position.x;
+            if (pauser.IsPaused)
+                return;
+            if (Time.timeScale != 0)
+            {
+                spriteRenderer.flipX = mouseFollower.transform.position.x < transform.position.x;
+            }
         }
         
         private void OnMovementDirectionChanged(Vector2 enteredMovementDirection)
         {
             animator.SetBool(IsMoving, enteredMovementDirection != Vector2.zero);
+        }
+
+        void IPauseHandler.SetPaused(bool isPaused)
+        {
+            animator.speed = isPaused ? 0 : 1;
         }
     }
 }
