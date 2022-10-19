@@ -4,6 +4,7 @@ using Lean.Pool;
 using MyExtensions;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Zenject;
 
 namespace UnnamedGame.Dungeon.Scripts
 {
@@ -17,6 +18,8 @@ namespace UnnamedGame.Dungeon.Scripts
         [Header("Tiles")]
         [SerializeField] private GameObject torchPrefab;
         [SerializeField] private GameObject sideTorchPrefab;
+
+        [Inject] private DiContainer diContainer;
 
         private List<GameObject> _spawnedTorches = new();
 
@@ -91,9 +94,10 @@ namespace UnnamedGame.Dungeon.Scripts
             foreach (var torchData in GetRandomInitTorchData())
             {
                 var spawningPrefab = torchData.torchDirection == TorchDirection.Down ? torchPrefab : sideTorchPrefab;
-                var spawnedTorch = Application.isEditor
-                    ? Instantiate(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform)
-                    : LeanPool.Spawn(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform);
+                // var spawnedTorch = Application.isEditor
+                //     ? Instantiate(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform)
+                //     : diContainer.InstantiatePrefab(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform);
+                var spawnedTorch = diContainer.InstantiatePrefab(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform);
                 if (torchData.torchDirection == TorchDirection.Left)
                     spawnedTorch.transform.localScale = new Vector3(-1, 1, 1);
                 _spawnedTorches.Add((spawnedTorch));

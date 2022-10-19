@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 765316282239738630}
   - component: {fileID: 765316282239738632}
   - component: {fileID: 2515211259213696398}
+  - component: {fileID: 436132433892202921}
+  - component: {fileID: 5090564697797599635}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
@@ -132,6 +134,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &436132433892202921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765316282239738628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b58beaaefa4f84ebfc8da8b0b8d8de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5090564697797599635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765316282239738628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14dd8fa4c5fd25340bee7ae4e4dd415c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakingOffset: 0.15
+  secondsBetweenShakes: 0.1
 --- !u!1 &4747970569996431021
 GameObject:
   m_ObjectHideFlags: 0
