@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 6003337747442796768}
   - component: {fileID: -8220523287237223519}
   - component: {fileID: -2564039120984863868}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -205,6 +205,11 @@ MonoBehaviour:
   minForce: 5
   maxForce: 20
   timeBetweenPlayerSearch: 0.2
+  rangeOfVision: 20
+  canSee:
+    serializedVersion: 2
+    m_Bits: 192
+  targetPrefab: {fileID: 5413983320158967783, guid: 4919571cb72b66841b4fae5213e32a3b, type: 3}
 --- !u!114 &7320433434772038572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7552555420707087019}
   - component: {fileID: 7383501532052275214}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

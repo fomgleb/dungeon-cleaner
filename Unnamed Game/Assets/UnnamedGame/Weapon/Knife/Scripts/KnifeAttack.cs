@@ -8,33 +8,45 @@ namespace UnnamedGame.Weapon.Knife.Scripts
     [RequireComponent(typeof(WeaponAttack))]
     public class KnifeAttack : MonoBehaviour, IWeaponAttack
     {
+        [SerializeField] private Transform attackPoint;
+        [SerializeField] private float attackRange;
+        [SerializeField] private LayerMask enemyLayer;
+        [SerializeField] private LayerMask wallLayer;
+        [SerializeField] private uint maxHitObjectsAtOnce;
+        
         public event Action HitEnemyEvent;
         public event Action HitWallEvent;
 
-        private WeaponAttack _weaponAttack;
+        private WeaponAttack weaponAttack;
         
         private void Awake()
         {
-            _weaponAttack = GetComponent<WeaponAttack>();
+            weaponAttack = GetComponent<WeaponAttack>();
+            detectedColliders = new Collider2D[maxHitObjectsAtOnce];
         }
 
+        private Collider2D[] detectedColliders;
         public void Attack()
         {
-            
+            var size = Physics2D.OverlapCircleNonAlloc(attackPoint.position, attackRange, detectedColliders, enemyLayer | wallLayer);
+            for (var i = 0; i < size; i++)
+            {
+                var gameObjectLayerMask = 1 << detectedColliders[i].gameObject.layer;  
+                if (gameObjectLayerMask == enemyLayer.value)
+                {
+                    detectedColliders[i].GetComponent<Damageable>().PerformDamage(weaponAttack.Damage);
+                    HitEnemyEvent?.Invoke();
+                }
+                else if (gameObjectLayerMask == wallLayer.value)
+                {
+                    HitWallEvent?.Invoke();
+                }
+            }
         }
 
-        private void OnTriggerEnter2D(Collider2D otherCollider)
+        private void OnDrawGizmosSelected()
         {
-            if (otherCollider.CompareTag("Enemy"))
-            {
-                var enemyDamageable = otherCollider.GetComponent<Damageable>();
-                enemyDamageable.PerformDamage(_weaponAttack.Damage);
-                HitEnemyEvent?.Invoke();
-            }
-            else if (otherCollider.CompareTag("Wall"))
-            {
-                HitWallEvent?.Invoke();
-            }
+            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         }
     }
 }

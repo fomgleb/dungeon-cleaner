@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -18,6 +19,9 @@ namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
         [SerializeField] private float minForce;
         [SerializeField] private float maxForce;
         [SerializeField] private float timeBetweenPlayerSearch;
+        [SerializeField] private float rangeOfVision;
+        [SerializeField] private LayerMask canSee;
+        [SerializeField] private GameObject targetPrefab;
 
         public event EventHandler<ReadyToMakeImpulseEventArgs> ReadyToMakeImpulseEvent;
         public class ReadyToMakeImpulseEventArgs : EventArgs
@@ -26,39 +30,60 @@ namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
             public float force;
         }
 
-        private Vector2 _lastTargetPosition;
-        private Collider2D _targetCollider;
+        private Collider2D targetCollider;
+        private Collider2D TargetCollider
+        {
+            get
+            {
+                if (targetCollider != null) return targetCollider;
+                
+                var targetGameObject =  GameObject.FindWithTag(targetPrefab.tag);
+                if (targetGameObject == null)
+                    return null;
+                targetCollider = targetGameObject.GetComponent<Collider2D>();
 
-        [Inject] private PlayerInput _playerGameObject;
+                return targetCollider;
+            }
+        }
+
+        private Vector2 lastTargetPosition;
+
         [Inject] private Pauser pauser;
 
-        private CancellationTokenSource _cancellationTokenSource;
+        private CancellationTokenSource cancelSearchingTargetToken;
 
         private void Awake()
         {
-            _cancellationTokenSource = new CancellationTokenSource();
+            cancelSearchingTargetToken = new CancellationTokenSource();
         }
 
         private void Start()
         {
-            _targetCollider = _playerGameObject.GetComponent<Collider2D>();
-            SearchPlayerAsync(_cancellationTokenSource.Token);
-            MakeImpulseAndReloadAsync(_cancellationTokenSource.Token);
+            SearchTargetAsync(cancelSearchingTargetToken.Token);
+            MakeImpulseAndReloadAsync(cancelSearchingTargetToken.Token);
         }
 
         private void OnDestroy()
         {
-            _cancellationTokenSource.Cancel();
+            cancelSearchingTargetToken.Cancel();
         }
 
-        private async void SearchPlayerAsync(CancellationToken token)
+        private async void SearchTargetAsync(CancellationToken token)
         {
             while (true)
             {
                 if (token.IsCancellationRequested) return;
+
+                if (pauser.IsPaused)
+                {
+                    await UniTask.Yield();
+                    continue;
+                }
+                
                 if (IsSeeTarget())
                 {
-                    _lastTargetPosition = _targetCollider.bounds.center;
+                    if (TargetCollider == null) continue;
+                    lastTargetPosition = TargetCollider.bounds.center;
                     await UniTask.Yield();
                 }
                 else
@@ -78,10 +103,10 @@ namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
                 if (token.IsCancellationRequested) return;
                 
                 Vector2 impulseDirection;
-                if (_lastTargetPosition != Vector2.zero)
+                if (lastTargetPosition != Vector2.zero)
                 {
-                    impulseDirection = (_lastTargetPosition - (Vector2)transform.position).normalized;
-                    _lastTargetPosition = Vector2.zero;
+                    impulseDirection = (lastTargetPosition - (Vector2)transform.position).normalized;
+                    lastTargetPosition = Vector2.zero;
                 }
                 else
                     impulseDirection = Random.insideUnitCircle.normalized;
@@ -95,21 +120,32 @@ namespace UnnamedGame.LivingEntities.Enemies.Slime.Scripts
 
         private void OnDrawGizmos()
         {
-            if (_targetCollider == null) return;
+            if (targetCollider == null) return;
             var myPosition = transform.position;
-            var directionToTarget = _targetCollider.bounds.center - myPosition;
-            Gizmos.DrawLine(myPosition, directionToTarget * 100);
+            var directionToTarget = targetCollider.bounds.center - myPosition;
+            Gizmos.DrawLine(myPosition, directionToTarget * rangeOfVision);
         }
 
+        private readonly RaycastHit2D[] slimeSees = new RaycastHit2D[10];
         private bool IsSeeTarget()
         {
-            if (_targetCollider == null) return false;
+            if (TargetCollider == null) return false;
             var myPosition = transform.position;
-            var directionToTarget = _targetCollider.bounds.center - myPosition;
-            var hit = Physics2D.Raycast(myPosition, directionToTarget * 100);
-            if (hit.collider == null) return false;
-            if (hit.collider.CompareTag("Player")) return true;
-            return false;
+            var directionToTarget = TargetCollider.bounds.center - myPosition;
+            var size = Physics2D.RaycastNonAlloc(myPosition, directionToTarget, slimeSees, rangeOfVision, canSee);
+
+            if (size <= 0)
+                return false;
+
+            if (slimeSees[0].collider.CompareTag(TargetCollider.tag))
+                return true;
+            else
+                return false;
+            
+            // if (slimeSees.All(hit => hit.collider.CompareTag(TargetCollider.tag)))
+            //     return true;
+            // else
+            //     return false;
         }
     }
 }

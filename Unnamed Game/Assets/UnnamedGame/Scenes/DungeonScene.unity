@@ -12639,7 +12639,7 @@ GameObject:
   - component: {fileID: 656568780}
   - component: {fileID: 656568779}
   - component: {fileID: 656568778}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall Tilemap
   m_TagString: Wall
   m_Icon: {fileID: 0}

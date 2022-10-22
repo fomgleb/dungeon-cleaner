@@ -36,6 +36,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Editor/TMPro_FontAssetCreatorWindow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49f5e6c9b2cc484294cc26c588653ef0284000/89/e8498e24/Stopwatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/599ef6b6d50f4e488ca73e2010b5243610fc00/a1/8b60134a/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/0c/b86bb2b8/Action.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/25/243a3852/ObservableCollection`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/45/7a401a64/Random.cs" root0="SKIP_HIGHLIGHTING" />
@@ -95,10 +96,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="27792">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="27792" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -122,7 +123,7 @@
       <workItem from="1662264939885" duration="7692000" />
       <workItem from="1664866978741" duration="20668000" />
       <workItem from="1665944937296" duration="3594000" />
-      <workItem from="1666015360000" duration="19841000" />
+      <workItem from="1666015360000" duration="33452000" />
     </task>
     <servers />
   </component>
@@ -133,5 +134,29 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/UnnamedGame/Weapon/Knife/Scripts/KnifeAttack.cs</url>
+          <line>34</line>
+          <properties documentPath="C:\My Files\Programming\Unity Projects\unnamed-game\Unnamed Game\Assets\UnnamedGame\Weapon\Knife\Scripts\KnifeAttack.cs" initialLine="33" containingFunctionPresentation="method 'Attack'">
+            <startOffsets>
+              <option value="1247" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1291" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#UnnamedGame.LivingEntities.Enemies.Slime.Scripts.SlimeAI" memberName="slimeSees" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
