@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2064057769638428108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6535522880943583378}
+  m_Layer: 6
+  m_Name: Attack Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6535522880943583378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064057769638428108}
+  m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: 0.5218153, y: -0.12675023, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5413983321153193521}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5413983319979346747
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +43,7 @@ GameObject:
   - component: {fileID: 5413983319979346745}
   - component: {fileID: 5413983319979346744}
   - component: {fileID: 5413983319979346695}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5413983320071139054}
   - component: {fileID: 5413983320071139053}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +254,7 @@ GameObject:
   - component: {fileID: 5413983320158967784}
   - component: {fileID: 5413983320158967797}
   - component: {fileID: 5413983320158967796}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -523,14 +554,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5413983320888183139}
   - component: {fileID: 5413983320888183138}
-  - component: {fileID: 5413983320888183147}
   - component: {fileID: 5413983320888183145}
   - component: {fileID: 5413983320888183136}
   - component: {fileID: 5413983320888183150}
   - component: {fileID: 5413983320888183148}
   - component: {fileID: 5413983320888183149}
   - component: {fileID: 5413983320888183146}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +581,7 @@ Transform:
   m_Children:
   - {fileID: 5413983320071139054}
   m_Father: {fileID: 5413983321153193521}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!95 &5413983320888183138
 Animator:
@@ -573,35 +603,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!60 &5413983320888183147
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5413983320888183140}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.93072677, y: -0.070360854}
-      - {x: 1.1977484, y: 0.35109913}
-      - {x: 0.67498845, y: 0.23156485}
-      - {x: 0.14034286, y: -0.3025971}
 --- !u!82 &5413983320888183145
 AudioSource:
   m_ObjectHideFlags: 0
@@ -749,6 +750,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7491ef15c342d3bb9d2d37b8eb52a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPoint: {fileID: 6535522880943583378}
+  attackRange: 0.7
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  maxHitObjectsAtOnce: 15
 --- !u!114 &5413983320888183146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,7 +773,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSound: {fileID: 8300000, guid: d01b036b5f7ca7e44a988cf28c9c6d7c, type: 3}
   hitEnemySound: {fileID: 8300000, guid: e9e32d7fe68bf3343bc9017382acd55e, type: 3}
-  hitWallSound: {fileID: 8300000, guid: 50ffacc55e6f7e5469a3cd851634dde4, type: 3}
+  hitWallSounds:
+  - {fileID: 8300000, guid: bc5e633d07257454697a7d4cccd43a9e, type: 3}
+  - {fileID: 8300000, guid: 804ee8b6918f1c6449bcf3f6a84717ee, type: 3}
+  - {fileID: 8300000, guid: ae064e9f917b7f141843bdaa6e521bfa, type: 3}
 --- !u!1 &5413983321027049539
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,7 +787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5413983321027049538}
   - component: {fileID: 5413983321027049537}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -859,7 +872,7 @@ GameObject:
   - component: {fileID: 5413983321153193521}
   - component: {fileID: 5413983321153193520}
   - component: {fileID: 5413983321153193535}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -878,6 +891,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6535522880943583378}
   - {fileID: 5413983320888183139}
   m_Father: {fileID: 5413983320158967782}
   m_RootOrder: 2

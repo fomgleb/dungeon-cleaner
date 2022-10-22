@@ -8,7 +8,7 @@ namespace UnnamedGame.Weapon.Scripts
     {
         [SerializeField] private AudioClip attackSound;
         [SerializeField] private AudioClip hitEnemySound;
-        [SerializeField] private AudioClip hitWallSound;
+        [SerializeField] private AudioClip[] hitWallSounds;
 
         private WeaponAttack _weaponAttack;
         private IWeaponAttack _certainWeaponAttack;
@@ -25,14 +25,14 @@ namespace UnnamedGame.Weapon.Scripts
         {
             _weaponAttack.AttackedEvent += OnAttacked;
             _certainWeaponAttack.HitEnemyEvent += OnHitEnemy;
-            //_certainWeaponAttack.HitWallEvent += OnHitWall;
+            _certainWeaponAttack.HitWallEvent += OnHitWall;
         }
 
         private void OnDisable()
         {
             _weaponAttack.AttackedEvent -= OnAttacked;
             _certainWeaponAttack.HitEnemyEvent -= OnHitEnemy;
-            //_certainWeaponAttack.HitWallEvent -= OnHitWall;
+            _certainWeaponAttack.HitWallEvent -= OnHitWall;
         }
         
         private void OnAttacked() => PlayAttackSound();
@@ -54,7 +54,7 @@ namespace UnnamedGame.Weapon.Scripts
         private void PlayerHitWallSound()
         {
             _audioSource.pitch = Random.Range(0.9f, 1.1f);
-            _audioSource.PlayOneShot(hitWallSound);
+            _audioSource.PlayOneShot(hitWallSounds[Random.Range(0, hitWallSounds.Length)]);
         }
     }
 }
