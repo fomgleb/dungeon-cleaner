@@ -9,6 +9,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/GameUIAndHUDController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GameVersion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Audio/Scripts/GlobalAudioPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Audio/Scripts/GlobalAudioPlayerInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnnamedGame/Camera/Scripts/CameraShaker.cs" root0="FORCE_HIGHLIGHTING" />
@@ -123,7 +124,7 @@
       <workItem from="1662264939885" duration="7692000" />
       <workItem from="1664866978741" duration="20668000" />
       <workItem from="1665944937296" duration="3594000" />
-      <workItem from="1666015360000" duration="33452000" />
+      <workItem from="1666015360000" duration="34063000" />
     </task>
     <servers />
   </component>
