@@ -275,7 +275,7 @@ RectTransform:
   m_Children:
   - {fileID: 1847057328}
   m_Father: {fileID: 1191094531}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -18001,10 +18001,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit
+  m_text: EXIT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f9ee599e799dbb5409eae47a0403ccaa, type: 2}
-  m_sharedMaterial: {fileID: 8745695963431693264, guid: f9ee599e799dbb5409eae47a0403ccaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1fe7475042eb54a48be6a26490f5160b, type: 2}
+  m_sharedMaterial: {fileID: -1921333246889890055, guid: 1fe7475042eb54a48be6a26490f5160b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18028,13 +18028,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.59
-  m_fontSizeBase: 39.59
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -18394,8 +18394,8 @@ RectTransform:
   m_Children:
   - {fileID: 562100877}
   - {fileID: 1083924097}
-  - {fileID: 652676899}
   - {fileID: 225349086}
+  - {fileID: 652676899}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18580,10 +18580,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play
+  m_text: PLAY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f9ee599e799dbb5409eae47a0403ccaa, type: 2}
-  m_sharedMaterial: {fileID: 8745695963431693264, guid: f9ee599e799dbb5409eae47a0403ccaa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1fe7475042eb54a48be6a26490f5160b, type: 2}
+  m_sharedMaterial: {fileID: -1921333246889890055, guid: 1fe7475042eb54a48be6a26490f5160b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18607,13 +18607,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.59
-  m_fontSizeBase: 39.59
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -18956,7 +18956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -18964,8 +18964,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: version
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5e25b56cbc719964f837e032df8cb49e, type: 2}
-  m_sharedMaterial: {fileID: 377777257532091206, guid: 5e25b56cbc719964f837e032df8cb49e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1fe7475042eb54a48be6a26490f5160b, type: 2}
+  m_sharedMaterial: {fileID: -1921333246889890055, guid: 1fe7475042eb54a48be6a26490f5160b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18989,8 +18989,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.7
-  m_fontSizeBase: 15.7
+  m_fontSize: 26.54
+  m_fontSizeBase: 26.54
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -19206,7 +19206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2523558013178223629, guid: 45b9040999e484941950d930bf3ee058, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2523558013178223629, guid: 45b9040999e484941950d930bf3ee058, type: 3}
       propertyPath: m_AnchorMax.x
@@ -19280,24 +19280,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2523558013227940716, guid: 45b9040999e484941950d930bf3ee058, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: f9ee599e799dbb5409eae47a0403ccaa, type: 2}
-    - target: {fileID: 2523558013227940716, guid: 45b9040999e484941950d930bf3ee058, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 8745695963431693264, guid: f9ee599e799dbb5409eae47a0403ccaa, type: 2}
     - target: {fileID: 2523558013313666924, guid: 45b9040999e484941950d930bf3ee058, type: 3}
       propertyPath: m_text
       value: 100%
       objectReference: {fileID: 0}
     - target: {fileID: 2523558015018276578, guid: 45b9040999e484941950d930bf3ee058, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2523558015021802620, guid: 45b9040999e484941950d930bf3ee058, type: 3}
-      propertyPath: m_BlocksRaycasts
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2523558015021802622, guid: 45b9040999e484941950d930bf3ee058, type: 3}
