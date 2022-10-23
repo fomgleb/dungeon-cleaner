@@ -21,17 +21,18 @@ namespace UnnamedGame.LivingEntities.Player.Scripts
         private void OnEnable()
         {
             playerInput.EnteredMovementDirectionChangedEvent += OnMovementDirectionChanged;
+            pauser.Register(this);
         }
 
         private void OnDisable()
         {
             playerInput.EnteredMovementDirectionChangedEvent -= OnMovementDirectionChanged;
+            pauser.UnRegister(this);
         }
         
         private void Awake()
         {
             playerInput = GetComponent<PlayerInput>();
-            pauser.Register(this);
         }
 
         private void Update()
