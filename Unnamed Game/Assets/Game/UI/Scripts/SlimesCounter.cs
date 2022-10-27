@@ -1,4 +1,5 @@
 using System.Collections.Specialized;
+using Game.Dungeon.Scripts;
 using TMPro;
 using UnityEngine;
 using UnnamedGame.Dungeon.Scripts;
