@@ -18701,7 +18701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6953c56b1086ae1418f5a47bd3864ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearBeforeGenerate: 1
+  clearBeforeGenerate: 0
   startPosition: {x: 5, y: 0}
   floorTilemap: {fileID: 511274360}
   wallTilemap: {fileID: 656568777}
