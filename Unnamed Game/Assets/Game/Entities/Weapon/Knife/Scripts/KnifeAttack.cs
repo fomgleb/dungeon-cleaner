@@ -3,7 +3,7 @@ using Game.Entities.LivingEntities.Scripts;
 using UnityEngine;
 using UnnamedGame.Weapon.Scripts;
 
-namespace Game.Weapon.Knife.Scripts
+namespace Game.Entities.Weapon.Knife.Scripts
 {
     [RequireComponent(typeof(WeaponAttack))]
     public class KnifeAttack : MonoBehaviour, IWeaponAttack
@@ -34,7 +34,7 @@ namespace Game.Weapon.Knife.Scripts
                 var gameObjectLayerMask = 1 << detectedColliders[i].gameObject.layer;  
                 if (gameObjectLayerMask == enemyLayer.value)
                 {
-                    detectedColliders[i].GetComponent<Damageable>().PerformDamage(weaponAttack.Damage);
+                    detectedColliders[i].GetComponent<Damageable>().AddToHealth(transform, -weaponAttack.Damage);
                     HitEnemyEvent?.Invoke();
                 }
                 else if (gameObjectLayerMask == wallLayer.value)

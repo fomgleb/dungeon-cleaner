@@ -1,7 +1,7 @@
 using Lean.Pool;
 using UnityEngine;
 
-namespace Game.Global.Audio.Scripts
+namespace Game.Audio.Scripts
 {
     public class GlobalAudioPlayer : MonoBehaviour
     {
@@ -14,5 +14,16 @@ namespace Game.Global.Audio.Scripts
             spawnedAudioUnit.PlayOneShot(audioClip);
             LeanPool.Despawn(spawnedAudioUnit, audioClip.length + 1);
         }
+
+        public void PlayAudio(Sound sound, Vector2 position)
+        {
+            var spawnedAudioUnit = LeanPool.Spawn(audioUnitPrefab, position, Quaternion.identity, transform);
+            spawnedAudioUnit.pitch = Random.Range(sound.MinRandomPitch, sound.MaxRandomPitch);
+            var randomAudioClip = sound.RandomAudioClips[Random.Range(0, sound.RandomAudioClips.Length)];
+            spawnedAudioUnit.PlayOneShot(randomAudioClip);
+            LeanPool.Despawn(spawnedAudioUnit, randomAudioClip.length + 1);
+        }
+        
+        
     }
 }

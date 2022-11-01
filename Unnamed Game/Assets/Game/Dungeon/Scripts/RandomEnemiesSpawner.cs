@@ -62,9 +62,9 @@ namespace Game.Dungeon.Scripts
             }
         }
 
-        private void OnEnemyDied(Damageable enemyDamageable)
+        private void OnEnemyDied(object sender, Damageable.DiedEventArgs diedEventArgs)
         {
-            SpawnedEnemies.Remove(enemyDamageable.gameObject);
+            SpawnedEnemies.Remove((GameObject)sender);
         }
 
         [Serializable]

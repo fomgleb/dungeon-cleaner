@@ -484,8 +484,12 @@ MonoBehaviour:
     maxRandomPitch: 1.1
   stepSound:
     randomAudioClips:
-    - {fileID: 8300000, guid: 3bd8a26885a061448b4f39a9b9704fe4, type: 3}
-    - {fileID: 8300000, guid: 2e4a6e29e4ec41441ba196b8de73be73, type: 3}
+    - {fileID: 8300000, guid: 35dd72cc96d259e468746d4776a49f27, type: 3}
+    - {fileID: 8300000, guid: 155119129bf557d4f91df11e3482157a, type: 3}
+    - {fileID: 8300000, guid: 318510c1b5df34b4bb8276fd24bad075, type: 3}
+    - {fileID: 8300000, guid: 707ded8981b6394479592d70146efee9, type: 3}
+    - {fileID: 8300000, guid: 73438101d7274a149914420c27e394f2, type: 3}
+    - {fileID: 8300000, guid: 81fec0f7029a10c43a5ade069ec6194e, type: 3}
     audioSource: {fileID: 5029349575472192020}
     minRandomPitch: 0.9
     maxRandomPitch: 1.1

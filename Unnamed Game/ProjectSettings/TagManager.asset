@@ -8,6 +8,7 @@ TagManager:
   - asteroid
   - Wall
   - Enemy
+  - GlobalAudioPlayer
   layers:
   - Default
   - TransparentFX

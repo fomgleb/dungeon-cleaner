@@ -1,3 +1,5 @@
+using System;
+using Cysharp.Threading.Tasks;
 using Lean.Pool;
 using UnityEngine;
 
@@ -7,9 +9,16 @@ namespace Game.Scripts
     {
         [SerializeField] private float delayBeforeDestroying;
     
-        private void Start()
+        private void OnEnable()
         {
-            LeanPool.Despawn(gameObject, delayBeforeDestroying);
+            DespawnAsync();
+        }
+
+        private async void DespawnAsync()
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(delayBeforeDestroying));
+            if (gameObject != null)
+                LeanPool.Despawn(gameObject);
         }
     }
 }

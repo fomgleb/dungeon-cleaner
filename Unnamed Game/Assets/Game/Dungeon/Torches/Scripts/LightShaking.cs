@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.Pause;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnnamedGame.Pause;

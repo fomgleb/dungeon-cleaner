@@ -27,22 +27,28 @@ namespace Game.Entities.LivingEntities.Scripts
             damageable.DiedEvent -= OnDied;
         }
 
-        private void OnDied(Damageable obj)
+        private void OnDied(object sender, Damageable.DiedEventArgs diedEventArgs)
         {
             foreach (var loot in loots)
             {
-                if (Random.Range(0f, 1f) < loot.DropChance)
-                    LeanPool.Spawn(loot.DropPrefab, transform.position, Quaternion.identity);
+                if (Random.Range(0f, 1f) <= loot.DropChance)
+                {
+                    var thisPosition = transform.position;
+                    var spawnedLoot = LeanPool.Spawn(loot.DropPrefab, thisPosition, Quaternion.identity);
+                    spawnedLoot.velocity = (thisPosition - diedEventArgs.Killer.position) * loot.StartSpeed;
+                }
             }
         }
 
         [Serializable]
         private struct Loot
         {
-            [SerializeField] private GameObject dropPrefab;
+            [SerializeField] private Rigidbody2D dropPrefab;
             [SerializeField, Range(0, 1)] private float dropChance;
-            public GameObject DropPrefab => dropPrefab;
+            [SerializeField] private float startSpeed;
+            public Rigidbody2D DropPrefab => dropPrefab;
             public float DropChance => dropChance;
+            public float StartSpeed => startSpeed;
         }
     }
 }

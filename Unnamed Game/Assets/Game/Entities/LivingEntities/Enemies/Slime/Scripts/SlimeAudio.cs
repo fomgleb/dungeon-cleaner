@@ -1,13 +1,15 @@
+using Game.Audio.Scripts;
+using Game.LivingEntities.Enemies.Slime.Scripts;
 using UnityEngine;
 
-namespace Game.LivingEntities.Enemies.Slime.Scripts
+namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
 {
     [RequireComponent(typeof(SlimeMovement))]
     public class SlimeAudio : MonoBehaviour
     {
-        [SerializeField] private AudioClip[] hitTheWallSounds;
+        [SerializeField] private Sound hitTheWallSound;
+        [SerializeField] private Sound hitOtherSlimeSound;
         [SerializeField] private LayerMask wallLayer;
-        [SerializeField] private AudioSource hitWallAudioSource;
 
         private SlimeMovement slimeMovement;
 
@@ -31,8 +33,11 @@ namespace Game.LivingEntities.Enemies.Slime.Scripts
             var otherColliderLayer = 1 << collision.collider.gameObject.layer;
             if (otherColliderLayer == wallLayer)
             {
-                hitWallAudioSource.pitch = Random.Range(0.9f, 1.1f);
-                hitWallAudioSource.PlayOneShot(hitTheWallSounds[Random.Range(0, hitTheWallSounds.Length)]);
+                hitTheWallSound.Play();
+            }
+            else if (otherColliderLayer == 1 << gameObject.layer)
+            {
+                hitOtherSlimeSound.Play();
             }
         }
     }

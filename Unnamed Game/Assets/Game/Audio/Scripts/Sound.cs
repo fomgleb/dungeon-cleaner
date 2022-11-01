@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Game.Global.Audio.Scripts
+namespace Game.Audio.Scripts
 {
     [Serializable]
     public struct Sound

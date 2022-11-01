@@ -1,4 +1,5 @@
 using System;
+using Game.Entities.LivingEntities.Enemies.Slime.Scripts;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

@@ -1,8 +1,8 @@
+using Game.Audio.Scripts;
 using Game.Entities.LivingEntities.Scripts;
-using Game.Global.Audio.Scripts;
 using UnityEngine;
 
-namespace Game.LivingEntities.Player.Scripts
+namespace Game.Entities.LivingEntities.Player.Scripts
 {
     [RequireComponent(typeof(Damageable))]
     public class PlayerAudio : MonoBehaviour
@@ -19,15 +19,19 @@ namespace Game.LivingEntities.Player.Scripts
 
         private void OnEnable()
         {
-            damageable.GotDamageEvent += OnGotDamage;
+            damageable.HealthChangedEvent += OnHealthChanged;
         }
 
         private void OnDisable()
         {
-            damageable.GotDamageEvent -= OnGotDamage;
+            damageable.HealthChangedEvent -= OnHealthChanged;
         }
 
-        private void OnGotDamage() => gotDamageSound.Play();
+        private void OnHealthChanged(object sender, Damageable.HealthChangedEventArgs healthChangedEventArgs)
+        {
+            if (healthChangedEventArgs.AddedHealth < 0)
+                gotDamageSound.Play();   
+        }
 
         public void OnStep() => stepSound.Play();
     }
