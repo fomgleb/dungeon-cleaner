@@ -1,3 +1,4 @@
+using Game.Entities.LivingEntities.Enemies.Slime.Scripts;
 using UnityEngine;
 
 namespace Game.LivingEntities.Enemies.Slime.Scripts

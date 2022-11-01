@@ -1,12 +1,12 @@
+using Game.Pause;
 using UnityEngine;
-using UnnamedGame.Pause;
 using Zenject;
 
-namespace UnnamedGame.Mouse.Scripts
+namespace Game.Mouse.Scripts
 {
     public class MouseFollower : MonoBehaviour
     {
-        [SerializeField] private new UnityEngine.Camera camera;
+        [SerializeField] private new Camera camera;
 
         [Inject] private Pauser pauser;
 

@@ -14,17 +14,43 @@ namespace Game.Entities.LivingEntities.Scripts
         public float Health => health;
         public float MaxHealth => maxHealth;
 
-        public event Action<Damageable> DiedEvent;
-        public event Action GotDamageEvent;
-
-        public void PerformDamage(float damage)
+        public event EventHandler<DiedEventArgs> DiedEvent;
+        public class DiedEventArgs : EventArgs
         {
-            health -= damage;
-            GotDamageEvent?.Invoke();
-            if (health > 0) return;
-            health = 0;
+            public readonly Transform Killer;
+            public DiedEventArgs(Transform killer)
+            {
+                Killer = killer;
+            }
+        }
+        
+        public event EventHandler<HealthChangedEventArgs> HealthChangedEvent;
+        public class HealthChangedEventArgs : EventArgs
+        {
+            public readonly Transform HealthChanger;
+            public readonly float AddedHealth;
+            public HealthChangedEventArgs(Transform healthChanger, float addedHealth)
+            {
+                HealthChanger = healthChanger;
+                AddedHealth = addedHealth;
+            }
+        }
+
+        public void AddToHealth(Transform healthChanger, float addingAmount)
+        {
+            health += addingAmount;
+            if (health > maxHealth)
+                health = maxHealth;
+            else if (health < 0)
+                health = 0;
+            
+            HealthChangedEvent?.Invoke(gameObject, new HealthChangedEventArgs(healthChanger, addingAmount));
+
+            if (health > 0)
+                return;
+            
             SpawnAfterDie();
-            DiedEvent?.Invoke(this);
+            DiedEvent?.Invoke(gameObject, new DiedEventArgs(healthChanger));
             if (destroyAfterDie)
                 Destroy(gameObject);
         }

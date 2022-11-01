@@ -64,13 +64,13 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 10
+  m_AngularDrag: 10
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &2576761249442246558
 MonoBehaviour:
@@ -84,7 +84,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda68a08a30fa7d41a974fe128ec326c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addingHealth: 1
+  healingAmount: 1
+  healSound:
+    randomAudioClips:
+    - {fileID: 8300000, guid: 059cf8085115a96498d6e1ff672754da, type: 3}
+    audioSource: {fileID: 0}
+    minRandomPitch: 0.9
+    maxRandomPitch: 1.1
+  canHealPrefabs:
+  - {fileID: 5413983320158967785, guid: 4919571cb72b66841b4fae5213e32a3b, type: 3}
 --- !u!1 &3933493211736210298
 GameObject:
   m_ObjectHideFlags: 0

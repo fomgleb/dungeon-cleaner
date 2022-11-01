@@ -75,10 +75,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="11148">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="11148" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -102,7 +102,9 @@
       <workItem from="1662264939885" duration="7692000" />
       <workItem from="1664866978741" duration="20668000" />
       <workItem from="1665944937296" duration="3594000" />
-      <workItem from="1666015360000" duration="75966000" />
+      <workItem from="1666015360000" duration="104518000" />
+      <workItem from="1667243349411" duration="2381000" />
+      <workItem from="1667297181898" duration="2963000" />
     </task>
     <servers />
   </component>
@@ -120,28 +122,21 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/UnnamedGame/Weapon/Knife/Scripts/KnifeAttack.cs</url>
           <line>34</line>
-          <properties documentPath="C:\My Files\Programming\Unity Projects\unnamed-game\Unnamed Game\Assets\UnnamedGame\Weapon\Knife\Scripts\KnifeAttack.cs" initialLine="33" containingFunctionPresentation="method 'Attack'">
-            <startOffsets>
-              <option value="1247" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1291" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\My Files\Programming\Unity Projects\unnamed-game\Unnamed Game\Assets\UnnamedGame\Weapon\Knife\Scripts\KnifeAttack.cs" initialLine="33" containingFunctionPresentation="method 'Attack'" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Game/Entities/LivingEntities/Scripts/LootDropperWhenDie.cs</url>
-          <line>30</line>
-          <properties documentPath="C:\My Files\Programming\Unity Projects\unnamed-game\Unnamed Game\Assets\Game\Entities\LivingEntities\Scripts\LootDropperWhenDie.cs" initialLine="30" containingFunctionPresentation="method 'OnDied'">
+          <url>file://$PROJECT_DIR$/Assets/Game/Entities/Consumables/Potions/HealingPotions/Scripts/Healer.cs</url>
+          <line>23</line>
+          <properties documentPath="C:\My Files\Programming\Unity Projects\unnamed-game\Unnamed Game\Assets\Game\Entities\Consumables\Potions\HealingPotions\Scripts\Healer.cs" initialLine="14" containingFunctionPresentation="method 'OnCollisionEnter2D'">
             <startOffsets>
-              <option value="674" />
+              <option value="743" />
             </startOffsets>
             <endOffsets>
-              <option value="675" />
+              <option value="744" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="8" />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

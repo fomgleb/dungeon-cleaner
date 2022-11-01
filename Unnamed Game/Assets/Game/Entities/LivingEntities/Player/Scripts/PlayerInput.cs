@@ -1,4 +1,5 @@
 using System;
+using Game.Pause;
 using UnityEngine;
 using UnnamedGame.Pause;
 using Zenject;

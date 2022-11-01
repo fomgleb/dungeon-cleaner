@@ -1,4 +1,5 @@
 using System;
+using Game.Mouse.Scripts;
 using UnityEngine;
 using UnnamedGame.LivingEntities.Player.Scripts;
 using UnnamedGame.Mouse.Scripts;

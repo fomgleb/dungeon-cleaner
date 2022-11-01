@@ -4,7 +4,7 @@ using UnityEngine;
 using UnnamedGame.LivingEntities.Player.Scripts;
 using Zenject;
 
-namespace Game.LivingEntities.Player.Scripts
+namespace Game.Entities.LivingEntities.Player.Scripts
 {
     public class PlayerHealthUI : MonoBehaviour
     {
@@ -26,15 +26,20 @@ namespace Game.LivingEntities.Player.Scripts
 
         private void OnEnable()
         {
-            playerDamageable.GotDamageEvent += OnGotDamage;
+            playerDamageable.HealthChangedEvent += OnHealthChanged;
         }
 
         private void OnDisable()
         {
-            playerDamageable.GotDamageEvent -= OnGotDamage;
+            playerDamageable.HealthChangedEvent -= OnHealthChanged;
         }
 
-        private void OnGotDamage() => SetHealthText();
+        private void OnHealthChanged(object sender, Damageable.HealthChangedEventArgs healthChangedEventArgs)
+        {
+            if (healthChangedEventArgs.AddedHealth != 0)
+                SetHealthText();
+        }
+            
 
         private void SetHealthText()
         {

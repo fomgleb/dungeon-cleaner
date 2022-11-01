@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using UnnamedGame.Pause;
 
-namespace UnnamedGame.Pause
+namespace Game.Pause
 {
     public class Pauser : IPauseHandler
     {

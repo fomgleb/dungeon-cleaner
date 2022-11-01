@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed48e47759230e445b1ef90b146100e9, type: 3}
   m_Name: SmallDungeonData
   m_EditorClassIdentifier: 
-  stepsForOneDirection: 2
-  numberOfSteps: 500
-  chanceToTurn: 0.5
+  stepsForOneDirection: 3
+  numberOfSteps: 1000
+  chanceToTurn: 0.815

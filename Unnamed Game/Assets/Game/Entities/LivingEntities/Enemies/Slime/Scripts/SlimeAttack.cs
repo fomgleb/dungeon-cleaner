@@ -1,9 +1,8 @@
-using System;
 using Game.Entities.LivingEntities.Scripts;
+using Game.LivingEntities.Enemies.Slime.Scripts;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-namespace Game.LivingEntities.Enemies.Slime.Scripts
+namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
 {
     [RequireComponent(typeof(SlimeAI))]
     [RequireComponent(typeof(SlimeMovement))]
@@ -73,7 +72,7 @@ namespace Game.LivingEntities.Enemies.Slime.Scripts
             var targetVelocity = TargetRigidbody2D.velocity;
             var slimeVelocity = rigidbody2D.velocity;
             if ((targetVelocity - slimeVelocity).magnitude >= attackSpeed)
-                TargetDamageable.PerformDamage(damage);
+                TargetDamageable.AddToHealth(transform, -damage);
         }
     }
 }

@@ -1,13 +1,14 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.Pause;
 using UnityEngine;
 using UnnamedGame.LivingEntities.Enemies.Scripts;
 using UnnamedGame.Pause;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace Game.LivingEntities.Enemies.Slime.Scripts
+namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
 {
     public class SlimeAI : MonoBehaviour, IEnemyAI
     {
@@ -149,8 +150,8 @@ namespace Game.LivingEntities.Enemies.Slime.Scripts
         {
             if (targetCollider == null) return;
             var myPosition = transform.position;
-            var directionToTarget = targetCollider.bounds.center - myPosition;
-            Gizmos.DrawLine(myPosition, directionToTarget * rangeOfVision);
+            var directionToTarget = (targetCollider.bounds.center - myPosition).normalized;
+            Gizmos.DrawRay(myPosition, directionToTarget * rangeOfVision);
         }
 
         private readonly RaycastHit2D[] slimeSees = new RaycastHit2D[10];

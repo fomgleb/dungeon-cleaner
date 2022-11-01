@@ -1,3 +1,5 @@
+using Game.Mouse.Scripts;
+using Game.Pause;
 using UnityEngine;
 using UnnamedGame.Pause;
 using Zenject;
