@@ -4,7 +4,6 @@ using Cysharp.Threading.Tasks;
 using Game.Pause;
 using UnityEngine;
 using UnnamedGame.LivingEntities.Enemies.Scripts;
-using UnnamedGame.Pause;
 using Zenject;
 using Random = UnityEngine.Random;
 

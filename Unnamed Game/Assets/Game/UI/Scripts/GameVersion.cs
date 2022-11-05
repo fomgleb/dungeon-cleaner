@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace UnnamedGame.UI.Scripts
+namespace Game.UI.Scripts
 {
     public class GameVersion : MonoBehaviour
     {

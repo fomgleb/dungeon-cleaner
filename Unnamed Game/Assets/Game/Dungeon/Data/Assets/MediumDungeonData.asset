@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed48e47759230e445b1ef90b146100e9, type: 3}
-  m_Name: SmallDungeonData
+  m_Name: MediumDungeonData
   m_EditorClassIdentifier: 
   stepsForOneDirection: 3
-  numberOfSteps: 100
+  numberOfSteps: 1000
   chanceToTurn: 0.815

@@ -1,6 +1,6 @@
 using Game.Pause;
 using UnityEngine;
-using UnnamedGame.Pause;
+using UnityEngine.Audio;
 using Zenject;
 
 public class GameUIAndHUDController : MonoBehaviour
@@ -8,12 +8,18 @@ public class GameUIAndHUDController : MonoBehaviour
     [SerializeField] private GameObject health;
     [SerializeField] private GameObject slimesCounter;
     [SerializeField] private GameObject aimMessage;
-
+    [SerializeField] private AudioMixerSnapshot normal;
+    [SerializeField] private AudioMixerSnapshot inAimTip;
+    
+    
     [Inject] private Pauser pauser;
+
+    
 
     private void Start()
     {
         TurnAimMessage(true);
+        inAimTip.TransitionTo(0);
     }
 
     private void Update()
@@ -21,6 +27,7 @@ public class GameUIAndHUDController : MonoBehaviour
         if (Input.anyKey)
         {
             TurnAimMessage(false);
+            normal.TransitionTo(0.5f);
         }
     }
 
