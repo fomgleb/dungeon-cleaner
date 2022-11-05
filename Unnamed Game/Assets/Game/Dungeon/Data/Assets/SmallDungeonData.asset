@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SmallDungeonData
   m_EditorClassIdentifier: 
   stepsForOneDirection: 3
-  numberOfSteps: 1000
+  numberOfSteps: 100
   chanceToTurn: 0.815

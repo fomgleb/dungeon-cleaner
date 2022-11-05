@@ -4,7 +4,7 @@ using UnnamedGame.Camera.Scripts;
 using UnnamedGame.Weapon.Scripts;
 using Zenject;
 
-namespace UnnamedGame.LivingEntities.Player.Scripts
+namespace Game.Entities.LivingEntities.Player.Scripts
 {
     [RequireComponent(typeof(PlayerAttack))]
     public class PlayerCameraShaking : MonoBehaviour
