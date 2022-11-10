@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace UnnamedGame.Scene_Transition
+namespace Game.Scene_Transition
 {
     public class SceneTransition : MonoBehaviour
     {
+        public static event Action SceneIsSwitchingEvent;
+        
         private event Action startAnimationEnded;
         
         private static SceneTransition instance;
@@ -21,6 +23,7 @@ namespace UnnamedGame.Scene_Transition
 
         public static void SwitchScene(string sceneName)
         {
+            SceneIsSwitchingEvent?.Invoke();
             instance.animator.SetTrigger("Start");
             instance.sceneLoadingOperation = SceneManager.LoadSceneAsync(sceneName);
             instance.sceneLoadingOperation.allowSceneActivation = false;

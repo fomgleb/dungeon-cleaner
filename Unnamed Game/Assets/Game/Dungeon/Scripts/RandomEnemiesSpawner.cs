@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Game.Entities.LivingEntities.Scripts;
 using MyExtensions;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnnamedGame.LivingEntities.Scripts;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace UnnamedGame.Dungeon.Scripts
+namespace Game.Dungeon.Scripts
 {
     public class RandomEnemiesSpawner : MonoBehaviour
     {
@@ -22,7 +22,7 @@ namespace UnnamedGame.Dungeon.Scripts
 
         public static ObservableCollection<GameObject> SpawnedEnemies { get; } = new();
 
-        [Inject] private DiContainer _diContainer;
+        [Inject] private DiContainer diContainer;
 
         public void _DespawnEnemies()
         {
@@ -54,7 +54,7 @@ namespace UnnamedGame.Dungeon.Scripts
                 var numberOfThisTypeEnemies = (int)Mathf.Round(spawningEnemyData.SpawnChance * randomNumberOfSpawningEnemies);
                 for (var j = 0; j < numberOfThisTypeEnemies; j++)
                 {
-                    var spawnedEnemy = _diContainer.InstantiatePrefab(spawningEnemyData.EnemyPrefab, enemiesParentOnScene);
+                    var spawnedEnemy = diContainer.InstantiatePrefab(spawningEnemyData.EnemyPrefab, enemiesParentOnScene);
                     spawnedEnemy.transform.position = randomSpawnWorldPositionsQueue.Dequeue();
                     SpawnedEnemies.Add(spawnedEnemy);
                     spawnedEnemy.GetComponent<Damageable>().DiedEvent += OnEnemyDied;
@@ -62,9 +62,9 @@ namespace UnnamedGame.Dungeon.Scripts
             }
         }
 
-        private void OnEnemyDied(Damageable enemyDamageable)
+        private void OnEnemyDied(object sender, Damageable.DiedEventArgs diedEventArgs)
         {
-            SpawnedEnemies.Remove(enemyDamageable.gameObject);
+            SpawnedEnemies.Remove((GameObject)sender);
         }
 
         [Serializable]

@@ -1,19 +1,19 @@
 using System.Collections.Specialized;
+using Game.Dungeon.Scripts;
 using UnityEngine;
-using UnnamedGame.Dungeon.Scripts;
 using UnnamedGame.LivingEntities.Player.Scripts;
 using Zenject;
 
-namespace UnnamedGame.UI.Scripts
+namespace Game.UI.Scripts
 {
     public class WinMenu : MonoBehaviour
     {
         [SerializeField] private Animator likerAnimator;
         [SerializeField] private GameObject[] objectsToEnable;
 
-        [Inject] private PlayerInput _playerInput;
+        [Inject] private PlayerInput playerInput;
     
-        private static readonly int StartLiking = Animator.StringToHash("StartLiking");
+        private static readonly int StartLikingTriggerName = Animator.StringToHash("StartLiking");
 
         private void OnEnable()
         {
@@ -29,10 +29,10 @@ namespace UnnamedGame.UI.Scripts
         {
             if (RandomEnemiesSpawner.SpawnedEnemies.Count > 0) return;
             if (e.OldItems == null) return;
-            if (_playerInput == null) return;   
+            if (playerInput == null) return;   
             foreach (var objectToEnable in objectsToEnable)
                 objectToEnable.SetActive(true);
-            likerAnimator.SetTrigger(StartLiking);
+            likerAnimator.SetTrigger(StartLikingTriggerName);
         }
     }
 }

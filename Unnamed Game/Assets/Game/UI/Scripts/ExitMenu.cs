@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnnamedGame.UI.Scripts
+namespace Game.UI.Scripts
 {
     public class ExitMenu : MonoBehaviour
     {
