@@ -1,5 +1,5 @@
+using Game.Scene_Transition;
 using UnityEngine;
-using UnnamedGame.Scene_Transition;
 
 namespace UnnamedGame.Scripts
 {

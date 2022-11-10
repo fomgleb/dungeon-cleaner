@@ -1,10 +1,10 @@
 using Cysharp.Threading.Tasks;
+using Game.Entities.LivingEntities.Scripts;
 using UnityEngine;
 using UnnamedGame.LivingEntities.Player.Scripts;
-using UnnamedGame.LivingEntities.Scripts;
 using Zenject;
 
-namespace UnnamedGame.UI.Scripts
+namespace Game.UI.Scripts
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class ShowWhenPlayerDie : MonoBehaviour
@@ -13,28 +13,28 @@ namespace UnnamedGame.UI.Scripts
         [SerializeField] private float delay;
         [SerializeField] private GameObject[] objectsToEnable;
 
-        [Inject] private PlayerInput _playerInput;
+        [Inject] private PlayerInput playerInput;
     
-        private CanvasGroup _canvasGroup;
-        private Damageable _playerDamageable;
+        private CanvasGroup canvasGroup;
+        private Damageable playerDamageable;
 
         private void Awake()
         {
-            _canvasGroup = GetComponent<CanvasGroup>();
-            _playerDamageable = _playerInput.GetComponent<Damageable>();
+            canvasGroup = GetComponent<CanvasGroup>();
+            playerDamageable = playerInput.GetComponent<Damageable>();
         }
 
         private void OnEnable()
         {
-            _playerDamageable.DiedEvent += OnDied;
+            playerDamageable.DiedEvent += OnDied;
         }
 
         private void OnDisable()
         {
-            _playerDamageable.DiedEvent -= OnDied;
+            playerDamageable.DiedEvent -= OnDied;
         }
 
-        private void OnDied(Damageable damageable) => Show();
+        private void OnDied(object sender, Damageable.DiedEventArgs diedEventArgs) => Show();
 
         private async void Show()
         {
@@ -47,7 +47,7 @@ namespace UnnamedGame.UI.Scripts
         
             for (var elapsedTime = 0f; elapsedTime < appearanceTime; elapsedTime += Time.deltaTime)
             {
-                _canvasGroup.alpha += appearanceSpeed * Time.deltaTime;
+                canvasGroup.alpha += appearanceSpeed * Time.deltaTime;
                 await UniTask.Yield();
             }
         }

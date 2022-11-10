@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace UnnamedGame.Pause
+namespace Game.Pause
 {
     public class PauserInstaller : MonoInstaller
     {
