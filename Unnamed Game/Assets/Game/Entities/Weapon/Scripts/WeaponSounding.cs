@@ -1,7 +1,8 @@
+using Game.Audio.Scripts;
 using UnityEngine;
 using UnnamedGame.Weapon.Scripts;
 
-namespace Game.Weapon.Scripts
+namespace Game.Entities.Weapon.Scripts
 {
     [RequireComponent(typeof(WeaponAttack))]
     [RequireComponent(typeof(AudioSource))]
@@ -10,27 +11,27 @@ namespace Game.Weapon.Scripts
         [SerializeField] private AudioClip attackSound;
         [SerializeField] private AudioClip[] hitWallSounds;
 
-        private WeaponAttack _weaponAttack;
-        private IWeaponAttack _certainWeaponAttack;
-        private AudioSource _audioSource;
+        private WeaponAttack weaponAttack;
+        private IWeaponAttack certainWeaponAttack;
+        private AudioSource audioSource;
 
         private void Awake()
         {
-            _weaponAttack = GetComponent<WeaponAttack>();
-            _certainWeaponAttack = GetComponent<IWeaponAttack>();
-            _audioSource = GetComponent<AudioSource>();
+            weaponAttack = GetComponent<WeaponAttack>();
+            certainWeaponAttack = GetComponent<IWeaponAttack>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void OnEnable()
         {
-            _weaponAttack.AttackedEvent += OnAttacked;
-            _certainWeaponAttack.HitWallEvent += OnHitWall;
+            weaponAttack.AttackedEvent += OnAttacked;
+            certainWeaponAttack.HitWallEvent += OnHitWall;
         }
 
         private void OnDisable()
         {
-            _weaponAttack.AttackedEvent -= OnAttacked;
-            _certainWeaponAttack.HitWallEvent -= OnHitWall;
+            weaponAttack.AttackedEvent -= OnAttacked;
+            certainWeaponAttack.HitWallEvent -= OnHitWall;
         }
         
         private void OnAttacked() => PlayAttackSound();
@@ -38,14 +39,14 @@ namespace Game.Weapon.Scripts
 
         private void PlayAttackSound()
         {
-            _audioSource.pitch = Random.Range(0.9f, 1.1f);
-            _audioSource.PlayOneShot(attackSound);
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
+            audioSource.PlayOneShot(attackSound);
         }
         
         private void PlayerHitWallSound()
         {
-            _audioSource.pitch = Random.Range(0.9f, 1.1f);
-            _audioSource.PlayOneShot(hitWallSounds[Random.Range(0, hitWallSounds.Length)]);
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
+            audioSource.PlayOneShot(hitWallSounds[Random.Range(0, hitWallSounds.Length)]);
         }
     }
 }

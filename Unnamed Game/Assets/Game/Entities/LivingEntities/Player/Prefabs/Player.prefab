@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 5413983320158967786}
   - component: {fileID: 5413983320158967785}
   - component: {fileID: 5413983320158967784}
+  - component: {fileID: -2191658869514049442}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -459,8 +460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e855da30004e86bf3b869cde41407b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  maxHealth: 10
+  health: 100
+  maxHealth: 100
   spawnAfterDiePrefabs:
   - {fileID: 4833610543579264674, guid: a1e959cb084ab57408c569bd963a5dd0, type: 3}
   destroyAfterDie: 1
@@ -493,6 +494,18 @@ MonoBehaviour:
     audioSource: {fileID: 5029349575472192020}
     minRandomPitch: 0.9
     maxRandomPitch: 1.1
+--- !u!114 &-2191658869514049442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413983320158967783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83053b076f6a39b479905412af5f7ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5413983321027049539
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +833,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knife
       objectReference: {fileID: 0}
+    - target: {fileID: 8182460757314910728, guid: 72368fda5e832e443950871f402d2e1b, type: 3}
+      propertyPath: damageSlimeSound.audioSource
+      value: 
+      objectReference: {fileID: 5413983320888183145}
+    - target: {fileID: 8182460757314910728, guid: 72368fda5e832e443950871f402d2e1b, type: 3}
+      propertyPath: damageSlimeSound.maxRandomPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182460757314910728, guid: 72368fda5e832e443950871f402d2e1b, type: 3}
+      propertyPath: damageSlimeSound.minRandomPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182460757314910728, guid: 72368fda5e832e443950871f402d2e1b, type: 3}
+      propertyPath: damageSlimeSound.randomAudioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182460757314910728, guid: 72368fda5e832e443950871f402d2e1b, type: 3}
+      propertyPath: damageSlimeSound.randomAudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: bf04237491307444987453e8e5e524d6, type: 3}
     - target: {fileID: 8182460757314910735, guid: 72368fda5e832e443950871f402d2e1b, type: 3}
       propertyPath: attackPoint
       value: 
@@ -831,12 +864,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8182460757314910721, guid: 72368fda5e832e443950871f402d2e1b, type: 3}
   m_PrefabInstance: {fileID: 4228780619883754338}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5413983320888183140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8182460757314910726, guid: 72368fda5e832e443950871f402d2e1b, type: 3}
+  m_PrefabInstance: {fileID: 4228780619883754338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6939469654658909524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413983320888183140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc0e3037e17414b950cdbbe58fad339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageSlimeSound:
+    randomAudioClips:
+    - {fileID: 8300000, guid: bf04237491307444987453e8e5e524d6, type: 3}
+    audioSource: {fileID: 5413983320888183145}
+    minRandomPitch: 0
+    maxRandomPitch: 0
+--- !u!82 &5413983320888183145 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8182460757314910731, guid: 72368fda5e832e443950871f402d2e1b, type: 3}
+  m_PrefabInstance: {fileID: 4228780619883754338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5413983320888183150 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8182460757314910732, guid: 72368fda5e832e443950871f402d2e1b, type: 3}
   m_PrefabInstance: {fileID: 4228780619883754338}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5413983320888183140}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f627103739c34784b672446aaced7049, type: 3}

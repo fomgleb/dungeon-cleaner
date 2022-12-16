@@ -9,7 +9,7 @@ namespace Game.Entities.Weapon.Knife.Scripts
     public class KnifeAttack : MonoBehaviour, IWeaponAttack
     {
         [SerializeField] private Transform attackPoint;
-        [SerializeField] private float attackRange;
+        public float attackRange;
         [SerializeField] private LayerMask enemyLayer;
         [SerializeField] private LayerMask wallLayer;
         [SerializeField] private uint maxHitObjectsAtOnce;

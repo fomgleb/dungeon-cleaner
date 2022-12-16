@@ -8,14 +8,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Coin.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/DungeonMusicPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FPSCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Entities/LivingEntities/Scripts/LootDropperWhenDie.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Scripts/GameObjectDestroyer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Scripts/RandomPitchOnAwake.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GameUIAndHUDController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/HealthBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MainMenuMusicPlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MoneyCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shop.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SmoothMusicAppearing.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Wallet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Editor/TMPro_FontAssetCreatorWindow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
@@ -111,7 +116,11 @@
       <workItem from="1666015360000" duration="104518000" />
       <workItem from="1667243349411" duration="2381000" />
       <workItem from="1667297181898" duration="27454000" />
-      <workItem from="1668107015884" duration="3061000" />
+      <workItem from="1668107015884" duration="3660000" />
+      <workItem from="1668332347947" duration="2605000" />
+      <workItem from="1668432781413" duration="10905000" />
+      <workItem from="1669991673748" duration="722000" />
+      <workItem from="1670754944687" duration="633000" />
     </task>
     <servers />
   </component>
@@ -131,19 +140,6 @@
           <line>34</line>
           <properties documentPath="C:\My Files\Programming\Unity Projects\unnamed-game\Unnamed Game\Assets\UnnamedGame\Weapon\Knife\Scripts\KnifeAttack.cs" initialLine="33" containingFunctionPresentation="method 'Attack'" />
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Game/Entities/Consumables/Potions/HealingPotions/Scripts/Healer.cs</url>
-          <line>23</line>
-          <properties documentPath="C:\My Files\Programming\Unity Projects\unnamed-game\Unnamed Game\Assets\Game\Entities\Consumables\Potions\HealingPotions\Scripts\Healer.cs" initialLine="14" containingFunctionPresentation="method 'OnCollisionEnter2D'">
-            <startOffsets>
-              <option value="743" />
-            </startOffsets>
-            <endOffsets>
-              <option value="744" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

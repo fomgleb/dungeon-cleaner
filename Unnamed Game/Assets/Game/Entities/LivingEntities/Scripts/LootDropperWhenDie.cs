@@ -36,6 +36,7 @@ namespace Game.Entities.LivingEntities.Scripts
                     var thisPosition = transform.position;
                     var spawnedLoot = LeanPool.Spawn(loot.DropPrefab, thisPosition, Quaternion.identity);
                     spawnedLoot.velocity = (thisPosition - diedEventArgs.Killer.position) * loot.StartSpeed;
+                    break;
                 }
             }
         }
