@@ -57,12 +57,12 @@ namespace Game.Dungeon.Scripts
                     var spawnedEnemy = diContainer.InstantiatePrefab(spawningEnemyData.EnemyPrefab, enemiesParentOnScene);
                     spawnedEnemy.transform.position = randomSpawnWorldPositionsQueue.Dequeue();
                     SpawnedEnemies.Add(spawnedEnemy);
-                    spawnedEnemy.GetComponent<Damageable>().DiedEvent += OnEnemyDied;
+                    spawnedEnemy.GetComponent<Dieable>().DiedEvent += OnEnemyDied;
                 }
             }
         }
 
-        private void OnEnemyDied(object sender, Damageable.DiedEventArgs diedEventArgs)
+        private static void OnEnemyDied(object sender, Dieable.DiedEventArgs eventArgs)
         {
             SpawnedEnemies.Remove((GameObject)sender);
         }

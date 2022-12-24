@@ -16,12 +16,12 @@ namespace Game.UI.Scripts
         [Inject] private PlayerInput playerInput;
     
         private CanvasGroup canvasGroup;
-        private Damageable playerDamageable;
+        private Dieable playerDamageable;
 
         private void Awake()
         {
             canvasGroup = GetComponent<CanvasGroup>();
-            playerDamageable = playerInput.GetComponent<Damageable>();
+            playerDamageable = playerInput.GetComponent<Dieable>();
         }
 
         private void OnEnable()
@@ -34,7 +34,7 @@ namespace Game.UI.Scripts
             playerDamageable.DiedEvent -= OnDied;
         }
 
-        private void OnDied(object sender, Damageable.DiedEventArgs diedEventArgs) => Show();
+        private void OnDied(object sender, Dieable.DiedEventArgs eventArgs) => Show();
 
         private async void Show()
         {

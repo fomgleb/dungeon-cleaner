@@ -1,3 +1,4 @@
+using Game.Architecture.Camera.Scripts;
 using Game.LivingEntities.Player.Scripts;
 using UnityEngine;
 using UnnamedGame.Camera.Scripts;

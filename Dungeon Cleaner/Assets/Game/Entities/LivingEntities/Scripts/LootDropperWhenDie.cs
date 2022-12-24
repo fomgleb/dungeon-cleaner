@@ -10,24 +10,24 @@ namespace Game.Entities.LivingEntities.Scripts
     {
         [SerializeField] private Loot[] loots;
 
-        private Damageable damageable;
+        private Dieable dieable;
 
         private void Awake()
         {
-            damageable = GetComponent<Damageable>();
+            dieable = GetComponent<Dieable>();
         }
 
         private void OnEnable()
         {
-            damageable.DiedEvent += OnDied;
+            dieable.DiedEvent += OnDied;
         }
 
         private void OnDisable()
         {
-            damageable.DiedEvent -= OnDied;
+            dieable.DiedEvent -= OnDied;
         }
 
-        private void OnDied(object sender, Damageable.DiedEventArgs diedEventArgs)
+        private void OnDied(object sender, Dieable.DiedEventArgs eventArgs)
         {
             foreach (var loot in loots)
             {
@@ -35,7 +35,7 @@ namespace Game.Entities.LivingEntities.Scripts
                 {
                     var thisPosition = transform.position;
                     var spawnedLoot = LeanPool.Spawn(loot.DropPrefab, thisPosition, Quaternion.identity);
-                    spawnedLoot.velocity = (thisPosition - diedEventArgs.Killer.position) * loot.StartSpeed;
+                    spawnedLoot.velocity = (thisPosition - eventArgs.Killer.position) * loot.StartSpeed;
                 }
             }
         }

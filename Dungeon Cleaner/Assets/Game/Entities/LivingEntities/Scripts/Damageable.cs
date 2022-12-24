@@ -1,5 +1,4 @@
 using System;
-using Lean.Pool;
 using UnityEngine;
 
 namespace Game.Entities.LivingEntities.Scripts
@@ -8,22 +7,10 @@ namespace Game.Entities.LivingEntities.Scripts
     {
         [SerializeField] private float health;
         [SerializeField] private float maxHealth;
-        [SerializeField] private GameObject[] spawnAfterDiePrefabs;
-        [SerializeField] private bool destroyAfterDie;
 
         public float Health => health;
         public float MaxHealth => maxHealth;
 
-        public event EventHandler<DiedEventArgs> DiedEvent;
-        public class DiedEventArgs : EventArgs
-        {
-            public readonly Transform Killer;
-            public DiedEventArgs(Transform killer)
-            {
-                Killer = killer;
-            }
-        }
-        
         public event EventHandler<HealthChangedEventArgs> HealthChangedEvent;
         public class HealthChangedEventArgs : EventArgs
         {
@@ -45,22 +32,6 @@ namespace Game.Entities.LivingEntities.Scripts
                 health = 0;
             
             HealthChangedEvent?.Invoke(gameObject, new HealthChangedEventArgs(healthChanger, addingAmount));
-
-            if (health > 0)
-                return;
-            
-            SpawnAfterDie();
-            DiedEvent?.Invoke(gameObject, new DiedEventArgs(healthChanger));
-            if (destroyAfterDie)
-                Destroy(gameObject);
-        }
-
-        private void SpawnAfterDie()
-        {
-            foreach (var spawnAfterDiePrefab in spawnAfterDiePrefabs)
-            {
-                LeanPool.Spawn(spawnAfterDiePrefab, transform.position, Quaternion.identity);
-            }
         }
     }
 }

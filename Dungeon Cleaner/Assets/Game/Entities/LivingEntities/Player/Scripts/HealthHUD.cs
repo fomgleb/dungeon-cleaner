@@ -1,23 +1,13 @@
 using Game.Entities.LivingEntities.Scripts;
 using TMPro;
 using UnityEngine;
-using UnnamedGame.LivingEntities.Player.Scripts;
-using Zenject;
 
 namespace Game.Entities.LivingEntities.Player.Scripts
 {
-    public class PlayerHealthUI : MonoBehaviour
+    public class HealthHUD : MonoBehaviour
     {
         [SerializeField] private TMP_Text healthText;
-
-        [Inject] private PlayerInput playerInput;
-
-        private Damageable playerDamageable;
-    
-        private void Awake()
-        {
-            playerDamageable = playerInput.GetComponent<Damageable>();
-        }
+        [SerializeField] private Damageable damageable;
 
         private void Start()
         {
@@ -26,12 +16,12 @@ namespace Game.Entities.LivingEntities.Player.Scripts
 
         private void OnEnable()
         {
-            playerDamageable.HealthChangedEvent += OnHealthChanged;
+            damageable.HealthChangedEvent += OnHealthChanged;
         }
 
         private void OnDisable()
         {
-            playerDamageable.HealthChangedEvent -= OnHealthChanged;
+            damageable.HealthChangedEvent -= OnHealthChanged;
         }
 
         private void OnHealthChanged(object sender, Damageable.HealthChangedEventArgs healthChangedEventArgs)
@@ -40,10 +30,9 @@ namespace Game.Entities.LivingEntities.Player.Scripts
                 SetHealthText();
         }
             
-
         private void SetHealthText()
         {
-            healthText.text = $"{playerDamageable.Health} / {playerDamageable.MaxHealth}";
+            healthText.text = $"{damageable.Health} / {damageable.MaxHealth}";
         }
     }
 }

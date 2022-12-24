@@ -1,11 +1,9 @@
-using System;
 using Game.Mouse.Scripts;
 using UnityEngine;
 using UnnamedGame.LivingEntities.Player.Scripts;
-using UnnamedGame.Mouse.Scripts;
 using Zenject;
 
-namespace UnnamedGame.CameraTarget.Scripts
+namespace Game.Architecture.Camera.Scripts
 {
     public class CameraTarget : MonoBehaviour
     {

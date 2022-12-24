@@ -1,3 +1,4 @@
+using Game.Architecture.Audio.Scripts;
 using Game.Audio.Scripts;
 using UnityEngine;
 using Zenject;

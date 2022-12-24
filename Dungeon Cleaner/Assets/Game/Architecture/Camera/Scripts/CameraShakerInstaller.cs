@@ -1,3 +1,4 @@
+using Game.Architecture.Camera.Scripts;
 using UnityEngine;
 using Zenject;
 

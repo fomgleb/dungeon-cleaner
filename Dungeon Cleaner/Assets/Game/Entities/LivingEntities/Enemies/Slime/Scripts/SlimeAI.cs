@@ -1,14 +1,15 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.Entities.LivingEntities.Enemies.Scripts;
 using Game.Pause;
 using UnityEngine;
-using UnnamedGame.LivingEntities.Enemies.Scripts;
 using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
 {
+    [RequireComponent(typeof(SpawnedObjectFinder))]
     public class SlimeAI : MonoBehaviour, IEnemyAI
     {
         [SerializeField] private float minReloadTime;
@@ -17,7 +18,6 @@ namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
         [SerializeField] private float timeBeforeMakeImpulse;
         [SerializeField] private float rangeOfVision;
         [SerializeField] private LayerMask canSee;
-        [SerializeField] private GameObject targetPrefab;
 
         #region Events
         public event EventHandler<ReadyToMakeImpulseEventArgs> ReadyToMakeImpulseEvent;
@@ -41,39 +41,18 @@ namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
         }
         #endregion
 
-        private GameObject targetGameObject;
-        public GameObject TargetGameObject
-        {
-            get
-            {
-                if (targetGameObject != null) return targetGameObject;
-                targetGameObject = GameObject.FindWithTag(targetPrefab.tag);
-                return targetGameObject;
-            }
-        }
-        
-        private Collider2D targetCollider;
-        public Collider2D TargetCollider
-        {
-            get
-            {
-                if (targetCollider != null) return targetCollider;
-                if (TargetGameObject == null) return null;
-                
-                targetCollider = TargetGameObject.GetComponent<Collider2D>();
-                return targetCollider;
-            }
-        }
-
         private Vector2 lastTargetPosition;
 
         [Inject] private Pauser pauser;
 
         private CancellationTokenSource cancelSearchingTargetToken;
 
+        private SpawnedObjectFinder targetFinder;
+
         private void Awake()
         {
             cancelSearchingTargetToken = new CancellationTokenSource();
+            targetFinder = GetComponent<SpawnedObjectFinder>();
         }
 
         private void Start()
@@ -101,8 +80,10 @@ namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
                 
                 if (IsSeeTarget())
                 {
-                    if (TargetCollider == null) continue;
-                    lastTargetPosition = TargetCollider.bounds.center;
+                    var targetCollider2D = targetFinder.LightweightGetComponent<Collider2D>();
+                    
+                    if (targetCollider2D == null) continue;
+                    lastTargetPosition = targetCollider2D.bounds.center;
                     await UniTask.Yield();
                 }
                 else
@@ -147,32 +128,25 @@ namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
 
         private void OnDrawGizmos()
         {
-            if (targetCollider == null) return;
+            var targetCollider2D = targetFinder.LightweightGetComponent<Collider2D>();
+            
+            if (targetCollider2D == null) return;
             var myPosition = transform.position;
-            var directionToTarget = (targetCollider.bounds.center - myPosition).normalized;
+            var directionToTarget = (targetCollider2D.bounds.center - myPosition).normalized;
             Gizmos.DrawRay(myPosition, directionToTarget * rangeOfVision);
         }
 
         private readonly RaycastHit2D[] slimeSees = new RaycastHit2D[10];
         private bool IsSeeTarget()
         {
-            if (TargetCollider == null) return false;
+            var targetCollider2D = targetFinder.LightweightGetComponent<Collider2D>();
+            
+            if (targetCollider2D == null) return false;
             var myPosition = transform.position;
-            var directionToTarget = TargetCollider.bounds.center - myPosition;
+            var directionToTarget = targetCollider2D.bounds.center - myPosition;
             var size = Physics2D.RaycastNonAlloc(myPosition, directionToTarget, slimeSees, rangeOfVision, canSee);
 
-            if (size <= 0)
-                return false;
-
-            if (slimeSees[0].collider.CompareTag(TargetCollider.tag))
-                return true;
-            else
-                return false;
-            
-            // if (slimeSees.All(hit => hit.collider.CompareTag(TargetCollider.tag)))
-            //     return true;
-            // else
-            //     return false;
+            return size > 0 && slimeSees[0].collider.CompareTag(targetFinder.SpawnedGameObject.tag);
         }
     }
 }

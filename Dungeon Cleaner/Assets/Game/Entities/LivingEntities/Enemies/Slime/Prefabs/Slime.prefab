@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 1067052868084965696}
   - component: {fileID: 6003337747442796768}
   - component: {fileID: 8244078665739297751}
+  - component: {fileID: 3587486331142658159}
+  - component: {fileID: 1601001365776119541}
   m_Layer: 3
   m_Name: Slime
   m_TagString: Enemy
@@ -121,7 +123,6 @@ MonoBehaviour:
   canSee:
     serializedVersion: 2
     m_Bits: 192
-  targetPrefab: {fileID: 5413983320158967783, guid: 4919571cb72b66841b4fae5213e32a3b, type: 3}
 --- !u!114 &7320433434772038572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +227,9 @@ MonoBehaviour:
   spawnAfterDiePrefabs:
   - {fileID: 3543175294948656529, guid: 2077d44e556d6584e9ad93725449406c, type: 3}
   destroyAfterDie: 1
+  dieEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8244078665739297751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +246,33 @@ MonoBehaviour:
   - dropPrefab: {fileID: 4310066444422533185, guid: 599598f1af0abb44bbee0facc14537ad, type: 3}
     dropChance: 0.1
     startSpeed: 15
+--- !u!114 &3587486331142658159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741614333764520516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3da1fdc403c429a9eee7cccfd71a323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 5413983320158967783, guid: 4919571cb72b66841b4fae5213e32a3b, type: 3}
+--- !u!114 &1601001365776119541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741614333764520516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3799517e2291c3041be794e58e5a1948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  corpse: {fileID: 3543175294948656529, guid: 2077d44e556d6584e9ad93725449406c, type: 3}
+  destroyIfDie: 1
 --- !u!1 &4374090700401101617
 GameObject:
   m_ObjectHideFlags: 0
