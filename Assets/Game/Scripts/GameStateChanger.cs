@@ -1,7 +1,7 @@
 using Game.Scene_Transition;
 using UnityEngine;
 
-namespace UnnamedGame.Scripts
+namespace Game.Scripts
 {
     public class GameStateChanger : MonoBehaviour
     {

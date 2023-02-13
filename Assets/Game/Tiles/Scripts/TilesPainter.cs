@@ -2,14 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TilesPainter
+namespace Game.Tiles.Scripts
 {
-    public static void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
+    public abstract class TilesPainter
     {
-        foreach (var position in positions)
+        public static void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
         {
-            var tilePosition = tilemap.WorldToCell((Vector3Int)position);
-            tilemap.SetTile(tilePosition, tile);
+            foreach (var position in positions)
+            {
+                var tilePosition = tilemap.WorldToCell((Vector3Int)position);
+                tilemap.SetTile(tilePosition, tile);
+            }
         }
     }
 }

@@ -1,9 +1,8 @@
 using Game.Pause;
 using UnityEngine;
-using UnnamedGame.Pause;
 using Zenject;
 
-namespace UnnamedGame.Dungeon.Torches.Scripts
+namespace Game.Dungeon.Torches.Scripts
 {
     public class Torch : MonoBehaviour, IPauseHandler
     {

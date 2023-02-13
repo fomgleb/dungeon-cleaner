@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.Entities.LivingEntities.Enemies.Scripts;
 using Game.Pause;
 using UnityEngine;
-using UnnamedGame.LivingEntities.Enemies.Scripts;
 using Zenject;
 using Random = UnityEngine.Random;
 

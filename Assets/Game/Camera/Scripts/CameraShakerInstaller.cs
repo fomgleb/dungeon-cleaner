@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace UnnamedGame.Camera.Scripts
+namespace Game.Camera.Scripts
 {
     public class CameraShakerInstaller : MonoInstaller
     {

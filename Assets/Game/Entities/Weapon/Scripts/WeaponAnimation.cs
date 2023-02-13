@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnnamedGame.Weapon.Scripts
+namespace Game.Entities.Weapon.Scripts
 {
     [RequireComponent(typeof(WeaponAttack))]
     public class WeaponAnimation : MonoBehaviour
@@ -9,21 +9,21 @@ namespace UnnamedGame.Weapon.Scripts
 
         private static readonly int Attack = Animator.StringToHash("Attack");
         
-        private WeaponAttack _weaponAttack;
+        private WeaponAttack weaponAttack;
         
         private void Awake()
         {
-            _weaponAttack = GetComponent<WeaponAttack>();
+            weaponAttack = GetComponent<WeaponAttack>();
         }
 
         private void OnEnable()
         {
-            _weaponAttack.AttackedEvent += OnAttacked;
+            weaponAttack.AttackedEvent += OnAttacked;
         }
 
         private void OnDisable()
         {
-            _weaponAttack.AttackedEvent -= OnAttacked;
+            weaponAttack.AttackedEvent -= OnAttacked;
         }
 
         private void OnAttacked() => AnimateAttacking();

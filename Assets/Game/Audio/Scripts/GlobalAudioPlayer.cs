@@ -23,7 +23,5 @@ namespace Game.Audio.Scripts
             spawnedAudioUnit.PlayOneShot(randomAudioClip);
             LeanPool.Despawn(spawnedAudioUnit, randomAudioClip.length + 1);
         }
-        
-        
     }
 }

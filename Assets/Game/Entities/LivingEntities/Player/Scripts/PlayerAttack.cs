@@ -1,8 +1,7 @@
+using Game.Entities.Weapon.Scripts;
 using UnityEngine;
-using UnnamedGame.LivingEntities.Player.Scripts;
-using UnnamedGame.Weapon.Scripts;
 
-namespace Game.LivingEntities.Player.Scripts
+namespace Game.Entities.LivingEntities.Player.Scripts
 {
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerAttack : MonoBehaviour

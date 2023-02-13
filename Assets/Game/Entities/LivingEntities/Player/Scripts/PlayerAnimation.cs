@@ -1,12 +1,9 @@
 using Game.Mouse.Scripts;
 using Game.Pause;
 using UnityEngine;
-using UnnamedGame.LivingEntities.Player.Scripts;
-using UnnamedGame.Mouse.Scripts;
-using UnnamedGame.Pause;
 using Zenject;
 
-namespace Game.LivingEntities.Player.Scripts
+namespace Game.Entities.LivingEntities.Player.Scripts
 {
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Animator))]

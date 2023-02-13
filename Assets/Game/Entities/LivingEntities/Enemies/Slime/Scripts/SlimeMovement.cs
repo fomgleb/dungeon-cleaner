@@ -1,9 +1,8 @@
 using System;
-using Game.Entities.LivingEntities.Enemies.Slime.Scripts;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Game.LivingEntities.Enemies.Slime.Scripts
+namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
 {
     [RequireComponent(typeof(SlimeAI))]
     [RequireComponent(typeof(Rigidbody2D))]

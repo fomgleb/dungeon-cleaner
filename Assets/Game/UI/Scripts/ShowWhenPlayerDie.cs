@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
+using Game.Entities.LivingEntities.Player.Scripts;
 using Game.Entities.LivingEntities.Scripts;
 using UnityEngine;
-using UnnamedGame.LivingEntities.Player.Scripts;
 using Zenject;
 
 namespace Game.UI.Scripts

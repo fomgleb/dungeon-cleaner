@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnnamedGame.Pause;
 
 namespace Game.Pause
 {

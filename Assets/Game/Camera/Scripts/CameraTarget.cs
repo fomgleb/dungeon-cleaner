@@ -1,32 +1,30 @@
-using System;
+using Game.Entities.LivingEntities.Player.Scripts;
 using Game.Mouse.Scripts;
 using UnityEngine;
-using UnnamedGame.LivingEntities.Player.Scripts;
-using UnnamedGame.Mouse.Scripts;
 using Zenject;
 
-namespace UnnamedGame.CameraTarget.Scripts
+namespace Game.Camera.Scripts
 {
     public class CameraTarget : MonoBehaviour
     {
         [Range(2, 100)] [SerializeField] private float cameraTargetDivider;
 
-        [Inject] private PlayerInput _playerInput;
-        [Inject] private MouseFollower _mouseFollower;
+        [Inject] private PlayerInput playerInput;
+        [Inject] private MouseFollower mouseFollower;
 
-        private Transform _playerTransform;
-        private Transform _mouseTransform;
+        private Transform playerTransform;
+        private Transform mouseTransform;
         
         private void Awake()
         {
-            _playerTransform = _playerInput.transform;
-            _mouseTransform = _mouseFollower.transform;
+            playerTransform = playerInput.transform;
+            mouseTransform = mouseFollower.transform;
         }
 
         private void Update()
         {
-            if (_playerInput == null) return;
-            var cameraTargetPosition = (_mouseTransform.position + (cameraTargetDivider - 1) * _playerTransform.position) /
+            if (playerInput == null) return;
+            var cameraTargetPosition = (mouseTransform.position + (cameraTargetDivider - 1) * playerTransform.position) /
                                        cameraTargetDivider;
             
             transform.position = cameraTargetPosition;

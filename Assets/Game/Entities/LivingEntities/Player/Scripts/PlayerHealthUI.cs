@@ -1,7 +1,6 @@
 using Game.Entities.LivingEntities.Scripts;
 using TMPro;
 using UnityEngine;
-using UnnamedGame.LivingEntities.Player.Scripts;
 using Zenject;
 
 namespace Game.Entities.LivingEntities.Player.Scripts

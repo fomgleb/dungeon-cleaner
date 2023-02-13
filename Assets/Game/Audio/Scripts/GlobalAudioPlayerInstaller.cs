@@ -1,8 +1,7 @@
-using Game.Audio.Scripts;
 using UnityEngine;
 using Zenject;
 
-namespace UnnamedGame.Audio.Scripts
+namespace Game.Audio.Scripts
 {
     public class GlobalAudioPlayerInstaller : MonoInstaller
     {

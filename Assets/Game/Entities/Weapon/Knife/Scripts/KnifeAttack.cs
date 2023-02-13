@@ -1,7 +1,7 @@
 using System;
 using Game.Entities.LivingEntities.Scripts;
+using Game.Entities.Weapon.Scripts;
 using UnityEngine;
-using UnnamedGame.Weapon.Scripts;
 
 namespace Game.Entities.Weapon.Knife.Scripts
 {

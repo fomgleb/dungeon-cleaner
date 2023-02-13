@@ -1,10 +1,9 @@
 using System;
 using Game.Pause;
 using UnityEngine;
-using UnnamedGame.Pause;
 using Zenject;
 
-namespace UnnamedGame.LivingEntities.Player.Scripts
+namespace Game.Entities.LivingEntities.Player.Scripts
 {
     public class PlayerInput : MonoBehaviour
     {

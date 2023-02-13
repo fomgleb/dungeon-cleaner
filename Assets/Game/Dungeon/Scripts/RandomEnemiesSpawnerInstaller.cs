@@ -1,8 +1,7 @@
-using Game.Dungeon.Scripts;
 using UnityEngine;
 using Zenject;
 
-namespace UnnamedGame.Dungeon.Scripts
+namespace Game.Dungeon.Scripts
 {
     public class RandomEnemiesSpawnerInstaller : MonoInstaller
     {

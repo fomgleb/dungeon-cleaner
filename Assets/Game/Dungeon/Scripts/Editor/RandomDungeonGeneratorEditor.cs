@@ -1,16 +1,16 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace UnnamedGame.Dungeon.Scripts.Editor
+namespace Game.Dungeon.Scripts.Editor
 {
     [CustomEditor(typeof(DungeonGeneratorBase), true), CanEditMultipleObjects]
     public class RandomDungeonGeneratorEditor : UnityEditor.Editor
     {
-        private DungeonGeneratorBase _dungeonGeneratorBase;
+        private DungeonGeneratorBase dungeonGeneratorBase;
         
         private void Awake()
         {
-            _dungeonGeneratorBase = (DungeonGeneratorBase)target;
+            dungeonGeneratorBase = (DungeonGeneratorBase)target;
         }
 
         public override void OnInspectorGUI()
@@ -18,7 +18,7 @@ namespace UnnamedGame.Dungeon.Scripts.Editor
             base.OnInspectorGUI();
             if (GUILayout.Button("Create Dungeon"))
             {
-                _dungeonGeneratorBase._GenerateDungeon();
+                dungeonGeneratorBase._GenerateDungeon();
             }
         }
     }
