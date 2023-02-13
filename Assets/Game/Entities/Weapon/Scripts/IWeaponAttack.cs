@@ -1,7 +1,6 @@
-
 using System;
 
-namespace UnnamedGame.Weapon.Scripts
+namespace Game.Entities.Weapon.Scripts
 {
     public interface IWeaponAttack
     {

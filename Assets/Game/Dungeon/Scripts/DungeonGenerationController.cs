@@ -1,7 +1,6 @@
-using Game.Dungeon.Scripts;
 using UnityEngine;
 
-namespace UnnamedGame.Dungeon.Scripts
+namespace Game.Dungeon.Scripts
 {
     public class DungeonGenerationController : MonoBehaviour
     {

@@ -6,7 +6,7 @@ namespace Game.Mouse.Scripts
 {
     public class MouseFollower : MonoBehaviour
     {
-        [SerializeField] private new Camera camera;
+        [SerializeField] private new UnityEngine.Camera camera;
 
         [Inject] private Pauser pauser;
 

@@ -1,25 +1,25 @@
 using Game.Entities.LivingEntities.Scripts;
 using UnityEngine;
 
-namespace UnnamedGame.LivingEntities.Player.Scripts
+namespace Game.Entities.LivingEntities.Player.Scripts
 {
     [RequireComponent(typeof(LinearPhysicalMovement))]
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerMovement : MonoBehaviour
     {
-        private LinearPhysicalMovement _linearPhysicalMovement;
-        private PlayerInput _playerInput;
+        private LinearPhysicalMovement linearPhysicalMovement;
+        private PlayerInput playerInput;
 
         private void Awake()
         {
-            _linearPhysicalMovement = GetComponent<LinearPhysicalMovement>();
-            _playerInput = GetComponent<PlayerInput>();
+            linearPhysicalMovement = GetComponent<LinearPhysicalMovement>();
+            playerInput = GetComponent<PlayerInput>();
         }
 
         private void FixedUpdate()
         {
-            if (_playerInput.EnteredMovementDirection != Vector2.zero)
-                _linearPhysicalMovement.Move(_playerInput.EnteredMovementDirection);
+            if (playerInput.EnteredMovementDirection != Vector2.zero)
+                linearPhysicalMovement.Move(playerInput.EnteredMovementDirection);
         }
     }
 }

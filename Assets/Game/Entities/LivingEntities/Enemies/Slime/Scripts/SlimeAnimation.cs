@@ -1,7 +1,6 @@
-using Game.Entities.LivingEntities.Enemies.Slime.Scripts;
 using UnityEngine;
 
-namespace Game.LivingEntities.Enemies.Slime.Scripts
+namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
 {
     [RequireComponent(typeof(SlimeAI))]
     [RequireComponent(typeof(Animator))]
