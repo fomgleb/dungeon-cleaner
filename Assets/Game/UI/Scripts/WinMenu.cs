@@ -1,8 +1,6 @@
 using System.Collections.Specialized;
 using Game.Dungeon.Scripts;
-using Game.Entities.LivingEntities.Player.Scripts;
 using UnityEngine;
-using Zenject;
 
 namespace Game.UI.Scripts
 {
