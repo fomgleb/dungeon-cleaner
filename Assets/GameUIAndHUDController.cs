@@ -1,7 +1,6 @@
 using Game.Pause;
 using UnityEngine;
 using UnityEngine.Audio;
-using Zenject;
 
 public class GameUIAndHUDController : MonoBehaviour
 {
@@ -11,11 +10,6 @@ public class GameUIAndHUDController : MonoBehaviour
     [SerializeField] private AudioMixerSnapshot normal;
     [SerializeField] private AudioMixerSnapshot inAimTip;
     
-    
-    [Inject] private Pauser pauser;
-
-    
-
     private void Start()
     {
         TurnAimMessage(true);
@@ -33,7 +27,7 @@ public class GameUIAndHUDController : MonoBehaviour
 
     private void TurnAimMessage(bool state)
     {
-        pauser.SetPaused(state);
+        Pauser.SetPaused(state);
         health.SetActive(!state);
         slimesCounter.SetActive(!state);
         aimMessage.SetActive(state);

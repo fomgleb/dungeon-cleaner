@@ -1,14 +1,11 @@
 using Game.Pause;
 using UnityEngine;
-using Zenject;
 
 namespace Game.Mouse.Scripts
 {
     public class MouseFollower : MonoBehaviour
     {
         [SerializeField] private new UnityEngine.Camera camera;
-
-        [Inject] private Pauser pauser;
 
         private void Start()
         {
@@ -17,7 +14,7 @@ namespace Game.Mouse.Scripts
 
         private void Update()
         {
-            if (pauser.IsPaused)
+            if (Pauser.IsPaused)
                 return;
             var newMousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
             transform.position = newMousePosition;

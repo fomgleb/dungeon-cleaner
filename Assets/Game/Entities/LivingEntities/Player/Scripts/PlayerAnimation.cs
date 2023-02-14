@@ -1,7 +1,6 @@
 using Game.Mouse.Scripts;
 using Game.Pause;
 using UnityEngine;
-using Zenject;
 
 namespace Game.Entities.LivingEntities.Player.Scripts
 {
@@ -11,35 +10,35 @@ namespace Game.Entities.LivingEntities.Player.Scripts
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
 
-        [Inject] private MouseFollower mouseFollower;
-        [Inject] private Pauser pauser;
-        
         private PlayerInput playerInput;
         private Animator animator;
+
+        private MouseFollower mouseFollower;
          
         private static readonly int IsMoving = Animator.StringToHash("IsMoving");
 
         private void OnEnable()
         {
             playerInput.EnteredMovementDirectionChangedEvent += OnMovementDirectionChanged;
-            pauser.Register(this);
+            Pauser.Register(this);
         }
 
         private void OnDisable()
         {
             playerInput.EnteredMovementDirectionChangedEvent -= OnMovementDirectionChanged;
-            pauser.UnRegister(this);
+            Pauser.UnRegister(this);
         }
         
         private void Awake()
         {
             animator = GetComponent<Animator>();
             playerInput = GetComponent<PlayerInput>();
+            mouseFollower = GameObject.FindWithTag(nameof(MouseFollower)).GetComponent<MouseFollower>();
         }
 
         private void Update()
         {
-            if (pauser.IsPaused)
+            if (Pauser.IsPaused)
                 return;
             spriteRenderer.flipX = mouseFollower.transform.position.x < transform.position.x;
         }

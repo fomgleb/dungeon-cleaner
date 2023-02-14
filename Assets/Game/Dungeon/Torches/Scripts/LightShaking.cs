@@ -3,7 +3,6 @@ using Cysharp.Threading.Tasks;
 using Game.Pause;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Game.Dungeon.Torches.Scripts
@@ -15,8 +14,6 @@ namespace Game.Dungeon.Torches.Scripts
         
         private Light2D light2D;
         private float originPointLightOuterRadius;
-
-        [Inject] private Pauser pauser;
 
         private void Awake()
         {
@@ -44,7 +41,7 @@ namespace Game.Dungeon.Torches.Scripts
                 if (stopShakingLightToken.IsCancellationRequested)
                     return;
                 await UniTask.Delay((int)(secondsBetweenShakes * 1000));
-                if (pauser.IsPaused)
+                if (Pauser.IsPaused)
                     continue;
                 var newPointLightOuterRadius = Random.Range(originPointLightOuterRadius - shakingOffset, originPointLightOuterRadius + shakingOffset);
                 light2D.pointLightOuterRadius = newPointLightOuterRadius;

@@ -1,7 +1,6 @@
 using Game.Camera.Scripts;
 using Game.Entities.Weapon.Scripts;
 using UnityEngine;
-using Zenject;
 
 namespace Game.Entities.LivingEntities.Player.Scripts
 {
@@ -11,15 +10,16 @@ namespace Game.Entities.LivingEntities.Player.Scripts
         [SerializeField] private float intensity;
         [SerializeField] private float time;
 
-        [Inject] private CameraShaker cameraShaker;
-        
         private PlayerAttack playerAttack;
         private WeaponAttack weaponAttack;
+
+        private CameraShaker cameraShaker;
         
         private void Awake()
         {
             playerAttack = GetComponent<PlayerAttack>();
             weaponAttack = playerAttack.CurrentWeapon.GetComponent<WeaponAttack>();
+            cameraShaker = GameObject.FindWithTag(nameof(CameraShaker)).GetComponent<CameraShaker>();
         }
 
         private void OnEnable()

@@ -10,9 +10,8 @@ namespace Game.UI.Scripts
     {
         [SerializeField] private Animator likerAnimator;
         [SerializeField] private GameObject[] objectsToEnable;
+        [SerializeField] private GameObjectSpawner playerSpawner;
 
-        [Inject] private PlayerInput playerInput;
-    
         private static readonly int StartLikingTriggerName = Animator.StringToHash("StartLiking");
 
         private void OnEnable()
@@ -29,7 +28,7 @@ namespace Game.UI.Scripts
         {
             if (RandomEnemiesSpawner.SpawnedEnemies.Count > 0) return;
             if (e.OldItems == null) return;
-            if (playerInput == null) return;   
+            if (playerSpawner.SpawnedObject == null) return;
             foreach (var objectToEnable in objectsToEnable)
                 objectToEnable.SetActive(true);
             likerAnimator.SetTrigger(StartLikingTriggerName);
