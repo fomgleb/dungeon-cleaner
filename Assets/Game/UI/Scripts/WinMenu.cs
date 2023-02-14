@@ -1,4 +1,3 @@
-using System.Collections.Specialized;
 using Game.Dungeon.Scripts;
 using UnityEngine;
 
@@ -15,18 +14,16 @@ namespace Game.UI.Scripts
 
         private void OnEnable()
         {
-            enemiesSpawner.SpawnedEnemies.CollectionChanged += OnEnemiesCollectionChanged;
+            enemiesSpawner.AllEnemiesDiedEvent += OnAllEnemiesDied;
         }
 
         private void OnDisable()
         {
-            enemiesSpawner.SpawnedEnemies.CollectionChanged -= OnEnemiesCollectionChanged;
+            enemiesSpawner.AllEnemiesDiedEvent -= OnAllEnemiesDied;
         }
 
-        private void OnEnemiesCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void OnAllEnemiesDied()
         {
-            if (enemiesSpawner.SpawnedEnemies.Count > 0) return;
-            if (e.OldItems == null) return;
             if (playerSpawner.SpawnedObject == null) return;
             foreach (var objectToEnable in objectsToEnable)
                 objectToEnable.SetActive(true);
