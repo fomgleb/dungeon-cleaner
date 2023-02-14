@@ -9,22 +9,23 @@ namespace Game.UI.Scripts
         [SerializeField] private Animator likerAnimator;
         [SerializeField] private GameObject[] objectsToEnable;
         [SerializeField] private GameObjectSpawner playerSpawner;
+        [SerializeField] private RandomEnemiesSpawner enemiesSpawner;
 
         private static readonly int StartLikingTriggerName = Animator.StringToHash("StartLiking");
 
         private void OnEnable()
         {
-            RandomEnemiesSpawner.SpawnedEnemies.CollectionChanged += OnEnemiesCollectionChanged;
+            enemiesSpawner.SpawnedEnemies.CollectionChanged += OnEnemiesCollectionChanged;
         }
 
         private void OnDisable()
         {
-            RandomEnemiesSpawner.SpawnedEnemies.CollectionChanged -= OnEnemiesCollectionChanged;
+            enemiesSpawner.SpawnedEnemies.CollectionChanged -= OnEnemiesCollectionChanged;
         }
 
         private void OnEnemiesCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (RandomEnemiesSpawner.SpawnedEnemies.Count > 0) return;
+            if (enemiesSpawner.SpawnedEnemies.Count > 0) return;
             if (e.OldItems == null) return;
             if (playerSpawner.SpawnedObject == null) return;
             foreach (var objectToEnable in objectsToEnable)
