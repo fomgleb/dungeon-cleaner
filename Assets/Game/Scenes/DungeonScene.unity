@@ -71124,7 +71124,7 @@ GameObject:
   - component: {fileID: 1585015323}
   - component: {fileID: 1585015325}
   m_Layer: 0
-  m_Name: CaveGenerator
+  m_Name: Cave Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
