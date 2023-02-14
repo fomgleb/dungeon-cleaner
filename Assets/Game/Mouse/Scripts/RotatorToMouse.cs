@@ -1,3 +1,4 @@
+using System;
 using Game.Pause;
 using UnityEngine;
 using Zenject;
@@ -6,12 +7,16 @@ namespace Game.Mouse.Scripts
 {
     public class RotatorToMouse : MonoBehaviour
     {
-        [Inject] private MouseFollower mouseFollower;
-        [Inject] private Pauser pauser;
+        private MouseFollower mouseFollower;
+
+        private void Awake()
+        {
+            mouseFollower = GameObject.FindWithTag(nameof(MouseFollower)).GetComponent<MouseFollower>();
+        }
 
         private void Update()
         {
-            if (pauser.IsPaused)
+            if (Pauser.IsPaused)
                 return;
             
             Rotate();

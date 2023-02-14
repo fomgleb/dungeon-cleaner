@@ -1,7 +1,6 @@
 using System;
 using Game.Pause;
 using UnityEngine;
-using Zenject;
 
 namespace Game.Entities.LivingEntities.Player.Scripts
 {
@@ -12,11 +11,9 @@ namespace Game.Entities.LivingEntities.Player.Scripts
         public event Action<Vector2> EnteredMovementDirectionChangedEvent;
         public event Action AttackButtonClickedEvent;
 
-        [Inject] private Pauser pauser;
-
         private void Update()
         {
-            if (pauser.IsPaused)
+            if (Pauser.IsPaused)
                 return;
             var storedDirection = EnteredMovementDirection;
             EnteredMovementDirection = GetEnteredMovementDirection();

@@ -11,6 +11,7 @@ using UnityEngine;
 public class DungeonMusicPlayer : MonoBehaviour
 {
     [SerializeField] private LoopedMusic[] loopedMusic;
+    [SerializeField] private GameObjectSpawner playerSpawner;
 
     private Animator animator;
     private AudioSource audioSource;
@@ -27,16 +28,18 @@ public class DungeonMusicPlayer : MonoBehaviour
     private void OnEnable()
     {
         SceneTransition.SceneIsSwitchingEvent += Disappear;
-        GameObject.FindWithTag("Player").GetComponent<Damageable>().DiedEvent += OnPlayerDied;
+        playerSpawner.SpawnedEvent += OnPlayerSpawned;
         RandomEnemiesSpawner.SpawnedEnemies.CollectionChanged += OnSpawnedEnemiesCollectionChanged;
     }
 
     private void OnDisable()
     {
         SceneTransition.SceneIsSwitchingEvent -= Disappear;
-        GameObject.FindWithTag("Player").GetComponent<Damageable>().DiedEvent -= OnPlayerDied;
+        playerSpawner.SpawnedEvent -= OnPlayerSpawned;
         RandomEnemiesSpawner.SpawnedEnemies.CollectionChanged -= OnSpawnedEnemiesCollectionChanged;
     }
+
+    private void OnPlayerSpawned() => playerSpawner.SpawnedObject.GetComponent<Damageable>().DiedEvent += OnPlayerDied;
     
     private void Start()
     {

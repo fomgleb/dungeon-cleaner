@@ -4,7 +4,6 @@ using Cysharp.Threading.Tasks;
 using Game.Entities.LivingEntities.Enemies.Scripts;
 using Game.Pause;
 using UnityEngine;
-using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
@@ -67,8 +66,6 @@ namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
 
         private Vector2 lastTargetPosition;
 
-        [Inject] private Pauser pauser;
-
         private CancellationTokenSource cancelSearchingTargetToken;
 
         private void Awake()
@@ -93,7 +90,7 @@ namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
             {
                 if (token.IsCancellationRequested) return;
 
-                if (pauser.IsPaused)
+                if (Pauser.IsPaused)
                 {
                     await UniTask.Yield();
                     continue;
@@ -116,7 +113,7 @@ namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
             {
                 if (token.IsCancellationRequested) return;
                 
-                if (pauser.IsPaused)
+                if (Pauser.IsPaused)
                 {
                     await UniTask.Yield();
                     continue;

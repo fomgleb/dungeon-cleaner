@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - Enemy
   - GlobalAudioPlayer
+  - MouseFollower
+  - CameraShaker
   layers:
   - Default
   - TransparentFX
