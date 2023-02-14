@@ -12,6 +12,7 @@ public class DungeonMusicPlayer : MonoBehaviour
 {
     [SerializeField] private LoopedMusic[] loopedMusic;
     [SerializeField] private GameObjectSpawner playerSpawner;
+    [SerializeField] private RandomEnemiesSpawner enemiesSpawner;
 
     private Animator animator;
     private AudioSource audioSource;
@@ -29,14 +30,14 @@ public class DungeonMusicPlayer : MonoBehaviour
     {
         SceneTransition.SceneIsSwitchingEvent += Disappear;
         playerSpawner.SpawnedEvent += OnPlayerSpawned;
-        RandomEnemiesSpawner.SpawnedEnemies.CollectionChanged += OnSpawnedEnemiesCollectionChanged;
+        enemiesSpawner.SpawnedEnemies.CollectionChanged += OnSpawnedEnemiesCollectionChanged;
     }
 
     private void OnDisable()
     {
         SceneTransition.SceneIsSwitchingEvent -= Disappear;
         playerSpawner.SpawnedEvent -= OnPlayerSpawned;
-        RandomEnemiesSpawner.SpawnedEnemies.CollectionChanged -= OnSpawnedEnemiesCollectionChanged;
+        enemiesSpawner.SpawnedEnemies.CollectionChanged -= OnSpawnedEnemiesCollectionChanged;
     }
 
     private void OnPlayerSpawned() => playerSpawner.SpawnedObject.GetComponent<Damageable>().DiedEvent += OnPlayerDied;
@@ -53,7 +54,7 @@ public class DungeonMusicPlayer : MonoBehaviour
     
     private void OnSpawnedEnemiesCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
     {
-        if (e.OldItems != null && RandomEnemiesSpawner.SpawnedEnemies.Count == 0)
+        if (e.OldItems != null && enemiesSpawner.SpawnedEnemies.Count == 0)
         {
             Disappear();
         }

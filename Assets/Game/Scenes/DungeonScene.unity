@@ -1534,6 +1534,7 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 5b19859fed12f1e45a42541ea6de6c7b, type: 3}
     startTime: 0
   playerSpawner: {fileID: 2012748912}
+  enemiesSpawner: {fileID: 677781184}
 --- !u!82 &452743826
 AudioSource:
   m_ObjectHideFlags: 0
@@ -69987,6 +69988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 177485959}
+  enemiesSpawner: {fileID: 677781184}
 --- !u!1 &935742313
 GameObject:
   m_ObjectHideFlags: 0
@@ -70671,6 +70673,7 @@ MonoBehaviour:
   - {fileID: 234277667}
   - {fileID: 374139148}
   playerSpawner: {fileID: 2012748912}
+  enemiesSpawner: {fileID: 677781184}
 --- !u!1 &1241144434
 GameObject:
   m_ObjectHideFlags: 0

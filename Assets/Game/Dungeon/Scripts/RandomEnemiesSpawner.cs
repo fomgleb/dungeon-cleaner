@@ -20,7 +20,7 @@ namespace Game.Dungeon.Scripts
         [Tooltip("Inclusive")] [SerializeField] private uint maxNumberOfEnemies;
         [SerializeField] private SpawningEnemyData[] spawningEnemiesData;
 
-        public static ObservableCollection<GameObject> SpawnedEnemies { get; } = new();
+        public ObservableCollection<GameObject> SpawnedEnemies { get; } = new();
 
         [Inject] private DiContainer diContainer;
 
