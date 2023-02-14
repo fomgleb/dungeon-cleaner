@@ -1,9 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Game.Dungeon.Scripts;
-using Game.Entities.LivingEntities.Player.Scripts;
 using Game.Entities.LivingEntities.Scripts;
 using UnityEngine;
-using Zenject;
 
 namespace Game.UI.Scripts
 {
