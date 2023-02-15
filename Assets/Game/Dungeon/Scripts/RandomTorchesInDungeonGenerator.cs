@@ -19,8 +19,6 @@ namespace Game.Dungeon.Scripts
         [SerializeField] private GameObject torchPrefab;
         [SerializeField] private GameObject sideTorchPrefab;
 
-        [Inject] private DiContainer diContainer;
-
         private readonly List<GameObject> spawnedTorches = new();
 
         private List<Vector2Int> GetRandomTorchPositions()
@@ -97,7 +95,7 @@ namespace Game.Dungeon.Scripts
                 // var spawnedTorch = Application.isEditor
                 //     ? Instantiate(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform)
                 //     : diContainer.InstantiatePrefab(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform);
-                var spawnedTorch = diContainer.InstantiatePrefab(spawningPrefab, torchData.SpawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform);
+                var spawnedTorch = Instantiate(spawningPrefab, torchData.SpawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform);
                 if (torchData.TorchDirection == TorchDirection.Left)
                     spawnedTorch.transform.localScale = new Vector3(-1, 1, 1);
                 spawnedTorches.Add((spawnedTorch));
