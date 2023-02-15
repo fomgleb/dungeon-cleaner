@@ -3,16 +3,17 @@ using UnityEngine;
 
 namespace Game.Mouse.Scripts
 {
-    public class MouseFollower : MonoBehaviour
+    public class MouseLocation : MonoBehaviour
     {
         [SerializeField] private new UnityEngine.Camera camera;
+        
+        public static Vector2 WorldPosition { get; private set; } 
 
         private void Update()
         {
             if (Pauser.IsPaused)
                 return;
-            var newMousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = newMousePosition;
+            WorldPosition = camera.ScreenToWorldPoint(Input.mousePosition);
         }
     }
 }

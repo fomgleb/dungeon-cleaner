@@ -1,17 +1,18 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Game.Mouse.Scripts
 {
     public class MouseFollowerInstaller : MonoInstaller
     {
-        [SerializeField] private MouseFollower mouseFollower;
+        [FormerlySerializedAs("mouseFollower")] [FormerlySerializedAs("mouse")] [SerializeField] private MouseLocation mouseLocation;
         
         public override void InstallBindings()
         {
             Container
-                .Bind<MouseFollower>()
-                .FromInstance(mouseFollower)
+                .Bind<MouseLocation>()
+                .FromInstance(mouseLocation)
                 .AsSingle();
         }
     }
