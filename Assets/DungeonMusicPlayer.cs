@@ -39,8 +39,8 @@ public class DungeonMusicPlayer : MonoBehaviour
     }
 
     private void OnPlayerSpawned() => playerSpawner.SpawnedObject.GetComponent<Damageable>().DiedEvent += OnPlayerDied;
-    
-    private void Start()
+
+    public void PlayRandomMusic()
     {
         var randomMusicIndex = Random.Range(0, loopedMusic.Length);
         audioSource.clip = loopedMusic[randomMusicIndex].Clip;

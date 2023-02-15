@@ -71251,6 +71251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbde9920c2c9ee149b87c5b4ff81a377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dungeonMusicPlayer: {fileID: 452743825}
   caveGenerator: {fileID: 1585015325}
   torchesGenerator: {fileID: 1648773755}
   enemiesSpawner: {fileID: 677781184}
