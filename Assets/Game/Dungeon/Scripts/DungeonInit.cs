@@ -15,7 +15,10 @@ namespace Game.Dungeon.Scripts
         [SerializeField] private RandomEnemiesSpawner enemiesSpawner;
         [SerializeField] private GameObjectSpawner playerSpawner;
         [SerializeField] private SlimesCounter slimesCounter;
+
         [SerializeField] private Window aimWindow;
+        [SerializeField] private Window menuWindow;
+        [SerializeField] private Window youDiedWindow;
 
         private void Start()
         {
@@ -29,7 +32,10 @@ namespace Game.Dungeon.Scripts
             enemiesSpawner._SpawnEnemies();
             playerSpawner.Spawn();
             slimesCounter.ShowEnemiesCount(enemiesSpawner.SpawnedEnemies.Count);
+
             aimWindow.ShowAsync();
+            menuWindow.Hide();
+            youDiedWindow.Hide();
 
             Pauser.SetPaused(true);
         }

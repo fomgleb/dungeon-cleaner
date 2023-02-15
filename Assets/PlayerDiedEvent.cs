@@ -8,6 +8,8 @@ public class PlayerDiedEvent : MonoBehaviour
     [SerializeField] private GameObjectSpawner playerSpawner;
     [SerializeField] private DungeonMusicPlayer dungeonMusicPlayer;
     [SerializeField] private CameraTarget cameraTarget;
+    [SerializeField] private Window menuWindow;
+    [SerializeField] private Window youDiedWindow;
 
     private Damageable playerDamageable;
 
@@ -37,5 +39,8 @@ public class PlayerDiedEvent : MonoBehaviour
         
         dungeonMusicPlayer.StopAbruptly();
         cameraTarget.StopLookingAtMouse();
+        
+        menuWindow.ShowAsync();
+        youDiedWindow.ShowAsync();
     }
 }
