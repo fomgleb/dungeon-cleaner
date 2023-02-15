@@ -1,8 +1,7 @@
-using Game.Mouse.Scripts;
 using UnityEngine;
 using Zenject;
 
-namespace UnnamedGame.Mouse.Scripts
+namespace Game.Mouse.Scripts
 {
     public class MouseFollowerInstaller : MonoInstaller
     {

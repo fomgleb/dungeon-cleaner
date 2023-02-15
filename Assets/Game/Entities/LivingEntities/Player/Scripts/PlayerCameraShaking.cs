@@ -1,8 +1,6 @@
-using Game.LivingEntities.Player.Scripts;
+using Game.Camera.Scripts;
+using Game.Entities.Weapon.Scripts;
 using UnityEngine;
-using UnnamedGame.Camera.Scripts;
-using UnnamedGame.Weapon.Scripts;
-using Zenject;
 
 namespace Game.Entities.LivingEntities.Player.Scripts
 {
@@ -12,27 +10,28 @@ namespace Game.Entities.LivingEntities.Player.Scripts
         [SerializeField] private float intensity;
         [SerializeField] private float time;
 
-        [Inject] private CameraShaker _cameraShaker;
-        
-        private PlayerAttack _playerAttack;
-        private WeaponAttack _weaponAttack;
+        private PlayerAttack playerAttack;
+        private WeaponAttack weaponAttack;
+
+        private CameraShaker cameraShaker;
         
         private void Awake()
         {
-            _playerAttack = GetComponent<PlayerAttack>();
-            _weaponAttack = _playerAttack.CurrentWeapon.GetComponent<WeaponAttack>();
+            playerAttack = GetComponent<PlayerAttack>();
+            weaponAttack = playerAttack.CurrentWeapon.GetComponent<WeaponAttack>();
+            cameraShaker = GameObject.FindWithTag(nameof(CameraShaker)).GetComponent<CameraShaker>();
         }
 
         private void OnEnable()
         {
-            _weaponAttack.AttackedEvent += OnAttacked;
+            weaponAttack.AttackedEvent += OnAttacked;
         }
 
         private void OnDisable()
         {
-            _weaponAttack.AttackedEvent -= OnAttacked;
+            weaponAttack.AttackedEvent -= OnAttacked;
         }
 
-        private void OnAttacked() => _cameraShaker.ShakeCameraAsync(intensity, time);
+        private void OnAttacked() => cameraShaker.ShakeCameraAsync(intensity, time);
     }
 }

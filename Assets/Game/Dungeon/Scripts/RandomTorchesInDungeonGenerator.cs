@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Zenject;
 
-namespace UnnamedGame.Dungeon.Scripts
+namespace Game.Dungeon.Scripts
 {
     public class RandomTorchesInDungeonGenerator : MonoBehaviour
     { 
@@ -19,9 +19,7 @@ namespace UnnamedGame.Dungeon.Scripts
         [SerializeField] private GameObject torchPrefab;
         [SerializeField] private GameObject sideTorchPrefab;
 
-        [Inject] private DiContainer diContainer;
-
-        private List<GameObject> _spawnedTorches = new();
+        private readonly List<GameObject> spawnedTorches = new();
 
         private List<Vector2Int> GetRandomTorchPositions()
         {
@@ -54,20 +52,20 @@ namespace UnnamedGame.Dungeon.Scripts
                     if (!floorTilemap.HasTile(new Vector3Int(x, y + 1)))
                         availableTorchData.Add(new InitTorchData()
                         {
-                            spawnPoint = new Vector3(x, y + 1),
-                            torchDirection = TorchDirection.Down
+                            SpawnPoint = new Vector3(x, y + 1),
+                            TorchDirection = TorchDirection.Down
                         });
                     if (!floorTilemap.HasTile(new Vector3Int(x - 1, y)))
                         availableTorchData.Add(new InitTorchData()
                         {
-                            spawnPoint = new Vector3(x, y),
-                            torchDirection = TorchDirection.Right
+                            SpawnPoint = new Vector3(x, y),
+                            TorchDirection = TorchDirection.Right
                         });
                     if (!floorTilemap.HasTile(new Vector3Int(x + 1, y)))
                         availableTorchData.Add(new InitTorchData()
                         {
-                            spawnPoint = new Vector3(x, y),
-                            torchDirection =  TorchDirection.Left
+                            SpawnPoint = new Vector3(x, y),
+                            TorchDirection =  TorchDirection.Left
                         });
                 }
             availableTorchData.Shuffle();
@@ -86,28 +84,28 @@ namespace UnnamedGame.Dungeon.Scripts
 
         public void _GenerateTorches()
         {
-            foreach (var spawnedTorch in _spawnedTorches)
+            foreach (var spawnedTorch in spawnedTorches)
                 if (Application.isEditor)
                     DestroyImmediate(spawnedTorch);
                 else
                     LeanPool.Despawn(spawnedTorch);
             foreach (var torchData in GetRandomInitTorchData())
             {
-                var spawningPrefab = torchData.torchDirection == TorchDirection.Down ? torchPrefab : sideTorchPrefab;
+                var spawningPrefab = torchData.TorchDirection == TorchDirection.Down ? torchPrefab : sideTorchPrefab;
                 // var spawnedTorch = Application.isEditor
                 //     ? Instantiate(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform)
                 //     : diContainer.InstantiatePrefab(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform);
-                var spawnedTorch = diContainer.InstantiatePrefab(spawningPrefab, torchData.spawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform);
-                if (torchData.torchDirection == TorchDirection.Left)
+                var spawnedTorch = Instantiate(spawningPrefab, torchData.SpawnPoint + floorTilemap.tileAnchor, Quaternion.identity, transform);
+                if (torchData.TorchDirection == TorchDirection.Left)
                     spawnedTorch.transform.localScale = new Vector3(-1, 1, 1);
-                _spawnedTorches.Add((spawnedTorch));
+                spawnedTorches.Add((spawnedTorch));
             }
         }
 
         private struct InitTorchData
         {
-            public Vector3 spawnPoint;
-            public TorchDirection torchDirection;
+            public Vector3 SpawnPoint;
+            public TorchDirection TorchDirection;
         }
 
         private enum TorchDirection

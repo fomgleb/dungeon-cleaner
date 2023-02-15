@@ -1,10 +1,8 @@
 using System;
 using Game.Pause;
 using UnityEngine;
-using UnnamedGame.Pause;
-using Zenject;
 
-namespace UnnamedGame.LivingEntities.Player.Scripts
+namespace Game.Entities.LivingEntities.Player.Scripts
 {
     public class PlayerInput : MonoBehaviour
     {
@@ -13,11 +11,9 @@ namespace UnnamedGame.LivingEntities.Player.Scripts
         public event Action<Vector2> EnteredMovementDirectionChangedEvent;
         public event Action AttackButtonClickedEvent;
 
-        [Inject] private Pauser pauser;
-
         private void Update()
         {
-            if (pauser.IsPaused)
+            if (Pauser.IsPaused)
                 return;
             var storedDirection = EnteredMovementDirection;
             EnteredMovementDirection = GetEnteredMovementDirection();

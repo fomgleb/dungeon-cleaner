@@ -20,7 +20,9 @@ namespace Game.Dungeon.Scripts
         [Tooltip("Inclusive")] [SerializeField] private uint maxNumberOfEnemies;
         [SerializeField] private SpawningEnemyData[] spawningEnemiesData;
 
-        public static ObservableCollection<GameObject> SpawnedEnemies { get; } = new();
+        public event Action AllEnemiesDiedEvent;
+
+        public ObservableCollection<GameObject> SpawnedEnemies { get; } = new();
 
         [Inject] private DiContainer diContainer;
 
@@ -65,6 +67,8 @@ namespace Game.Dungeon.Scripts
         private void OnEnemyDied(object sender, Damageable.DiedEventArgs diedEventArgs)
         {
             SpawnedEnemies.Remove((GameObject)sender);
+            if (SpawnedEnemies.Count == 0)
+                AllEnemiesDiedEvent?.Invoke();
         }
 
         [Serializable]

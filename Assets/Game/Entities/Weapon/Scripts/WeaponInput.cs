@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnnamedGame.Weapon.Scripts
+namespace Game.Entities.Weapon.Scripts
 {
     public class WeaponInput : MonoBehaviour
     {

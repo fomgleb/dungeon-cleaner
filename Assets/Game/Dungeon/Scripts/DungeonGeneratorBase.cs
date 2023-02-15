@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace UnnamedGame.Dungeon.Scripts
+namespace Game.Dungeon.Scripts
 {
     public abstract class DungeonGeneratorBase : MonoBehaviour
     {

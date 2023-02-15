@@ -2,7 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace UnnamedGame.Weapon.Scripts
+namespace Game.Entities.Weapon.Scripts
 {
     [RequireComponent(typeof(WeaponInput))]
     public class WeaponAttack : MonoBehaviour
@@ -14,28 +14,28 @@ namespace UnnamedGame.Weapon.Scripts
         
         public event Action AttackedEvent; 
 
-        private UniTask _reloadTask;
+        private UniTask reloadTask;
 
-        private WeaponInput _weaponInput;
-        private IWeaponAttack _weaponAttack;
+        private WeaponInput weaponInput;
+        private IWeaponAttack weaponAttack;
 
         private void Awake()
         {
-            _weaponInput = GetComponent<WeaponInput>();
-            _weaponAttack = GetComponent<IWeaponAttack>();
+            weaponInput = GetComponent<WeaponInput>();
+            weaponAttack = GetComponent<IWeaponAttack>();
         }
 
-        private void OnEnable() => _weaponInput.UserSentAttackRequestEvent += OnUserSentAttackRequest;
-        private void OnDisable() => _weaponInput.UserSentAttackRequestEvent -= OnUserSentAttackRequest;
+        private void OnEnable() => weaponInput.UserSentAttackRequestEvent += OnUserSentAttackRequest;
+        private void OnDisable() => weaponInput.UserSentAttackRequestEvent -= OnUserSentAttackRequest;
 
         private void OnUserSentAttackRequest() => TryMakeAttack();
 
         private void TryMakeAttack()
         {
-            if (_reloadTask.Status != UniTaskStatus.Succeeded) return;
-            _weaponAttack.Attack();
+            if (reloadTask.Status != UniTaskStatus.Succeeded) return;
+            weaponAttack.Attack();
             AttackedEvent?.Invoke();
-            _reloadTask = UniTask.Delay((int)(reloadTime * 1000));
+            reloadTask = UniTask.Delay((int)(reloadTime * 1000));
         }
     }
 }
