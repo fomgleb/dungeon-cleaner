@@ -19,6 +19,7 @@ namespace Game.Dungeon.Scripts
         [SerializeField] private Window aimWindow;
         [SerializeField] private Window menuWindow;
         [SerializeField] private Window youDiedWindow;
+        [SerializeField] private WinMenu winMenu;
 
         private void Start()
         {
@@ -36,6 +37,7 @@ namespace Game.Dungeon.Scripts
             aimWindow.ShowAsync();
             menuWindow.Hide();
             youDiedWindow.Hide();
+            winMenu.Hide();
 
             Pauser.SetPaused(true);
         }

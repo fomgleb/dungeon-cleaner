@@ -1,33 +1,30 @@
-using Game.Dungeon.Scripts;
 using UnityEngine;
 
 namespace Game.UI.Scripts
 {
+    [RequireComponent(typeof(Window))]
     public class WinMenu : MonoBehaviour
     {
         [SerializeField] private Animator likerAnimator;
-        [SerializeField] private GameObject[] objectsToEnable;
-        [SerializeField] private GameObjectSpawner playerSpawner;
-        [SerializeField] private RandomEnemiesSpawner enemiesSpawner;
 
         private static readonly int StartLikingTriggerName = Animator.StringToHash("StartLiking");
 
-        private void OnEnable()
+        private Window window;
+
+        private void Awake()
         {
-            enemiesSpawner.AllEnemiesDiedEvent += OnAllEnemiesDied;
+            window = GetComponent<Window>();
         }
 
-        private void OnDisable()
+        public void Show()
         {
-            enemiesSpawner.AllEnemiesDiedEvent -= OnAllEnemiesDied;
-        }
-
-        private void OnAllEnemiesDied()
-        {
-            if (playerSpawner.SpawnedObject == null) return;
-            foreach (var objectToEnable in objectsToEnable)
-                objectToEnable.SetActive(true);
+            window.ShowAsync();
             likerAnimator.SetTrigger(StartLikingTriggerName);
+        }
+
+        public void Hide()
+        {
+            window.Hide();
         }
     }
 }
