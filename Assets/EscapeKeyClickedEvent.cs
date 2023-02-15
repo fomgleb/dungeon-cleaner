@@ -12,6 +12,6 @@ public class EscapeKeyClickedEvent : MonoBehaviour
 
     private void OnEscapeKeyClicked()
     {
-        menuWindow.ShowAsync();
+        menuWindow.SetVisibilityAbruptly(!menuWindow.IsVisible);
     }
 }

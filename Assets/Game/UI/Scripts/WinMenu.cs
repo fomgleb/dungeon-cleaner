@@ -24,7 +24,7 @@ namespace Game.UI.Scripts
 
         public void Hide()
         {
-            window.Hide();
+            window.SetVisibilityAbruptly(false);
         }
     }
 }

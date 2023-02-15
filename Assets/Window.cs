@@ -7,6 +7,8 @@ public class Window : MonoBehaviour
 {
     [SerializeField] private float appearanceTime;
     [SerializeField] private float delay;
+    
+    public bool IsVisible { get; private set; }
 
     private CanvasGroup canvasGroup;
 
@@ -17,6 +19,8 @@ public class Window : MonoBehaviour
 
     public async void ShowAsync()
     {
+        IsVisible = true;
+        
         await UniTask.Delay(TimeSpan.FromSeconds(delay));
 
         gameObject.SetActive(true);
@@ -34,15 +38,10 @@ public class Window : MonoBehaviour
         canvasGroup.alpha = 1;
     }
 
-    public void ShowAbruptly()
+    public void SetVisibilityAbruptly(bool isVisible)
     {
-        gameObject.SetActive(true);
-        canvasGroup.alpha = 1;
-    }
-
-    public void Hide()
-    {
-        canvasGroup.alpha = 0;
-        gameObject.SetActive(false);
+        IsVisible = isVisible;
+        gameObject.SetActive(isVisible);
+        canvasGroup.alpha = isVisible ? 1 : 0;
     }
 }
