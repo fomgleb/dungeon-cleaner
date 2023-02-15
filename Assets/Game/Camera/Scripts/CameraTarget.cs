@@ -4,7 +4,6 @@ using Game.Dungeon.Scripts;
 using Game.Entities.LivingEntities.Scripts;
 using Game.Mouse.Scripts;
 using UnityEngine;
-using Zenject;
 
 namespace Game.Camera.Scripts
 {
@@ -13,16 +12,12 @@ namespace Game.Camera.Scripts
         [Range(2, 100)] [SerializeField] private float cameraTargetDivider;
         [SerializeField] private GameObjectSpawner playerSpawner;
 
-        [Inject] private MouseFollower mouseFollower;
-
         private Transform playerTransform;
-        private Transform mouseTransform;
 
         private CancellationTokenSource lookingAtMouseCancellationToken;
 
         private void Awake()
         {
-            mouseTransform = mouseFollower.transform;
             lookingAtMouseCancellationToken = new CancellationTokenSource();
         }
 
@@ -52,7 +47,7 @@ namespace Game.Camera.Scripts
             {
                 if (token.IsCancellationRequested) return;
 
-                var cameraTargetPosition = (mouseTransform.position + (cameraTargetDivider - 1) *
+                var cameraTargetPosition = ((Vector3)MouseLocation.WorldPosition + (cameraTargetDivider - 1) *
                     playerTransform.position) / cameraTargetDivider;
                 transform.position = cameraTargetPosition;
 
