@@ -20,17 +20,12 @@ namespace Game.UI.Scripts
             enemiesSpawner.SpawnedEnemies.CollectionChanged -= OnEnemiesCollectionChanged;
         }
 
-        private void Start()
-        {
-            ShowEnemiesCount(enemiesSpawner.SpawnedEnemies.Count);
-        }
-
         private void OnEnemiesCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             ShowEnemiesCount(enemiesSpawner.SpawnedEnemies.Count);
         }
 
-        private void ShowEnemiesCount(int count)
+        public void ShowEnemiesCount(int count)
         {
             text.text = count.ToString();
         }

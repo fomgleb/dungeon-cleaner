@@ -71256,6 +71256,7 @@ MonoBehaviour:
   torchesGenerator: {fileID: 1648773755}
   enemiesSpawner: {fileID: 677781184}
   playerSpawner: {fileID: 2012748912}
+  slimesCounter: {fileID: 858283167}
 --- !u!1 &1755946579
 GameObject:
   m_ObjectHideFlags: 0
