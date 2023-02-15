@@ -4,7 +4,6 @@ using Lean.Pool;
 using MyExtensions;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using Zenject;
 
 namespace Game.Dungeon.Scripts
 {

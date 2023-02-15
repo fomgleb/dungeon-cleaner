@@ -1,7 +1,6 @@
 using System;
 using Game.Pause;
 using UnityEngine;
-using Zenject;
 
 namespace Game.Mouse.Scripts
 {
