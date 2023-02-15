@@ -9,6 +9,7 @@ public class AllEnemiesDiedEvent : MonoBehaviour
     
     [SerializeField] private DungeonMusicPlayer dungeonMusicPlayer;
     [SerializeField] private WinMenu winMenu;
+    [SerializeField] private Window menuWindow;
 
     private void OnEnable()
     {
@@ -24,6 +25,9 @@ public class AllEnemiesDiedEvent : MonoBehaviour
     {
         dungeonMusicPlayer.StopSmoothly();
         if (playerSpawner.SpawnedObject != null)
+        {
             winMenu.Show();
+            menuWindow.ShowAsync();
+        }
     }
 }

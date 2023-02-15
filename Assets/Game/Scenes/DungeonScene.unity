@@ -69918,6 +69918,7 @@ MonoBehaviour:
   playerSpawner: {fileID: 2012748912}
   dungeonMusicPlayer: {fileID: 452743825}
   winMenu: {fileID: 1229866659}
+  menuWindow: {fileID: 1632533873}
 --- !u!1 &1065036853
 GameObject:
   m_ObjectHideFlags: 0
