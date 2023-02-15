@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -5,20 +6,20 @@ using UnityEngine;
 public class Window : MonoBehaviour
 {
     [SerializeField] private float appearanceTime;
+    [SerializeField] private float delay;
 
-    private Transform[] childrenTransforms;
     private CanvasGroup canvasGroup;
 
     private void Awake()
     {
-        childrenTransforms = GetComponentsInChildren<Transform>();
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
     public async void ShowAsync()
     {
-        foreach (var childrenObject in childrenTransforms)
-            childrenObject.gameObject.SetActive(true);
+        await UniTask.Delay(TimeSpan.FromSeconds(delay));
+
+        gameObject.SetActive(true);
 
         if (appearanceTime != 0)
         {
@@ -36,7 +37,6 @@ public class Window : MonoBehaviour
     public void Hide()
     {
         canvasGroup.alpha = 0;
-        foreach (var childrenTransform in childrenTransforms)
-            childrenTransform.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
