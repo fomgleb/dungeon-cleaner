@@ -7,11 +7,6 @@ namespace Game.Mouse.Scripts
     {
         [SerializeField] private new UnityEngine.Camera camera;
 
-        private void Start()
-        {
-            transform.position = Vector3.zero;
-        }
-
         private void Update()
         {
             if (Pauser.IsPaused)
