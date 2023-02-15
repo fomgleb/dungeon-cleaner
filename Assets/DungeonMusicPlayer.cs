@@ -8,7 +8,6 @@ using UnityEngine;
 public class DungeonMusicPlayer : MonoBehaviour
 {
     [SerializeField] private LoopedMusic[] loopedMusic;
-    [SerializeField] private RandomEnemiesSpawner enemiesSpawner;
 
     private Animator animator;
     private AudioSource audioSource;
@@ -24,14 +23,12 @@ public class DungeonMusicPlayer : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneTransition.SceneIsSwitchingEvent += Disappear;
-        enemiesSpawner.AllEnemiesDiedEvent += OnAllEnemiesDied;
+        SceneTransition.SceneIsSwitchingEvent += StopSmoothly;
     }
 
     private void OnDisable()
     {
-        SceneTransition.SceneIsSwitchingEvent -= Disappear;
-        enemiesSpawner.AllEnemiesDiedEvent -= OnAllEnemiesDied;
+        SceneTransition.SceneIsSwitchingEvent -= StopSmoothly;
     }
 
     public void PlayRandomMusic()
@@ -42,11 +39,9 @@ public class DungeonMusicPlayer : MonoBehaviour
         audioSource.Play();
     }
     
-    private void OnAllEnemiesDied() => Disappear();
-
     public void StopAbruptly() => audioSource.Stop();
 
-    private void Disappear()
+    public void StopSmoothly()
     {
         if (audioSource.isPlaying)
             animator.SetTrigger(DisappearTriggerName);
