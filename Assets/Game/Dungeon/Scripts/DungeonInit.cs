@@ -16,6 +16,8 @@ namespace Game.Dungeon.Scripts
         [SerializeField] private GameObjectSpawner playerSpawner;
         [SerializeField] private SlimesCounter slimesCounter;
 
+        [SerializeField] private Window playerHealthWindow;
+        [SerializeField] private Window slimesCounterWindow;
         [SerializeField] private Window aimWindow;
         [SerializeField] private Window menuWindow;
         [SerializeField] private Window youDiedWindow;
@@ -34,6 +36,8 @@ namespace Game.Dungeon.Scripts
             playerSpawner.Spawn();
             slimesCounter.ShowEnemiesCount(enemiesSpawner.SpawnedEnemies.Count);
 
+            playerHealthWindow.ShowAsync();
+            playerHealthWindow.ShowAsync();
             aimWindow.ShowAsync();
             menuWindow.SetVisibilityAbruptly(false);
             youDiedWindow.SetVisibilityAbruptly(false);
