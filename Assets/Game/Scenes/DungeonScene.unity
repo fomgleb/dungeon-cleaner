@@ -22513,6 +22513,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 577575975}
+  - component: {fileID: 577575976}
   m_Layer: 5
   m_Name: Aim Message
   m_TagString: Untagged
@@ -22543,6 +22544,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &577575976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577575974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058ce8dd49cb8ab40852cc8c7881cad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &603727338
 GameObject:
   m_ObjectHideFlags: 0
@@ -71251,12 +71264,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbde9920c2c9ee149b87c5b4ff81a377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inAimTipAudioMixerSnapshot: {fileID: -8996606353458597089, guid: c520ffc9063193547b587d092da1ad26, type: 2}
   dungeonMusicPlayer: {fileID: 452743825}
   caveGenerator: {fileID: 1585015325}
   torchesGenerator: {fileID: 1648773755}
   enemiesSpawner: {fileID: 677781184}
   playerSpawner: {fileID: 2012748912}
   slimesCounter: {fileID: 858283167}
+  aimWindow: {fileID: 577575976}
 --- !u!1 &1755946579
 GameObject:
   m_ObjectHideFlags: 0
@@ -71354,11 +71369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d0d06d54c3c3d408b733adb7eef50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1375203757}
-  slimesCounter: {fileID: 858283165}
   aimMessage: {fileID: 577575974}
   normal: {fileID: 24500006, guid: c520ffc9063193547b587d092da1ad26, type: 2}
-  inAimTip: {fileID: -8996606353458597089, guid: c520ffc9063193547b587d092da1ad26, type: 2}
 --- !u!4 &1793287568
 Transform:
   m_ObjectHideFlags: 0
