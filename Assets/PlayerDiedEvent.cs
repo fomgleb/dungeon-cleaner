@@ -1,3 +1,4 @@
+using Game.Camera.Scripts;
 using Game.Dungeon.Scripts;
 using Game.Entities.LivingEntities.Scripts;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class PlayerDiedEvent : MonoBehaviour
 {
     [SerializeField] private GameObjectSpawner playerSpawner;
     [SerializeField] private DungeonMusicPlayer dungeonMusicPlayer;
+    [SerializeField] private CameraTarget cameraTarget;
 
     private Damageable playerDamageable;
 
@@ -34,5 +36,6 @@ public class PlayerDiedEvent : MonoBehaviour
         playerDamageable = null;
         
         dungeonMusicPlayer.StopAbruptly();
+        cameraTarget.StopLookingAtMouse();
     }
 }
