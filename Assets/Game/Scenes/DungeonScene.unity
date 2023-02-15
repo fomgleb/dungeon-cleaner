@@ -22600,7 +22600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce816ed65649cdb4a87c26cb4de40fd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseFollower: {fileID: 826853680}
+  mouseLocation: {fileID: 826853680}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -69819,7 +69819,7 @@ GameObject:
   - component: {fileID: 826853681}
   - component: {fileID: 826853680}
   m_Layer: 0
-  m_Name: Mouse Follower
+  m_Name: Mouse Location
   m_TagString: MouseFollower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
