@@ -69788,6 +69788,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 858283166}
+  - component: {fileID: 858283169}
+  - component: {fileID: 858283168}
   - component: {fileID: 858283167}
   m_Layer: 5
   m_Name: Slimes Counter
@@ -69831,6 +69833,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 177485959}
+--- !u!114 &858283168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858283165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058ce8dd49cb8ab40852cc8c7881cad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appearanceTime: 0
+  delay: 0
+--- !u!225 &858283169
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858283165}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &951833101
 GameObject:
   m_ObjectHideFlags: 0
@@ -71028,6 +71056,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1375203758}
+  - component: {fileID: 1375203761}
+  - component: {fileID: 1375203760}
   - component: {fileID: 1375203759}
   m_Layer: 5
   m_Name: Health
@@ -71071,6 +71101,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthText: {fileID: 1241144436}
+--- !u!114 &1375203760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375203757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058ce8dd49cb8ab40852cc8c7881cad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appearanceTime: 0
+  delay: 0
+--- !u!225 &1375203761
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375203757}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1398000855
 GameObject:
   m_ObjectHideFlags: 0
@@ -71493,6 +71549,8 @@ MonoBehaviour:
   enemiesSpawner: {fileID: 677781184}
   playerSpawner: {fileID: 2012748912}
   slimesCounter: {fileID: 858283167}
+  playerHealthWindow: {fileID: 1375203760}
+  slimesCounterWindow: {fileID: 858283168}
   aimWindow: {fileID: 577575976}
   menuWindow: {fileID: 1632533873}
   youDiedWindow: {fileID: 1651020731}
