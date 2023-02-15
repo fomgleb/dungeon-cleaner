@@ -16,7 +16,7 @@ public class ClickedForTheFirstTimeEvent : MonoBehaviour
             clickedForTheFirstTime = true;
             
             normalAudioMixerSnapshot.TransitionTo(0.5f);
-            aimWindow.Hide();
+            aimWindow.SetVisibilityAbruptly(false);
             Pauser.SetPaused(false);
         }
     }
