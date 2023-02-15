@@ -29,7 +29,7 @@ namespace Game.Dungeon.Scripts
             enemiesSpawner._SpawnEnemies();
             playerSpawner.Spawn();
             slimesCounter.ShowEnemiesCount(enemiesSpawner.SpawnedEnemies.Count);
-            aimWindow.Show();
+            aimWindow.ShowAsync();
 
             Pauser.SetPaused(true);
         }
