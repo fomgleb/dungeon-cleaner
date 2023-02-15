@@ -1,8 +1,7 @@
 using Cysharp.Threading.Tasks;
+using Game.Dungeon.Scripts;
 using Game.Entities.LivingEntities.Scripts;
 using UnityEngine;
-using UnnamedGame.LivingEntities.Player.Scripts;
-using Zenject;
 
 namespace Game.UI.Scripts
 {
@@ -12,29 +11,27 @@ namespace Game.UI.Scripts
         [SerializeField] private float appearanceTime;
         [SerializeField] private float delay;
         [SerializeField] private GameObject[] objectsToEnable;
+        [SerializeField] private GameObjectSpawner playerSpawner;
 
-        [Inject] private PlayerInput playerInput;
-    
         private CanvasGroup canvasGroup;
         private Damageable playerDamageable;
 
         private void Awake()
         {
             canvasGroup = GetComponent<CanvasGroup>();
-            playerDamageable = playerInput.GetComponent<Damageable>();
         }
 
-        private void OnEnable()
+        private void OnEnable() => playerSpawner.SpawnedEvent += OnPlayerSpawned; 
+
+        private void OnDisable() => playerSpawner.SpawnedEvent -= OnPlayerSpawned;
+
+        private void OnPlayerSpawned()
         {
-            playerDamageable.DiedEvent += OnDied;
+            playerDamageable = playerSpawner.SpawnedObject.GetComponent<Damageable>();
+            playerDamageable.DiedEvent += OnPlayerDied;
         }
 
-        private void OnDisable()
-        {
-            playerDamageable.DiedEvent -= OnDied;
-        }
-
-        private void OnDied(object sender, Damageable.DiedEventArgs diedEventArgs) => Show();
+        private void OnPlayerDied(object sender, Damageable.DiedEventArgs diedEventArgs) => Show();
 
         private async void Show()
         {

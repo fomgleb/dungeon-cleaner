@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace UnnamedGame.UI.MainMenu.Scripts.Editor
+namespace Game.UI.MainMenu.Scripts.Editor
 {
     [CustomEditor(typeof(MainMenuGenerationController), true), CanEditMultipleObjects]
     public class MainMenuGenerationControllerEditor : UnityEditor.Editor

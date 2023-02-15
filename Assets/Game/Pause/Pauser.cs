@@ -1,28 +1,32 @@
 using System.Collections.Generic;
-using UnnamedGame.Pause;
 
 namespace Game.Pause
 {
-    public class Pauser : IPauseHandler
+    public static class Pauser
     {
-        private readonly List<IPauseHandler> handlers = new List<IPauseHandler>();
+        private static readonly List<IPauseHandler> Handlers = new();
         
-        public bool IsPaused { get; private set; }
+        public static bool IsPaused { get; private set; }
 
-        public void Register(IPauseHandler handler)
+        public static void Register(IPauseHandler handler)
         {
-            handlers.Add(handler);
+            Handlers.Add(handler);
         }
 
-        public void UnRegister(IPauseHandler handler)
+        public static void UnRegister(IPauseHandler handler)
         {
-            handlers.Remove(handler);
+            Handlers.Remove(handler);
         }
 
-        public void SetPaused(bool isPaused)
+        public static void ClearRegisteredHandlers()
+        {
+            Handlers.Clear();
+        }
+
+        public static void SetPaused(bool isPaused)
         {
             IsPaused = isPaused;
-            foreach (var handler in handlers)
+            foreach (var handler in Handlers)
             {
                 handler.SetPaused(isPaused);
             }

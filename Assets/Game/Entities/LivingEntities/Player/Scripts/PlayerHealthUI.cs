@@ -1,45 +1,39 @@
+using Game.Dungeon.Scripts;
 using Game.Entities.LivingEntities.Scripts;
 using TMPro;
 using UnityEngine;
-using UnnamedGame.LivingEntities.Player.Scripts;
-using Zenject;
 
 namespace Game.Entities.LivingEntities.Player.Scripts
 {
     public class PlayerHealthUI : MonoBehaviour
     {
         [SerializeField] private TMP_Text healthText;
-
-        [Inject] private PlayerInput playerInput;
+        [SerializeField] private GameObjectSpawner playerSpawner;
 
         private Damageable playerDamageable;
     
-        private void Awake()
-        {
-            playerDamageable = playerInput.GetComponent<Damageable>();
-        }
-
-        private void Start()
-        {
-            SetHealthText();
-        }
-
         private void OnEnable()
         {
-            playerDamageable.HealthChangedEvent += OnHealthChanged;
+            playerSpawner.SpawnedEvent += OnPlayerSpawned; 
         }
 
         private void OnDisable()
         {
-            playerDamageable.HealthChangedEvent -= OnHealthChanged;
+            playerSpawner.SpawnedEvent -= OnPlayerSpawned;
         }
 
-        private void OnHealthChanged(object sender, Damageable.HealthChangedEventArgs healthChangedEventArgs)
+        private void OnPlayerSpawned()
+        {
+            playerDamageable = playerSpawner.SpawnedObject.GetComponent<Damageable>();
+            playerDamageable.HealthChangedEvent += OnPlayerHealthChanged;
+            SetHealthText();
+        }
+
+        private void OnPlayerHealthChanged(object sender, Damageable.HealthChangedEventArgs healthChangedEventArgs)
         {
             if (healthChangedEventArgs.AddedHealth != 0)
                 SetHealthText();
         }
-            
 
         private void SetHealthText()
         {

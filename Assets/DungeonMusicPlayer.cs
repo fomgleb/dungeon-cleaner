@@ -1,7 +1,5 @@
-using System.Collections.Specialized;
 using Game.Audio.Scripts;
 using Game.Dungeon.Scripts;
-using Game.Entities.LivingEntities.Player.Scripts;
 using Game.Entities.LivingEntities.Scripts;
 using Game.Scene_Transition;
 using UnityEngine;
@@ -11,6 +9,8 @@ using UnityEngine;
 public class DungeonMusicPlayer : MonoBehaviour
 {
     [SerializeField] private LoopedMusic[] loopedMusic;
+    [SerializeField] private GameObjectSpawner playerSpawner;
+    [SerializeField] private RandomEnemiesSpawner enemiesSpawner;
 
     private Animator animator;
     private AudioSource audioSource;
@@ -27,18 +27,20 @@ public class DungeonMusicPlayer : MonoBehaviour
     private void OnEnable()
     {
         SceneTransition.SceneIsSwitchingEvent += Disappear;
-        GameObject.FindWithTag("Player").GetComponent<Damageable>().DiedEvent += OnPlayerDied;
-        RandomEnemiesSpawner.SpawnedEnemies.CollectionChanged += OnSpawnedEnemiesCollectionChanged;
+        playerSpawner.SpawnedEvent += OnPlayerSpawned;
+        enemiesSpawner.AllEnemiesDiedEvent += OnAllEnemiesDied;
     }
 
     private void OnDisable()
     {
         SceneTransition.SceneIsSwitchingEvent -= Disappear;
-        GameObject.FindWithTag("Player").GetComponent<Damageable>().DiedEvent -= OnPlayerDied;
-        RandomEnemiesSpawner.SpawnedEnemies.CollectionChanged -= OnSpawnedEnemiesCollectionChanged;
+        playerSpawner.SpawnedEvent -= OnPlayerSpawned;
+        enemiesSpawner.AllEnemiesDiedEvent -= OnAllEnemiesDied;
     }
-    
-    private void Start()
+
+    private void OnPlayerSpawned() => playerSpawner.SpawnedObject.GetComponent<Damageable>().DiedEvent += OnPlayerDied;
+
+    public void PlayRandomMusic()
     {
         var randomMusicIndex = Random.Range(0, loopedMusic.Length);
         audioSource.clip = loopedMusic[randomMusicIndex].Clip;
@@ -47,14 +49,8 @@ public class DungeonMusicPlayer : MonoBehaviour
     }
     
     private void OnPlayerDied(object sender, Damageable.DiedEventArgs diedEventArgs) => StopAbruptly();
-    
-    private void OnSpawnedEnemiesCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-    {
-        if (e.OldItems != null && RandomEnemiesSpawner.SpawnedEnemies.Count == 0)
-        {
-            Disappear();
-        }
-    }
+
+    private void OnAllEnemiesDied() => Disappear();
 
     private void StopAbruptly()
     {

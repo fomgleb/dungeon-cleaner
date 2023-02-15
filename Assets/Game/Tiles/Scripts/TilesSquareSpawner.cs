@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace UnnamedGame.Tiles.Scripts
+namespace Game.Tiles.Scripts
 {
     public class TilesSquareSpawner : MonoBehaviour
     {

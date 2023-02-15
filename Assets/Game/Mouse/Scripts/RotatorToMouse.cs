@@ -1,19 +1,22 @@
-using Game.Mouse.Scripts;
+using System;
 using Game.Pause;
 using UnityEngine;
-using UnnamedGame.Pause;
 using Zenject;
 
-namespace UnnamedGame.Mouse.Scripts
+namespace Game.Mouse.Scripts
 {
     public class RotatorToMouse : MonoBehaviour
     {
-        [Inject] private MouseFollower _mouseFollower;
-        [Inject] private Pauser pauser;
+        private MouseFollower mouseFollower;
+
+        private void Awake()
+        {
+            mouseFollower = GameObject.FindWithTag(nameof(MouseFollower)).GetComponent<MouseFollower>();
+        }
 
         private void Update()
         {
-            if (pauser.IsPaused)
+            if (Pauser.IsPaused)
                 return;
             
             Rotate();
@@ -21,7 +24,7 @@ namespace UnnamedGame.Mouse.Scripts
 
         private void Rotate()
         {
-            var aimDirection = (_mouseFollower.transform.position - transform.position).normalized;
+            var aimDirection = (mouseFollower.transform.position - transform.position).normalized;
             var angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, 0, angle);
             transform.localScale = angle is > 90 or < -90 ? new Vector3(1, -1, 1) : new Vector3(1, 1, 1);

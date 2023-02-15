@@ -1,8 +1,5 @@
-using System.Collections.Specialized;
 using Game.Dungeon.Scripts;
 using UnityEngine;
-using UnnamedGame.LivingEntities.Player.Scripts;
-using Zenject;
 
 namespace Game.UI.Scripts
 {
@@ -10,26 +7,24 @@ namespace Game.UI.Scripts
     {
         [SerializeField] private Animator likerAnimator;
         [SerializeField] private GameObject[] objectsToEnable;
+        [SerializeField] private GameObjectSpawner playerSpawner;
+        [SerializeField] private RandomEnemiesSpawner enemiesSpawner;
 
-        [Inject] private PlayerInput playerInput;
-    
         private static readonly int StartLikingTriggerName = Animator.StringToHash("StartLiking");
 
         private void OnEnable()
         {
-            RandomEnemiesSpawner.SpawnedEnemies.CollectionChanged += OnEnemiesCollectionChanged;
+            enemiesSpawner.AllEnemiesDiedEvent += OnAllEnemiesDied;
         }
 
         private void OnDisable()
         {
-            RandomEnemiesSpawner.SpawnedEnemies.CollectionChanged -= OnEnemiesCollectionChanged;
+            enemiesSpawner.AllEnemiesDiedEvent -= OnAllEnemiesDied;
         }
 
-        private void OnEnemiesCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void OnAllEnemiesDied()
         {
-            if (RandomEnemiesSpawner.SpawnedEnemies.Count > 0) return;
-            if (e.OldItems == null) return;
-            if (playerInput == null) return;   
+            if (playerSpawner.SpawnedObject == null) return;
             foreach (var objectToEnable in objectsToEnable)
                 objectToEnable.SetActive(true);
             likerAnimator.SetTrigger(StartLikingTriggerName);
