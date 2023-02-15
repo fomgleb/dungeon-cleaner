@@ -1462,7 +1462,6 @@ MonoBehaviour:
     startTime: 0
   - clip: {fileID: 8300000, guid: 5b19859fed12f1e45a42541ea6de6c7b, type: 3}
     startTime: 0
-  playerSpawner: {fileID: 2012748912}
   enemiesSpawner: {fileID: 677781184}
 --- !u!82 &452743826
 AudioSource:
@@ -71270,6 +71269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1787428412}
+  - component: {fileID: 1787428413}
   m_Layer: 0
   m_Name: Player Died Event
   m_TagString: Untagged
@@ -71292,6 +71292,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1787428413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787428411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b155c99e1e9904145a9a5976ae560355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpawner: {fileID: 2012748912}
+  dungeonMusicPlayer: {fileID: 452743825}
+  cameraTarget: {fileID: 1005735091}
 --- !u!1 &1793287566
 GameObject:
   m_ObjectHideFlags: 0
