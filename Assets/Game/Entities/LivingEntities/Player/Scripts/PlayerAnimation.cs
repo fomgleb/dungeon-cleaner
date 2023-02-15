@@ -13,8 +13,6 @@ namespace Game.Entities.LivingEntities.Player.Scripts
         private PlayerInput playerInput;
         private Animator animator;
 
-        private MouseFollower mouseFollower;
-         
         private static readonly int IsMoving = Animator.StringToHash("IsMoving");
 
         private void OnEnable()
@@ -33,14 +31,13 @@ namespace Game.Entities.LivingEntities.Player.Scripts
         {
             animator = GetComponent<Animator>();
             playerInput = GetComponent<PlayerInput>();
-            mouseFollower = GameObject.FindWithTag(nameof(MouseFollower)).GetComponent<MouseFollower>();
         }
 
         private void Update()
         {
             if (Pauser.IsPaused)
                 return;
-            spriteRenderer.flipX = mouseFollower.transform.position.x < transform.position.x;
+            spriteRenderer.flipX = MouseLocation.WorldPosition.x < transform.position.x;
         }
         
         private void OnMovementDirectionChanged(Vector2 enteredMovementDirection)

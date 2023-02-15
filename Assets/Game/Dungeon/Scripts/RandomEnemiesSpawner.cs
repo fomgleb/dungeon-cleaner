@@ -6,7 +6,6 @@ using Game.Entities.LivingEntities.Scripts;
 using MyExtensions;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Game.Dungeon.Scripts
@@ -23,8 +22,6 @@ namespace Game.Dungeon.Scripts
         public event Action AllEnemiesDiedEvent;
 
         public ObservableCollection<GameObject> SpawnedEnemies { get; } = new();
-
-        [Inject] private DiContainer diContainer;
 
         public void _DespawnEnemies()
         {
@@ -56,7 +53,7 @@ namespace Game.Dungeon.Scripts
                 var numberOfThisTypeEnemies = (int)Mathf.Round(spawningEnemyData.SpawnChance * randomNumberOfSpawningEnemies);
                 for (var j = 0; j < numberOfThisTypeEnemies; j++)
                 {
-                    var spawnedEnemy = diContainer.InstantiatePrefab(spawningEnemyData.EnemyPrefab, enemiesParentOnScene);
+                    var spawnedEnemy = Instantiate(spawningEnemyData.EnemyPrefab, enemiesParentOnScene);
                     spawnedEnemy.transform.position = randomSpawnWorldPositionsQueue.Dequeue();
                     SpawnedEnemies.Add(spawnedEnemy);
                     spawnedEnemy.GetComponent<Damageable>().DiedEvent += OnEnemyDied;
