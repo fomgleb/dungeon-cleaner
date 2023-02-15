@@ -1,5 +1,4 @@
 using Game.Audio.Scripts;
-using Game.Scene_Transition;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -18,16 +17,6 @@ public class DungeonMusicPlayer : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-    }
-
-    private void OnEnable()
-    {
-        SceneTransition.SceneIsSwitchingEvent += StopSmoothly;
-    }
-
-    private void OnDisable()
-    {
-        SceneTransition.SceneIsSwitchingEvent -= StopSmoothly;
     }
 
     public void PlayRandomMusic()
