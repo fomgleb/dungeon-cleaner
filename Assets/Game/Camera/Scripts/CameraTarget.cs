@@ -1,7 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.Dungeon.Scripts;
-using Game.Entities.LivingEntities.Scripts;
 using Game.Mouse.Scripts;
 using UnityEngine;
 
@@ -31,15 +30,11 @@ namespace Game.Camera.Scripts
 
         private void OnPlayerSpawned()
         {
-            playerSpawner.SpawnedObject.GetComponent<Damageable>().DiedEvent += OnPlayerDied;
             playerTransform = playerSpawner.SpawnedObject.transform;
             LookAtMouseAsync(lookingAtMouseCancellationToken.Token);
         }
 
-        private void OnPlayerDied(object sender, Damageable.DiedEventArgs diedEventArgs)
-        {
-            lookingAtMouseCancellationToken.Cancel();
-        }
+        public void StopLookingAtMouse() => lookingAtMouseCancellationToken.Cancel();
 
         private async void LookAtMouseAsync(CancellationToken token)
         {
