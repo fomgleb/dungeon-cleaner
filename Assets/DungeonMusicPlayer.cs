@@ -1,6 +1,5 @@
 using Game.Audio.Scripts;
 using Game.Dungeon.Scripts;
-using Game.Entities.LivingEntities.Scripts;
 using Game.Scene_Transition;
 using UnityEngine;
 
@@ -9,7 +8,6 @@ using UnityEngine;
 public class DungeonMusicPlayer : MonoBehaviour
 {
     [SerializeField] private LoopedMusic[] loopedMusic;
-    [SerializeField] private GameObjectSpawner playerSpawner;
     [SerializeField] private RandomEnemiesSpawner enemiesSpawner;
 
     private Animator animator;
@@ -27,18 +25,14 @@ public class DungeonMusicPlayer : MonoBehaviour
     private void OnEnable()
     {
         SceneTransition.SceneIsSwitchingEvent += Disappear;
-        playerSpawner.SpawnedEvent += OnPlayerSpawned;
         enemiesSpawner.AllEnemiesDiedEvent += OnAllEnemiesDied;
     }
 
     private void OnDisable()
     {
         SceneTransition.SceneIsSwitchingEvent -= Disappear;
-        playerSpawner.SpawnedEvent -= OnPlayerSpawned;
         enemiesSpawner.AllEnemiesDiedEvent -= OnAllEnemiesDied;
     }
-
-    private void OnPlayerSpawned() => playerSpawner.SpawnedObject.GetComponent<Damageable>().DiedEvent += OnPlayerDied;
 
     public void PlayRandomMusic()
     {
@@ -48,14 +42,9 @@ public class DungeonMusicPlayer : MonoBehaviour
         audioSource.Play();
     }
     
-    private void OnPlayerDied(object sender, Damageable.DiedEventArgs diedEventArgs) => StopAbruptly();
-
     private void OnAllEnemiesDied() => Disappear();
 
-    private void StopAbruptly()
-    {
-        audioSource.Stop();
-    }
+    public void StopAbruptly() => audioSource.Stop();
 
     private void Disappear()
     {
