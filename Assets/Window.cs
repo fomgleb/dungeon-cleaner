@@ -34,6 +34,12 @@ public class Window : MonoBehaviour
         canvasGroup.alpha = 1;
     }
 
+    public void ShowAbruptly()
+    {
+        gameObject.SetActive(true);
+        canvasGroup.alpha = 1;
+    }
+
     public void Hide()
     {
         canvasGroup.alpha = 0;
