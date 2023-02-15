@@ -1,4 +1,5 @@
 using Game.Pause;
+using Game.UI.Scripts;
 using UnityEngine;
 
 namespace Game.Dungeon.Scripts
@@ -10,6 +11,7 @@ namespace Game.Dungeon.Scripts
         [SerializeField] private RandomTorchesInDungeonGenerator torchesGenerator;
         [SerializeField] private RandomEnemiesSpawner enemiesSpawner;
         [SerializeField] private GameObjectSpawner playerSpawner;
+        [SerializeField] private SlimesCounter slimesCounter;
 
         private void Start()
         {
@@ -20,6 +22,7 @@ namespace Game.Dungeon.Scripts
             torchesGenerator._GenerateTorches();
             enemiesSpawner._SpawnEnemies();
             playerSpawner.Spawn();
+            slimesCounter.ShowEnemiesCount(enemiesSpawner.SpawnedEnemies.Count);
         }
     }
 }
