@@ -7,7 +7,12 @@ namespace Game.Mouse.Scripts
     {
         [SerializeField] private new UnityEngine.Camera camera;
         
-        public static Vector2 WorldPosition { get; private set; } 
+        public static Vector2 WorldPosition { get; private set; }
+
+        private void Awake()
+        {
+            WorldPosition = Vector2.zero;
+        }
 
         private void Update()
         {
