@@ -1,14 +1,13 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.Entities.LivingEntities.Enemies.Scripts;
 using Game.Pause;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
 {
-    public class SlimeAI : MonoBehaviour, IEnemyAI
+    public class SlimeAI : MonoBehaviour
     {
         [SerializeField] private float minReloadTime;
         [SerializeField] private float maxReloadTime;
