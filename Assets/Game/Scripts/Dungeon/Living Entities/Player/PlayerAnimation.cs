@@ -1,8 +1,8 @@
-using Game.Mouse.Scripts;
-using Game.Pause;
+using Game.Scripts.Mouse;
+using Game.Scripts.Pause;
 using UnityEngine;
 
-namespace Game.Entities.LivingEntities.Player.Scripts
+namespace Game.Scripts.Dungeon.Living_Entities.Player
 {
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Animator))]

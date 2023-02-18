@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Scripts
+namespace Game.Scripts.Audio
 {
     [RequireComponent(typeof(AudioSource))]
     public class RandomPitchOnAwake : MonoBehaviour

@@ -1,7 +1,7 @@
-using Game.Pause;
+using Game.Scripts.Pause;
 using UnityEngine;
 
-namespace Game.Mouse.Scripts
+namespace Game.Scripts.Mouse
 {
     public class MouseLocation : MonoBehaviour
     {

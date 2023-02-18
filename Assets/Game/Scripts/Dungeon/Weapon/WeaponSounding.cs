@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Entities.Weapon.Scripts
+namespace Game.Scripts.Dungeon.Weapon
 {
     [RequireComponent(typeof(WeaponAttack))]
     [RequireComponent(typeof(AudioSource))]

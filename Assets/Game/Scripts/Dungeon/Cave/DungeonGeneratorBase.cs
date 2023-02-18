@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Game.Dungeon.Scripts
+namespace Game.Scripts.Dungeon.Cave
 {
     public abstract class DungeonGeneratorBase : MonoBehaviour
     {

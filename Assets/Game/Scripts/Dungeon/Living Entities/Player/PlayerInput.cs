@@ -1,8 +1,8 @@
 using System;
-using Game.Pause;
+using Game.Scripts.Pause;
 using UnityEngine;
 
-namespace Game.Entities.LivingEntities.Player.Scripts
+namespace Game.Scripts.Dungeon.Living_Entities.Player
 {
     public class PlayerInput : MonoBehaviour
     {

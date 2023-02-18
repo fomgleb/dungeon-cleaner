@@ -1,7 +1,7 @@
-using Game.Pause;
+using Game.Scripts.Pause;
 using UnityEngine;
 
-namespace Game.Dungeon.Torches.Scripts
+namespace Game.Scripts.Dungeon.Torches
 {
     public class Torch : MonoBehaviour, IPauseHandler
     {

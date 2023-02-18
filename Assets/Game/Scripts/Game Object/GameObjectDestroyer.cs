@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using Lean.Pool;
 using UnityEngine;
 
-namespace Game.Scripts
+namespace Game.Scripts.Game_Object
 {
     public class GameObjectDestroyer : MonoBehaviour
     {

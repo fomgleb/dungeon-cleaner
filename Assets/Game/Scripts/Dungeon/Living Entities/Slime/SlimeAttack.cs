@@ -1,7 +1,6 @@
-using Game.Entities.LivingEntities.Scripts;
 using UnityEngine;
 
-namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
+namespace Game.Scripts.Dungeon.Living_Entities.Slime
 {
     [RequireComponent(typeof(SlimeAI))]
     [RequireComponent(typeof(SlimeMovement))]

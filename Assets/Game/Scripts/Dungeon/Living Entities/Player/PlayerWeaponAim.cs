@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Entities.LivingEntities.Player.Scripts
+namespace Game.Scripts.Dungeon.Living_Entities.Player
 {
     public class PlayerWeaponAim : MonoBehaviour
     {

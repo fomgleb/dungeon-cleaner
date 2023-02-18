@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Game.Entities.LivingEntities.Scripts;
+using Game.Scripts.Dungeon.Living_Entities;
 using MyExtensions;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 
-namespace Game.Dungeon.Scripts
+namespace Game.Scripts.Dungeon.Enemies_Spawner
 {
     public class RandomEnemiesSpawner : MonoBehaviour
     {

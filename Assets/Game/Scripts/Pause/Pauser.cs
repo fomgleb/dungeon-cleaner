@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Game.Pause
+namespace Game.Scripts.Pause
 {
     public static class Pauser
     {

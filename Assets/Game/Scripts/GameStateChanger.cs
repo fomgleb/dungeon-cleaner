@@ -1,4 +1,4 @@
-using Game.Scene_Transition;
+using Game.Scripts.Scene_Transition;
 using UnityEngine;
 
 namespace Game.Scripts

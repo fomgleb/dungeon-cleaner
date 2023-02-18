@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Entities.LivingEntities.Scripts
+namespace Game.Scripts.Dungeon.Living_Entities
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public abstract class ImpulsivePhysicalMovement : MonoBehaviour

@@ -1,8 +1,7 @@
-using Game.Audio.Scripts;
-using Game.Entities.LivingEntities.Scripts;
+using Game.Scripts.Audio;
 using UnityEngine;
 
-namespace Game.Entities.LivingEntities.Player.Scripts
+namespace Game.Scripts.Dungeon.Living_Entities.Player
 {
     [RequireComponent(typeof(Damageable))]
     public class PlayerAudio : MonoBehaviour

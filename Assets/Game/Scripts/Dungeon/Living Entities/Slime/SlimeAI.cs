@@ -1,11 +1,11 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.Pause;
+using Game.Scripts.Pause;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
+namespace Game.Scripts.Dungeon.Living_Entities.Slime
 {
     public class SlimeAI : MonoBehaviour
     {

@@ -1,9 +1,9 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.Mouse.Scripts;
+using Game.Scripts.Mouse;
 using UnityEngine;
 
-namespace Game.Camera.Scripts
+namespace Game.Scripts.Camera
 {
     public class CameraTarget : MonoBehaviour
     {

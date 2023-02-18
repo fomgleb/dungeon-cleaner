@@ -1,4 +1,4 @@
-namespace Game.Pause
+namespace Game.Scripts.Pause
 {
     public interface IPauseHandler
     {

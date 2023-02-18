@@ -1,9 +1,8 @@
 using Cysharp.Threading.Tasks;
-using Game.Dungeon.Scripts;
-using Game.Entities.LivingEntities.Scripts;
+using Game.Scripts.Game_Object;
 using UnityEngine;
 
-namespace Game.UI.Scripts
+namespace Game.Scripts.Dungeon.Living_Entities.Player
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class ShowWhenPlayerDie : MonoBehaviour

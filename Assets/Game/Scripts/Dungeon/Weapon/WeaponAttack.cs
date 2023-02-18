@@ -2,7 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Game.Entities.Weapon.Scripts
+namespace Game.Scripts.Dungeon.Weapon
 {
     [RequireComponent(typeof(WeaponInput))]
     public class WeaponAttack : MonoBehaviour

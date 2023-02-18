@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Dungeon.Data.Scripts
+namespace Game.Scripts.Dungeon.Cave
 {
     [CreateAssetMenu(menuName = "My Assets/Dungeon Generation Data", fileName = "DungeonGenerationData", order = 0)]
     public class DungeonGenerationData : ScriptableObject

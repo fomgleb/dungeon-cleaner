@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Game.Dungeon.Scripts
+namespace Game.Scripts.Game_Object
 {
     public class GameObjectSpawner : MonoBehaviour
     {

@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using Game.Dungeon.Data.Scripts;
-using Game.Tiles.Scripts;
+using Game.Scripts.Tiles;
 using MyExtensions;
 using UnityEngine;
 
-namespace Game.Dungeon.Scripts
+namespace Game.Scripts.Dungeon.Cave
 {
     public class SimpleRandomWalkDungeonGenerator : DungeonGeneratorBase
     {

@@ -1,11 +1,11 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.Pause;
+using Game.Scripts.Pause;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 
-namespace Game.Dungeon.Torches.Scripts
+namespace Game.Scripts.Dungeon.Torches
 {
     public class LightShaking : MonoBehaviour
     {

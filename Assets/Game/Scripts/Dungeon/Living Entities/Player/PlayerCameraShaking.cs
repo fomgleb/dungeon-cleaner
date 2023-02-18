@@ -1,8 +1,8 @@
-using Game.Camera.Scripts;
-using Game.Entities.Weapon.Scripts;
+using Game.Scripts.Camera;
+using Game.Scripts.Dungeon.Weapon;
 using UnityEngine;
 
-namespace Game.Entities.LivingEntities.Player.Scripts
+namespace Game.Scripts.Dungeon.Living_Entities.Player
 {
     [RequireComponent(typeof(PlayerAttack))]
     public class PlayerCameraShaking : MonoBehaviour

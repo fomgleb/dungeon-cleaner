@@ -1,23 +1,27 @@
-using Game.Pause;
+using Game.Scripts.Dungeon.Menus;
+using Game.Scripts.Pause;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class ClickedForTheFirstTimeEvent : MonoBehaviour
+namespace Game.Scripts.Dungeon.Events
 {
-    [SerializeField] private AudioMixerSnapshot normalAudioMixerSnapshot;
-    [SerializeField] private Window aimWindow;
-    
-    private bool clickedForTheFirstTime;
-
-    private void Update()
+    public class ClickedForTheFirstTimeEvent : MonoBehaviour
     {
-        if (!clickedForTheFirstTime && Input.anyKey)
+        [SerializeField] private AudioMixerSnapshot normalAudioMixerSnapshot;
+        [SerializeField] private Window aimWindow;
+    
+        private bool clickedForTheFirstTime;
+
+        private void Update()
         {
-            clickedForTheFirstTime = true;
+            if (!clickedForTheFirstTime && Input.anyKey)
+            {
+                clickedForTheFirstTime = true;
             
-            normalAudioMixerSnapshot.TransitionTo(0.5f);
-            aimWindow.SetVisibilityAbruptly(false);
-            Pauser.SetPaused(false);
+                normalAudioMixerSnapshot.TransitionTo(0.5f);
+                aimWindow.SetVisibilityAbruptly(false);
+                Pauser.SetPaused(false);
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ using Lean.Pool;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Game.Entities.LivingEntities.Scripts
+namespace Game.Scripts.Dungeon.Living_Entities
 {
     [RequireComponent(typeof(Damageable))]
     public class LootDropperWhenDie : MonoBehaviour

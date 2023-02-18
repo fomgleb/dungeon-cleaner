@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Game.Audio.Scripts
+namespace Game.Scripts.Audio
 {
     [Serializable]
     public struct LoopedMusic

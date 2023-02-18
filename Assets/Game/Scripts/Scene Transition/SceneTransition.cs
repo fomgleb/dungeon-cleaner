@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Game.Scene_Transition
+namespace Game.Scripts.Scene_Transition
 {
     public class SceneTransition : MonoBehaviour
     {

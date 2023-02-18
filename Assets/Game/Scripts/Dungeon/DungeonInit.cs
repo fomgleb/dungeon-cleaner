@@ -1,9 +1,13 @@
-using Game.Pause;
-using Game.UI.Scripts;
+using Game.Scripts.Dungeon.Cave;
+using Game.Scripts.Dungeon.Enemies_Spawner;
+using Game.Scripts.Dungeon.Menus;
+using Game.Scripts.Dungeon.Torches;
+using Game.Scripts.Game_Object;
+using Game.Scripts.Pause;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Game.Dungeon.Scripts
+namespace Game.Scripts.Dungeon
 {
     public class DungeonInit : MonoBehaviour
     {

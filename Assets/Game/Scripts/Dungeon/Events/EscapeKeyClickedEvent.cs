@@ -1,17 +1,21 @@
+using Game.Scripts.Dungeon.Menus;
 using UnityEngine;
 
-public class EscapeKeyClickedEvent : MonoBehaviour
+namespace Game.Scripts.Dungeon.Events
 {
-    [SerializeField] private Window menuWindow;
+    public class EscapeKeyClickedEvent : MonoBehaviour
+    {
+        [SerializeField] private Window menuWindow;
     
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            OnEscapeKeyClicked();
-    }
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                OnEscapeKeyClicked();
+        }
 
-    private void OnEscapeKeyClicked()
-    {
-        menuWindow.SetVisibilityAbruptly(!menuWindow.IsVisible);
+        private void OnEscapeKeyClicked()
+        {
+            menuWindow.SetVisibilityAbruptly(!menuWindow.IsVisible);
+        }
     }
 }

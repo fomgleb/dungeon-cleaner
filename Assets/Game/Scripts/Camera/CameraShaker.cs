@@ -2,7 +2,7 @@ using Cinemachine;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Game.Camera.Scripts
+namespace Game.Scripts.Camera
 {
     [RequireComponent(typeof(CinemachineVirtualCamera))]
     public class CameraShaker : MonoBehaviour

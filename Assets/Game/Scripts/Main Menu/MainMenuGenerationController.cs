@@ -1,8 +1,9 @@
-using Game.Dungeon.Scripts;
-using Game.Tiles.Scripts;
+using Game.Scripts.Dungeon.Cave;
+using Game.Scripts.Dungeon.Torches;
+using Game.Scripts.Tiles;
 using UnityEngine;
 
-namespace Game.UI.MainMenu.Scripts
+namespace Game.Scripts.Main_Menu
 {
     public class MainMenuGenerationController : MonoBehaviour
     {

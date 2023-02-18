@@ -2,46 +2,49 @@ using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-[RequireComponent(typeof(CanvasGroup))]
-public class Window : MonoBehaviour
+namespace Game.Scripts.Dungeon.Menus
 {
-    [SerializeField] private float appearanceTime;
-    [SerializeField] private float delay;
+    [RequireComponent(typeof(CanvasGroup))]
+    public class Window : MonoBehaviour
+    {
+        [SerializeField] private float appearanceTime;
+        [SerializeField] private float delay;
     
-    public bool IsVisible { get; private set; }
+        public bool IsVisible { get; private set; }
 
-    private CanvasGroup canvasGroup;
+        private CanvasGroup canvasGroup;
 
-    private void Awake()
-    {
-        canvasGroup = GetComponent<CanvasGroup>();
-    }
-
-    public async void ShowAsync()
-    {
-        IsVisible = true;
-        
-        await UniTask.Delay(TimeSpan.FromSeconds(delay));
-
-        gameObject.SetActive(true);
-
-        if (appearanceTime != 0)
+        private void Awake()
         {
-            var appearanceSpeed = 1 / appearanceTime;
-            for (var elapsedTime = 0f; elapsedTime < appearanceTime; elapsedTime += Time.deltaTime)
-            {
-                canvasGroup.alpha += appearanceSpeed * Time.deltaTime;
-                await UniTask.Yield();
-            }
+            canvasGroup = GetComponent<CanvasGroup>();
         }
 
-        canvasGroup.alpha = 1;
-    }
+        public async void ShowAsync()
+        {
+            IsVisible = true;
+        
+            await UniTask.Delay(TimeSpan.FromSeconds(delay));
 
-    public void SetVisibilityAbruptly(bool isVisible)
-    {
-        IsVisible = isVisible;
-        gameObject.SetActive(isVisible);
-        canvasGroup.alpha = isVisible ? 1 : 0;
+            gameObject.SetActive(true);
+
+            if (appearanceTime != 0)
+            {
+                var appearanceSpeed = 1 / appearanceTime;
+                for (var elapsedTime = 0f; elapsedTime < appearanceTime; elapsedTime += Time.deltaTime)
+                {
+                    canvasGroup.alpha += appearanceSpeed * Time.deltaTime;
+                    await UniTask.Yield();
+                }
+            }
+
+            canvasGroup.alpha = 1;
+        }
+
+        public void SetVisibilityAbruptly(bool isVisible)
+        {
+            IsVisible = isVisible;
+            gameObject.SetActive(isVisible);
+            canvasGroup.alpha = isVisible ? 1 : 0;
+        }
     }
 }

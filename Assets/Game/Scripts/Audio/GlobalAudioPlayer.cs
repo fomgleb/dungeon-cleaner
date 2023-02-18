@@ -1,7 +1,7 @@
 using Lean.Pool;
 using UnityEngine;
 
-namespace Game.Audio.Scripts
+namespace Game.Scripts.Audio
 {
     public class GlobalAudioPlayer : MonoBehaviour
     {

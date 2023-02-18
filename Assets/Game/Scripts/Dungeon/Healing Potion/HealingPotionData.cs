@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Entities.Consumables.Potions.HealingPotions.Data
+namespace Game.Scripts.Dungeon.Healing_Potion
 {
     public class HealingPotionData : ScriptableObject
     {

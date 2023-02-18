@@ -3,30 +3,33 @@ using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
-public class FPSCounter : MonoBehaviour
+namespace Game.Scripts
 {
-    private static FPSCounter instance;
+    public class FPSCounter : MonoBehaviour
+    {
+        private static FPSCounter instance;
 
-    [SerializeField] private TMP_Text text;
-    [SerializeField] private float updateDelay; 
+        [SerializeField] private TMP_Text text;
+        [SerializeField] private float updateDelay; 
     
-    private void Awake()
-    {
-        if (instance == null)
+        private void Awake()
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            UpdateFPSCounterAsync();
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+                UpdateFPSCounterAsync();
+            }
         }
-    }
 
-    private async void UpdateFPSCounterAsync()
-    {
-        while (true)
+        private async void UpdateFPSCounterAsync()
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(updateDelay));
-            var current = (int)(1f / Time.unscaledDeltaTime);
-            text.text = current.ToString();
+            while (true)
+            {
+                await UniTask.Delay(TimeSpan.FromSeconds(updateDelay));
+                var current = (int)(1f / Time.unscaledDeltaTime);
+                text.text = current.ToString();
+            }
         }
     }
 }

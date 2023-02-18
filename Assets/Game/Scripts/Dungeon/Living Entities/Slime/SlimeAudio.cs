@@ -1,7 +1,7 @@
-using Game.Audio.Scripts;
+using Game.Scripts.Audio;
 using UnityEngine;
 
-namespace Game.Entities.LivingEntities.Enemies.Slime.Scripts
+namespace Game.Scripts.Dungeon.Living_Entities.Slime
 {
     [RequireComponent(typeof(SlimeMovement))]
     public class SlimeAudio : MonoBehaviour

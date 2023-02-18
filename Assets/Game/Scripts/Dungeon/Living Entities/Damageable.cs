@@ -2,7 +2,7 @@ using System;
 using Lean.Pool;
 using UnityEngine;
 
-namespace Game.Entities.LivingEntities.Scripts
+namespace Game.Scripts.Dungeon.Living_Entities
 {
     public class Damageable : MonoBehaviour
     {

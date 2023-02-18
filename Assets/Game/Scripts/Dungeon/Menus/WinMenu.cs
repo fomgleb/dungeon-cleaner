@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.UI.Scripts
+namespace Game.Scripts.Dungeon.Menus
 {
     [RequireComponent(typeof(Window))]
     public class WinMenu : MonoBehaviour

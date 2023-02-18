@@ -1,22 +1,25 @@
-using Game.Scene_Transition;
+using Game.Scripts.Scene_Transition;
 using UnityEngine;
 
-public class ExitingEvent : MonoBehaviour
+namespace Game.Scripts.Dungeon.Events
 {
-    [SerializeField] private DungeonMusicPlayer dungeonMusicPlayer;
-
-    private void OnEnable()
+    public class ExitingEvent : MonoBehaviour
     {
-        SceneTransition.SceneIsSwitchingEvent += OnSceneIsSwitching;
-    }
+        [SerializeField] private DungeonMusicPlayer dungeonMusicPlayer;
 
-    private void OnDisable()
-    {
-        SceneTransition.SceneIsSwitchingEvent -= OnSceneIsSwitching;
-    }
+        private void OnEnable()
+        {
+            SceneTransition.SceneIsSwitchingEvent += OnSceneIsSwitching;
+        }
 
-    private void OnSceneIsSwitching()
-    {
-        dungeonMusicPlayer.StopSmoothly();
+        private void OnDisable()
+        {
+            SceneTransition.SceneIsSwitchingEvent -= OnSceneIsSwitching;
+        }
+
+        private void OnSceneIsSwitching()
+        {
+            dungeonMusicPlayer.StopSmoothly();
+        }
     }
 }

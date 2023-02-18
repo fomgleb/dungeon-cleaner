@@ -1,10 +1,10 @@
 using System.Linq;
-using Game.Audio.Scripts;
-using Game.Entities.LivingEntities.Scripts;
+using Game.Scripts.Audio;
+using Game.Scripts.Dungeon.Living_Entities;
 using Lean.Pool;
 using UnityEngine;
 
-namespace Game.Entities.Consumables.Potions.HealingPotions.Scripts
+namespace Game.Scripts.Dungeon.Healing_Potion
 {
     [RequireComponent(typeof(Collider2D))]
     public class Healer : MonoBehaviour

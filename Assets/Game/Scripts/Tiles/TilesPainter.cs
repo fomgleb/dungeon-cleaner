@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Game.Tiles.Scripts
+namespace Game.Scripts.Tiles
 {
     public abstract class TilesPainter
     {

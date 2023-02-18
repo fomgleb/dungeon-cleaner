@@ -1,30 +1,33 @@
-using Game.Camera.Scripts;
-using Game.Dungeon.Scripts;
-using Game.Entities.LivingEntities.Player.Scripts;
-using Game.Entities.LivingEntities.Scripts;
+using Game.Scripts.Camera;
+using Game.Scripts.Dungeon.Living_Entities;
+using Game.Scripts.Dungeon.Living_Entities.Player;
+using Game.Scripts.Game_Object;
 using UnityEngine;
 
-public class PlayerSpawnedEvent : MonoBehaviour
+namespace Game.Scripts.Dungeon.Events
 {
-    [SerializeField] private GameObjectSpawner playerSpawner;
-
-    [SerializeField] private PlayerHealthUI playerHealthUI;
-    [SerializeField] private CameraTarget cameraTarget;
-
-    private void OnEnable()
+    public class PlayerSpawnedEvent : MonoBehaviour
     {
-        playerSpawner.SpawnedEvent += OnPlayerSpawned;
-    }
+        [SerializeField] private GameObjectSpawner playerSpawner;
 
-    private void OnDisable()
-    {
-        playerSpawner.SpawnedEvent -= OnPlayerSpawned;
-    }
+        [SerializeField] private PlayerHealthUI playerHealthUI;
+        [SerializeField] private CameraTarget cameraTarget;
 
-    private void OnPlayerSpawned()
-    {
-        playerHealthUI.Init(playerSpawner.SpawnedObject.GetComponent<Damageable>());
-        playerHealthUI.SetHealthText();
-        cameraTarget.LookAtMouseAsync(playerSpawner.SpawnedObject.transform);
+        private void OnEnable()
+        {
+            playerSpawner.SpawnedEvent += OnPlayerSpawned;
+        }
+
+        private void OnDisable()
+        {
+            playerSpawner.SpawnedEvent -= OnPlayerSpawned;
+        }
+
+        private void OnPlayerSpawned()
+        {
+            playerHealthUI.Init(playerSpawner.SpawnedObject.GetComponent<Damageable>());
+            playerHealthUI.SetHealthText();
+            cameraTarget.LookAtMouseAsync(playerSpawner.SpawnedObject.transform);
+        }
     }
 }

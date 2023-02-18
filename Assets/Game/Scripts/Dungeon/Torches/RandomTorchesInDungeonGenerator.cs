@@ -5,7 +5,7 @@ using MyExtensions;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Game.Dungeon.Scripts
+namespace Game.Scripts.Dungeon.Torches
 {
     public class RandomTorchesInDungeonGenerator : MonoBehaviour
     { 

@@ -1,37 +1,40 @@
-using Game.Audio.Scripts;
+using Game.Scripts.Audio;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
-[RequireComponent(typeof(Animator))]
-public class DungeonMusicPlayer : MonoBehaviour
+namespace Game.Scripts.Dungeon
 {
-    [SerializeField] private LoopedMusic[] loopedMusic;
-
-    private Animator animator;
-    private AudioSource audioSource;
-    private static readonly int DisappearTriggerName = Animator.StringToHash("Disappear");
-
-    private GameObject playerGameObject;
-
-    private void Awake()
+    [RequireComponent(typeof(AudioSource))]
+    [RequireComponent(typeof(Animator))]
+    public class DungeonMusicPlayer : MonoBehaviour
     {
-        animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
-    }
+        [SerializeField] private LoopedMusic[] loopedMusic;
 
-    public void PlayRandomMusic()
-    {
-        var randomMusicIndex = Random.Range(0, loopedMusic.Length);
-        audioSource.clip = loopedMusic[randomMusicIndex].Clip;
-        audioSource.time = loopedMusic[randomMusicIndex].StartTime;
-        audioSource.Play();
-    }
+        private Animator animator;
+        private AudioSource audioSource;
+        private static readonly int DisappearTriggerName = Animator.StringToHash("Disappear");
+
+        private GameObject playerGameObject;
+
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+            audioSource = GetComponent<AudioSource>();
+        }
+
+        public void PlayRandomMusic()
+        {
+            var randomMusicIndex = Random.Range(0, loopedMusic.Length);
+            audioSource.clip = loopedMusic[randomMusicIndex].Clip;
+            audioSource.time = loopedMusic[randomMusicIndex].StartTime;
+            audioSource.Play();
+        }
     
-    public void StopAbruptly() => audioSource.Stop();
+        public void StopAbruptly() => audioSource.Stop();
 
-    public void StopSmoothly()
-    {
-        if (audioSource.isPlaying)
-            animator.SetTrigger(DisappearTriggerName);
+        public void StopSmoothly()
+        {
+            if (audioSource.isPlaying)
+                animator.SetTrigger(DisappearTriggerName);
+        }
     }
 }

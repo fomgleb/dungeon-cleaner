@@ -1,9 +1,8 @@
 using System;
-using Game.Entities.LivingEntities.Scripts;
-using Game.Entities.Weapon.Scripts;
+using Game.Scripts.Dungeon.Living_Entities;
 using UnityEngine;
 
-namespace Game.Entities.Weapon.Knife.Scripts
+namespace Game.Scripts.Dungeon.Weapon.Knife
 {
     [RequireComponent(typeof(WeaponAttack))]
     public class KnifeAttack : MonoBehaviour, IWeaponAttack
