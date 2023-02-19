@@ -6,6 +6,7 @@ using Game.Scripts.Game_Object;
 using Game.Scripts.Pause;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 namespace Game.Scripts.Dungeon
 {
@@ -13,8 +14,10 @@ namespace Game.Scripts.Dungeon
     {
         [SerializeField] private AudioMixerSnapshot inAimTipAudioMixerSnapshot;
 
+        [FormerlySerializedAs("caveGenerationData")]
+        [FormerlySerializedAs("dungeonGenerationData")]
         [Header("Settings")]
-        [SerializeField] private DungeonGenerationData dungeonGenerationData;
+        [SerializeField] private DataOfCaveGenerationAlgorithm dataOfCaveGenerationAlgorithm;
         [Range(0, 1)] [SerializeField] private float torchesFrequency;
 
         [Space]
@@ -40,7 +43,7 @@ namespace Game.Scripts.Dungeon
 
             dungeonMusicPlayer.PlayRandomMusic();
 
-            var dungeonGeneration = new DungeonGeneration(dungeonGenerationData);
+            var dungeonGeneration = new DungeonGeneration(dataOfCaveGenerationAlgorithm);
             var positionsOfFloorTiles = dungeonGeneration.GeneratePositionsOfFloorTiles();
             var positionsOfWallTiles = dungeonGeneration.GeneratePositionsOfWallTiles(positionsOfFloorTiles);
             var positionsOfTorches = dungeonGeneration.GeneratePositionsOfTorches(positionsOfFloorTiles, torchesFrequency);

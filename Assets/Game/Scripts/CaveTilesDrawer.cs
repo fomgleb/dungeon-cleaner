@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Game.Scripts.Dungeon.Cave;
 using Game.Scripts.Tiles;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 namespace Game.Scripts
@@ -14,10 +15,12 @@ namespace Game.Scripts
         [SerializeField] protected TileBase floorRuleTile;
         [SerializeField] protected TileBase wallRuleTile;
         [SerializeField] protected TileBase wallShadowRuleTile;
+        [FormerlySerializedAs("caveGenerationData")]
+        [FormerlySerializedAs("dungeonGenerationData")]
         [Header("Test")]
-        [SerializeField] private DungeonGenerationData dungeonGenerationData;
+        [SerializeField] private DataOfCaveGenerationAlgorithm dataOfCaveGenerationAlgorithm;
 
-        public DungeonGenerationData DungeonGenerationData => dungeonGenerationData;
+        public DataOfCaveGenerationAlgorithm DataOfCaveGenerationAlgorithm => dataOfCaveGenerationAlgorithm;
 
         public void EraseAndDraw( HashSet<Vector2Int> positionsOfFloorTiles, HashSet<Vector2Int> positionsOfWallTiles)
         {

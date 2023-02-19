@@ -19,7 +19,7 @@ namespace Game.Scripts.Dungeon.Cave.Editor
 
             if (GUILayout.Button("Generate Cave"))
             {
-                var dungeonGeneration = new DungeonGeneration(caveTilesDrawer.DungeonGenerationData);
+                var dungeonGeneration = new DungeonGeneration(caveTilesDrawer.DataOfCaveGenerationAlgorithm);
                 var positionsOfFloorTiles = dungeonGeneration.GeneratePositionsOfFloorTiles();
                 var positionsOfWallTiles = dungeonGeneration.GeneratePositionsOfWallTiles(positionsOfFloorTiles);
                 caveTilesDrawer.Erase();

@@ -13,12 +13,12 @@ namespace Game.Scripts
         private readonly uint stepsForOneDirection;
         private readonly float chanceToTurn;
 
-        public DungeonGeneration(DungeonGenerationData dungeonGenerationData)
+        public DungeonGeneration(DataOfCaveGenerationAlgorithm dataOfCaveGenerationAlgorithm)
         {
-            startPosition = dungeonGenerationData.StartPosition;
-            numberOfSteps = dungeonGenerationData.NumberOfSteps;
-            stepsForOneDirection = dungeonGenerationData.StepsForOneDirection;
-            chanceToTurn = dungeonGenerationData.ChanceToTurn;
+            startPosition = dataOfCaveGenerationAlgorithm.StartPosition;
+            numberOfSteps = dataOfCaveGenerationAlgorithm.NumberOfSteps;
+            stepsForOneDirection = dataOfCaveGenerationAlgorithm.StepsForOneDirection;
+            chanceToTurn = dataOfCaveGenerationAlgorithm.ChanceToTurn;
         }
 
         public HashSet<Vector2Int> GeneratePositionsOfFloorTiles()

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Game.Scripts.Dungeon.Cave
 {
     [CreateAssetMenu(menuName = "My Assets/Dungeon Generation Data", fileName = "DungeonGenerationData", order = 0)]
-    public class DungeonGenerationData : ScriptableObject
+    public class DataOfCaveGenerationAlgorithm : ScriptableObject
     {
         [SerializeField] private Vector2Int startPosition;
         public Vector2Int StartPosition => startPosition;
