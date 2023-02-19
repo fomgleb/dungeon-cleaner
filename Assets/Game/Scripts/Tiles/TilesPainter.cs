@@ -14,5 +14,11 @@ namespace Game.Scripts.Tiles
                 tilemap.SetTile(tilePosition, tile);
             }
         }
+
+        public static void Draw(Vector2Int position, Tilemap tilemap, TileBase tile)
+        {
+            var tilePosition = tilemap.WorldToCell((Vector3Int)position);
+            tilemap.SetTile(tilePosition, tile);
+        }
     }
 }

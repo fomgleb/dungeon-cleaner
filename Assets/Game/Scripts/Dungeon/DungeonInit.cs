@@ -13,11 +13,14 @@ namespace Game.Scripts.Dungeon
     {
         [SerializeField] private AudioMixerSnapshot inAimTipAudioMixerSnapshot;
 
-        [Header("Temporary dungeon generation data")]
+        [Header("Settings")]
         [SerializeField] private DungeonGenerationData dungeonGenerationData;
+        [Range(0, 1)] [SerializeField] private float torchesFrequency;
+
+        [Space]
         [SerializeField] private DungeonMusicPlayer dungeonMusicPlayer;
         [SerializeField] private CaveTilesDrawer caveTilesDrawer;
-        [SerializeField] private RandomTorchesInDungeonGenerator torchesGenerator;
+        [SerializeField] private TorchTilesDrawer torchTilesDrawer;
         [SerializeField] private RandomEnemiesSpawner enemiesSpawner;
         [SerializeField] private GameObjectSpawner playerSpawner;
         [SerializeField] private SlimesCounter slimesCounter;
@@ -40,9 +43,10 @@ namespace Game.Scripts.Dungeon
             var dungeonGeneration = new DungeonGeneration(dungeonGenerationData);
             var positionsOfFloorTiles = dungeonGeneration.GeneratePositionsOfFloorTiles();
             var positionsOfWallTiles = dungeonGeneration.GeneratePositionsOfWallTiles(positionsOfFloorTiles);
+            var positionsOfTorches = dungeonGeneration.GeneratePositionsOfTorches(positionsOfFloorTiles, torchesFrequency);
 
             caveTilesDrawer.EraseAndDraw(positionsOfFloorTiles, positionsOfWallTiles);
-            torchesGenerator._GenerateTorches();
+            torchTilesDrawer.Draw(positionsOfTorches);
             enemiesSpawner._SpawnEnemies();
             playerSpawner.Spawn();
             slimesCounter.ShowEnemiesCount(enemiesSpawner.SpawnedEnemies.Count);

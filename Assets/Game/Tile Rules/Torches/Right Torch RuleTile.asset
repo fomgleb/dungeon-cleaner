@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
-  m_Name: Side Torch Rule Tile
+  m_Name: Right Torch RuleTile
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 0}
   m_DefaultGameObject: {fileID: 0}
@@ -23,7 +23,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    m_GameObject: {fileID: 765316282239738628, guid: eeb6af2fc693c5649b237b63e4552e74, type: 3}
+    m_GameObject: {fileID: 765316282239738628, guid: 56ba2f6960de8b345bbcf647a541458d, type: 3}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
     m_PerlinScale: 0.556

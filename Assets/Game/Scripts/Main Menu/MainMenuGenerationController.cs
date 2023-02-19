@@ -9,7 +9,7 @@ namespace Game.Scripts.Main_Menu
     {
         // [SerializeField] private SimpleRandomWalkDungeonGenerator rightCaveGenerator;
         // [SerializeField] private SimpleRandomWalkDungeonGenerator leftCaveGenerator;
-        [SerializeField] private RandomTorchesInDungeonGenerator torchesGenerator;
+        [SerializeField] private TorchTilesDrawer torchesGenerator;
         [SerializeField] private TilesSquareSpawner floorDestroyer;
         [SerializeField] private TilesSquareSpawner wallShadowDestroyer;
         [SerializeField] private TilesSquareSpawner foundationGenerator;
@@ -26,7 +26,7 @@ namespace Game.Scripts.Main_Menu
             floorDestroyer._Spawn();
             wallShadowDestroyer._Spawn();
             foundationGenerator._Spawn();
-            torchesGenerator._GenerateTorches();
+            // torchesGenerator._GenerateTorches();
         }
     }
 }

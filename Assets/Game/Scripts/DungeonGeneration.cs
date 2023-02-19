@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Game.Scripts.Dungeon.Cave;
+using MyExtensions;
 using UnityEngine;
 
 namespace Game.Scripts
@@ -11,7 +12,7 @@ namespace Game.Scripts
         private readonly uint numberOfSteps;
         private readonly uint stepsForOneDirection;
         private readonly float chanceToTurn;
-        
+
         public DungeonGeneration(DungeonGenerationData dungeonGenerationData)
         {
             startPosition = dungeonGenerationData.StartPosition;
@@ -45,7 +46,7 @@ namespace Game.Scripts
 
             return positionsOfFloorTiles;
         }
-        
+
         public HashSet<Vector2Int> GeneratePositionsOfWallTiles(HashSet<Vector2Int> positionsOfFloorTiles)
         {
             var leftTopWallPosition = new Vector2Int(positionsOfFloorTiles.Min(position => position.x),
@@ -56,11 +57,51 @@ namespace Game.Scripts
             for (var x = leftTopWallPosition.x; x <= rightBottomWallPosition.x; x++)
             for (var y = rightBottomWallPosition.y; y <= leftTopWallPosition.y; y++)
                 positionsOfWallTiles.Add(new Vector2Int(x, y));
-    
+
             foreach (var floorPosition in positionsOfFloorTiles)
                 positionsOfWallTiles.Remove(floorPosition);
 
             return positionsOfWallTiles;
+        }
+
+        public List<Torch> GeneratePositionsOfTorches(HashSet<Vector2Int> positionsOfFloorTiles, float frequency)
+        {
+            var availablePositionsOfTorches = new List<Torch>();
+
+            foreach (var floorTilePosition in positionsOfFloorTiles)
+            {
+                if (!positionsOfFloorTiles.Contains(floorTilePosition + Vector2Int.up))
+                    availablePositionsOfTorches.Add(new Torch(floorTilePosition + Vector2Int.up,
+                        Torch.DirectionEnum.Top));
+
+                if (!positionsOfFloorTiles.Contains(floorTilePosition + Vector2Int.left))
+                    availablePositionsOfTorches.Add(new Torch(floorTilePosition, Torch.DirectionEnum.Left));
+
+                if (!positionsOfFloorTiles.Contains(floorTilePosition + Vector2Int.right))
+                    availablePositionsOfTorches.Add(new Torch(floorTilePosition, Torch.DirectionEnum.Right));
+            }
+
+            availablePositionsOfTorches.Shuffle();
+            return availablePositionsOfTorches.GetRange(0, (int)(availablePositionsOfTorches.Count * frequency));
+        }
+
+        public struct Torch
+        {
+            public readonly Vector2Int Position;
+            public readonly DirectionEnum Direction;
+
+            public Torch(Vector2Int position, DirectionEnum direction)
+            {
+                Position = position;
+                Direction = direction;
+            }
+
+            public enum DirectionEnum
+            {
+                Top,
+                Right,
+                Left
+            }
         }
 
         private static class Direction2D
@@ -76,7 +117,7 @@ namespace Game.Scripts
             public static Vector2Int GetRandomCardinalDirection()
             {
                 return CardinalDirectionsList[Random.Range(0, CardinalDirectionsList.Count)];
-            } 
+            }
         }
     }
 }
