@@ -7,8 +7,8 @@ namespace Game.Scripts.Main_Menu
 {
     public class MainMenuGenerationController : MonoBehaviour
     {
-        [SerializeField] private SimpleRandomWalkDungeonGenerator rightCaveGenerator;
-        [SerializeField] private SimpleRandomWalkDungeonGenerator leftCaveGenerator;
+        // [SerializeField] private SimpleRandomWalkDungeonGenerator rightCaveGenerator;
+        // [SerializeField] private SimpleRandomWalkDungeonGenerator leftCaveGenerator;
         [SerializeField] private RandomTorchesInDungeonGenerator torchesGenerator;
         [SerializeField] private TilesSquareSpawner floorDestroyer;
         [SerializeField] private TilesSquareSpawner wallShadowDestroyer;
@@ -21,8 +21,8 @@ namespace Game.Scripts.Main_Menu
 
         public void _GenerateMainMenu()
         {
-            rightCaveGenerator._GenerateDungeon();
-            leftCaveGenerator._GenerateDungeon();
+            // rightCaveGenerator._GenerateDungeon();
+            // leftCaveGenerator._GenerateDungeon();
             floorDestroyer._Spawn();
             wallShadowDestroyer._Spawn();
             foundationGenerator._Spawn();

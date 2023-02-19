@@ -13,8 +13,10 @@ namespace Game.Scripts.Dungeon
     {
         [SerializeField] private AudioMixerSnapshot inAimTipAudioMixerSnapshot;
 
+        [Header("Temporary dungeon generation data")]
+        [SerializeField] private DungeonGenerationData dungeonGenerationData;
         [SerializeField] private DungeonMusicPlayer dungeonMusicPlayer;
-        [SerializeField] private DungeonGeneratorBase caveGenerator;
+        [SerializeField] private CaveTilesDrawer caveTilesDrawer;
         [SerializeField] private RandomTorchesInDungeonGenerator torchesGenerator;
         [SerializeField] private RandomEnemiesSpawner enemiesSpawner;
         [SerializeField] private GameObjectSpawner playerSpawner;
@@ -34,7 +36,12 @@ namespace Game.Scripts.Dungeon
             inAimTipAudioMixerSnapshot.TransitionTo(0);
 
             dungeonMusicPlayer.PlayRandomMusic();
-            caveGenerator._GenerateDungeon();
+
+            var dungeonGeneration = new DungeonGeneration(dungeonGenerationData);
+            var positionsOfFloorTiles = dungeonGeneration.GeneratePositionsOfFloorTiles();
+            var positionsOfWallTiles = dungeonGeneration.GeneratePositionsOfWallTiles(positionsOfFloorTiles);
+
+            caveTilesDrawer.EraseAndDraw(positionsOfFloorTiles, positionsOfWallTiles);
             torchesGenerator._GenerateTorches();
             enemiesSpawner._SpawnEnemies();
             playerSpawner.Spawn();
