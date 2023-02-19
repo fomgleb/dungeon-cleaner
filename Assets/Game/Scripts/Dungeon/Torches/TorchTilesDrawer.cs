@@ -23,13 +23,13 @@ namespace Game.Scripts.Dungeon.Torches
                 switch (dataOfSpawningTorch.Direction)
                 {
                     case DungeonGeneration.Torch.DirectionEnum.Top:
-                        TilesPainter.Draw(dataOfSpawningTorch.Position, topTorchTilemap, topTorchRuleTile);
+                        TilesDrawer.Draw(dataOfSpawningTorch.Position, topTorchTilemap, topTorchRuleTile);
                         break;
                     case DungeonGeneration.Torch.DirectionEnum.Right:
-                        TilesPainter.Draw(dataOfSpawningTorch.Position, rightTorchTilemap, rightTorchRuleTile);
+                        TilesDrawer.Draw(dataOfSpawningTorch.Position, rightTorchTilemap, rightTorchRuleTile);
                         break;
                     case DungeonGeneration.Torch.DirectionEnum.Left:
-                        TilesPainter.Draw(dataOfSpawningTorch.Position, leftTorchTilemap, leftTorchRuleTile);
+                        TilesDrawer.Draw(dataOfSpawningTorch.Position, leftTorchTilemap, leftTorchRuleTile);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

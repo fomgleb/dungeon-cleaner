@@ -27,9 +27,9 @@ namespace Game.Scripts
         
         public void Draw(HashSet<Vector2Int> positionsOfFloorTiles, HashSet<Vector2Int> positionsOfWallTiles)
         {
-            TilesPainter.PaintTiles(positionsOfFloorTiles, floorTilemap, floorRuleTile);
-            TilesPainter.PaintTiles(positionsOfWallTiles, wallTilemap, wallRuleTile);
-            TilesPainter.PaintTiles(positionsOfFloorTiles, wallShadowTilemap, wallShadowRuleTile);
+            TilesDrawer.PaintTiles(positionsOfFloorTiles, floorTilemap, floorRuleTile);
+            TilesDrawer.PaintTiles(positionsOfWallTiles, wallTilemap, wallRuleTile);
+            TilesDrawer.PaintTiles(positionsOfFloorTiles, wallShadowTilemap, wallShadowRuleTile);
         }
 
         public void Erase()

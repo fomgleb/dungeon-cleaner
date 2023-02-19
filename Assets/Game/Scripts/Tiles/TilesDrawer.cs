@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 
 namespace Game.Scripts.Tiles
 {
-    public abstract class TilesPainter
+    public abstract class TilesDrawer
     {
         public static void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
         {
