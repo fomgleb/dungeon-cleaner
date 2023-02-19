@@ -48,7 +48,7 @@ namespace Game.Scripts.Dungeon
             slimesCounter.ShowEnemiesCount(enemiesSpawner.SpawnedEnemies.Count);
 
             playerHealthWindow.ShowAsync();
-            playerHealthWindow.ShowAsync();
+            slimesCounterWindow.ShowAsync();
             aimWindow.ShowAsync();
             menuWindow.SetVisibilityAbruptly(false);
             youDiedWindow.SetVisibilityAbruptly(false);
