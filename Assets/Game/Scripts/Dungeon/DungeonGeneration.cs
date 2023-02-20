@@ -31,6 +31,59 @@ namespace Game.Scripts.Dungeon
             DataOfTorchTiles = GeneratePositionsOfTorches(PositionsOfFloorTiles);
         }
 
+        public Vector2Int FindFurthestPoint(IEnumerable<Vector2Int> positions, Vector2Int startPosition)
+        {
+            var startPoint = new Point(startPosition, 0);
+            var furthestPoint = startPoint;
+
+            var allPoints = positions.Select(p => new Point(p, -1)).ToHashSet();
+            allPoints.Remove(new Point(startPoint.Position, -1));
+            allPoints.Add(startPoint);
+
+            var processingPoints = new Queue<Point>();
+            processingPoints.Enqueue(startPoint);
+
+            while (processingPoints.Count != 0)
+            {
+                var currentPoint = processingPoints.Dequeue();
+                var positionsAround = new[]
+                {
+                    currentPoint.Position + Vector2Int.up,
+                    currentPoint.Position + Vector2Int.right,
+                    currentPoint.Position + Vector2Int.down,
+                    currentPoint.Position + Vector2Int.left
+                };
+
+                foreach (var position in positionsAround)
+                {
+                    var removingPoint = new Point(position, -1);
+                    if (allPoints.Contains(removingPoint))
+                    {
+                        allPoints.Remove(removingPoint);
+                        var addingPoint = new Point(position, currentPoint.DistanceFromStart + 1);
+                        allPoints.Add(addingPoint);
+                        processingPoints.Enqueue(addingPoint);
+                        if (furthestPoint.DistanceFromStart < addingPoint.DistanceFromStart)
+                            furthestPoint = addingPoint;
+                    }
+                }
+            }
+
+            return furthestPoint.Position;
+        }
+
+        private struct Point
+        {
+            public readonly Vector2Int Position;
+            public int DistanceFromStart { get; set; }
+
+            public Point(Vector2Int position, int distanceFromStart)
+            {
+                Position = position;
+                DistanceFromStart = distanceFromStart;
+            }
+        }
+
         private HashSet<Vector2Int> GeneratePositionsOfFloorTiles()
         {
             var positionsOfFloorTiles = new HashSet<Vector2Int> { startPosition };

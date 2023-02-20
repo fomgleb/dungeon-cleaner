@@ -36,6 +36,9 @@ namespace Game.Scripts.Dungeon
         [SerializeField] private Window youDiedWindow;
         [SerializeField] private WinMenu winMenu;
 
+        [Header("Tilemaps")]
+        [SerializeField] private Tilemap floorTilemap;
+
         [Header("Test")]
         [SerializeField] private DataOfCaveGenerationAlgorithm testDataOfCaveGenerationAlgorithm;
         [SerializeField] private Tilemap testFloorTilemap; 
@@ -50,11 +53,15 @@ namespace Game.Scripts.Dungeon
             dungeonMusicPlayer.PlayRandomMusic();
 
             var dungeonGeneration = new DungeonGeneration(dataOfCaveGenerationAlgorithm, torchesFrequency);
+            var playerPosition =
+                floorTilemap.CellToWorld((Vector3Int)dungeonGeneration.FindFurthestPoint(
+                dungeonGeneration.PositionsOfFloorTiles, dataOfCaveGenerationAlgorithm.StartPosition)) +
+                floorTilemap.tileAnchor;
 
             caveTilesDrawer.EraseAndDraw(dungeonGeneration.PositionsOfFloorTiles, dungeonGeneration.PositionsOfWallTiles);
             torchTilesDrawer.EraseAndDraw(dungeonGeneration.DataOfTorchTiles);
             enemiesSpawner._SpawnEnemies();
-            playerSpawner.Spawn();
+            playerSpawner.Spawn(playerPosition);
             slimesCounter.ShowEnemiesCount(enemiesSpawner.SpawnedEnemies.Count);
 
             playerHealthWindow.ShowAsync();

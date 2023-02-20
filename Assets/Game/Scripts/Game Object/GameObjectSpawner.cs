@@ -17,5 +17,11 @@ namespace Game.Scripts.Game_Object
             SpawnedObject = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
             SpawnedEvent?.Invoke();
         }
+
+        public void Spawn(Vector3 position)
+        {
+            SpawnedObject = Instantiate(prefab, position, Quaternion.identity);
+            SpawnedEvent?.Invoke();
+        }
     }
 }
