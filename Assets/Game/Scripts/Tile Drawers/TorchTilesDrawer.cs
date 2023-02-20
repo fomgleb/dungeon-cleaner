@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Game.Scripts.Tiles;
+using Game.Scripts.Dungeon;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Game.Scripts.Dungeon.Torches
+namespace Game.Scripts.Tile_Drawers
 {
     public class TorchTilesDrawer : MonoBehaviour
     {

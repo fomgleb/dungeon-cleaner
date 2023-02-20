@@ -4,6 +4,7 @@ using Game.Scripts.Dungeon.Menus;
 using Game.Scripts.Dungeon.Torches;
 using Game.Scripts.Game_Object;
 using Game.Scripts.Pause;
+using Game.Scripts.Tile_Drawers;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Serialization;

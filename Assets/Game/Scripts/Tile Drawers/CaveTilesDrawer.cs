@@ -1,11 +1,8 @@
 using System.Collections.Generic;
-using Game.Scripts.Dungeon.Cave;
-using Game.Scripts.Tiles;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
-namespace Game.Scripts
+namespace Game.Scripts.Tile_Drawers
 {
     public class CaveTilesDrawer : MonoBehaviour
     {

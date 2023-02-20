@@ -4,7 +4,7 @@ using Game.Scripts.Dungeon.Cave;
 using MyExtensions;
 using UnityEngine;
 
-namespace Game.Scripts
+namespace Game.Scripts.Dungeon
 {
     public class DungeonGeneration
     {

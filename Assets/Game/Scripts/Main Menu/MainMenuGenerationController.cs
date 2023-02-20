@@ -1,6 +1,6 @@
 using Game.Scripts.Dungeon.Cave;
 using Game.Scripts.Dungeon.Torches;
-using Game.Scripts.Tiles;
+using Game.Scripts.Tile_Drawers;
 using UnityEngine;
 
 namespace Game.Scripts.Main_Menu

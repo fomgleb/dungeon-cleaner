@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Game.Scripts.Tiles
+namespace Game.Scripts.Tile_Drawers
 {
     public abstract class TilesDrawer
     {
