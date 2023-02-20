@@ -35,6 +35,9 @@ namespace Game.Scripts.Dungeon
         [SerializeField] private Window youDiedWindow;
         [SerializeField] private WinMenu winMenu;
 
+        public CaveTilesDrawer CaveTilesDrawer => caveTilesDrawer;
+        public TorchTilesDrawer TorchTilesDrawer => torchTilesDrawer;
+
         private void Start()
         {
             Pauser.ClearRegisteredHandlers();
@@ -43,13 +46,10 @@ namespace Game.Scripts.Dungeon
 
             dungeonMusicPlayer.PlayRandomMusic();
 
-            var dungeonGeneration = new DungeonGeneration(dataOfCaveGenerationAlgorithm);
-            var positionsOfFloorTiles = dungeonGeneration.GeneratePositionsOfFloorTiles();
-            var positionsOfWallTiles = dungeonGeneration.GeneratePositionsOfWallTiles(positionsOfFloorTiles);
-            var positionsOfTorches = dungeonGeneration.GeneratePositionsOfTorches(positionsOfFloorTiles, torchesFrequency);
+            var dungeonGeneration = new DungeonGeneration(dataOfCaveGenerationAlgorithm, torchesFrequency);
 
-            caveTilesDrawer.EraseAndDraw(positionsOfFloorTiles, positionsOfWallTiles);
-            torchTilesDrawer.Draw(positionsOfTorches);
+            caveTilesDrawer.EraseAndDraw(dungeonGeneration.PositionsOfFloorTiles, dungeonGeneration.PositionsOfWallTiles);
+            torchTilesDrawer.EraseAndDraw(dungeonGeneration.DataOfTorchTiles);
             enemiesSpawner._SpawnEnemies();
             playerSpawner.Spawn();
             slimesCounter.ShowEnemiesCount(enemiesSpawner.SpawnedEnemies.Count);

@@ -17,10 +17,6 @@ namespace Game.Scripts
         [SerializeField] protected TileBase wallShadowRuleTile;
         [FormerlySerializedAs("caveGenerationData")]
         [FormerlySerializedAs("dungeonGenerationData")]
-        [Header("Test")]
-        [SerializeField] private DataOfCaveGenerationAlgorithm dataOfCaveGenerationAlgorithm;
-
-        public DataOfCaveGenerationAlgorithm DataOfCaveGenerationAlgorithm => dataOfCaveGenerationAlgorithm;
 
         public void EraseAndDraw( HashSet<Vector2Int> positionsOfFloorTiles, HashSet<Vector2Int> positionsOfWallTiles)
         {

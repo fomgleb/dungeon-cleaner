@@ -7,15 +7,20 @@ using UnityEngine.Tilemaps;
 namespace Game.Scripts.Dungeon.Torches
 {
     public class TorchTilesDrawer : MonoBehaviour
-    { 
-        [Header("Tilemaps")]
-        [SerializeField] private Tilemap topTorchTilemap;
+    {
+        [Header("Tilemaps")] [SerializeField] private Tilemap topTorchTilemap;
         [SerializeField] private Tilemap rightTorchTilemap;
         [SerializeField] private Tilemap leftTorchTilemap;
-        [Header("Tile Rules")]
-        [SerializeField] private RuleTile topTorchRuleTile;
+
+        [Header("Tile Rules")] [SerializeField] private RuleTile topTorchRuleTile;
         [SerializeField] private RuleTile rightTorchRuleTile;
         [SerializeField] private RuleTile leftTorchRuleTile;
+
+        public void EraseAndDraw(List<DungeonGeneration.Torch> dataOfSpawningTorches)
+        {
+            Erase();
+            Draw(dataOfSpawningTorches);
+        }
 
         public void Draw(List<DungeonGeneration.Torch> dataOfSpawningTorches)
         {
@@ -34,6 +39,13 @@ namespace Game.Scripts.Dungeon.Torches
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+        }
+
+        public void Erase()
+        {
+            topTorchTilemap.ClearAllTiles();
+            rightTorchTilemap.ClearAllTiles();
+            leftTorchTilemap.ClearAllTiles();
         }
     }
 }

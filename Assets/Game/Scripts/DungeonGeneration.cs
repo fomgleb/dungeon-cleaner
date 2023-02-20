@@ -8,20 +8,30 @@ namespace Game.Scripts
 {
     public class DungeonGeneration
     {
+        public HashSet<Vector2Int> PositionsOfFloorTiles { get; }
+        public HashSet<Vector2Int> PositionsOfWallTiles { get; }
+        public List<Torch> DataOfTorchTiles { get; }
+
         private readonly Vector2Int startPosition;
         private readonly uint numberOfSteps;
         private readonly uint stepsForOneDirection;
         private readonly float chanceToTurn;
+        private readonly float torchesFrequency;
 
-        public DungeonGeneration(DataOfCaveGenerationAlgorithm dataOfCaveGenerationAlgorithm)
+        public DungeonGeneration(DataOfCaveGenerationAlgorithm caveData, float torchesFrequency)
         {
-            startPosition = dataOfCaveGenerationAlgorithm.StartPosition;
-            numberOfSteps = dataOfCaveGenerationAlgorithm.NumberOfSteps;
-            stepsForOneDirection = dataOfCaveGenerationAlgorithm.StepsForOneDirection;
-            chanceToTurn = dataOfCaveGenerationAlgorithm.ChanceToTurn;
+            startPosition = caveData.StartPosition;
+            numberOfSteps = caveData.NumberOfSteps;
+            stepsForOneDirection = caveData.StepsForOneDirection;
+            chanceToTurn = caveData.ChanceToTurn;
+            this.torchesFrequency = torchesFrequency;
+
+            PositionsOfFloorTiles = GeneratePositionsOfFloorTiles();
+            PositionsOfWallTiles = GeneratePositionsOfWallTiles(PositionsOfFloorTiles);
+            DataOfTorchTiles = GeneratePositionsOfTorches(PositionsOfFloorTiles);
         }
 
-        public HashSet<Vector2Int> GeneratePositionsOfFloorTiles()
+        private HashSet<Vector2Int> GeneratePositionsOfFloorTiles()
         {
             var positionsOfFloorTiles = new HashSet<Vector2Int> { startPosition };
 
@@ -47,7 +57,7 @@ namespace Game.Scripts
             return positionsOfFloorTiles;
         }
 
-        public HashSet<Vector2Int> GeneratePositionsOfWallTiles(HashSet<Vector2Int> positionsOfFloorTiles)
+        private HashSet<Vector2Int> GeneratePositionsOfWallTiles(HashSet<Vector2Int> positionsOfFloorTiles)
         {
             var leftTopWallPosition = new Vector2Int(positionsOfFloorTiles.Min(position => position.x),
                 positionsOfFloorTiles.Max(position => position.y)) + new Vector2Int(-10, 10);
@@ -64,7 +74,7 @@ namespace Game.Scripts
             return positionsOfWallTiles;
         }
 
-        public List<Torch> GeneratePositionsOfTorches(HashSet<Vector2Int> positionsOfFloorTiles, float frequency)
+        private List<Torch> GeneratePositionsOfTorches(HashSet<Vector2Int> positionsOfFloorTiles)
         {
             var availablePositionsOfTorches = new List<Torch>();
 
@@ -82,7 +92,7 @@ namespace Game.Scripts
             }
 
             availablePositionsOfTorches.Shuffle();
-            return availablePositionsOfTorches.GetRange(0, (int)(availablePositionsOfTorches.Count * frequency));
+            return availablePositionsOfTorches.GetRange(0, (int)(availablePositionsOfTorches.Count * torchesFrequency));
         }
 
         public struct Torch
