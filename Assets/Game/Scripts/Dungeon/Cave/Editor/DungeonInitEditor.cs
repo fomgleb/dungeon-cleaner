@@ -13,13 +13,13 @@ namespace Game.Scripts.Dungeon.Cave.Editor
         private SerializedProperty caveTilesDrawerSerializedProperty;
         private SerializedProperty torchTilesDrawerSerializedProperty;
         private SerializedProperty testDataOfCaveGenerationAlgorithmSerializedProperty;
-        private SerializedProperty testFloorTilemapSerializedProperty;
+        private SerializedProperty floorTilemapSerializedProperty;
         private SerializedProperty testTorchesFrequencySerializedProperty;
 
         private CaveTilesDrawer caveTilesDrawer;
         private TorchTilesDrawer torchTilesDrawer;
         private DataOfCaveGenerationAlgorithm testDataOfCaveGenerationAlgorithm;
-        private Tilemap testFloorTilemap;
+        private Tilemap floorTilemap;
         private float testTorchesFrequency;
 
         private void OnEnable()
@@ -29,7 +29,7 @@ namespace Game.Scripts.Dungeon.Cave.Editor
             caveTilesDrawerSerializedProperty = serializedObject.FindProperty(nameof(caveTilesDrawer));
             torchTilesDrawerSerializedProperty = serializedObject.FindProperty(nameof(torchTilesDrawer));
             testDataOfCaveGenerationAlgorithmSerializedProperty = serializedObject.FindProperty(nameof(testDataOfCaveGenerationAlgorithm));
-            testFloorTilemapSerializedProperty = serializedObject.FindProperty(nameof(testFloorTilemap));
+            floorTilemapSerializedProperty = serializedObject.FindProperty(nameof(floorTilemap));
             testTorchesFrequencySerializedProperty = serializedObject.FindProperty(nameof(testTorchesFrequency));
         }
 
@@ -40,7 +40,7 @@ namespace Game.Scripts.Dungeon.Cave.Editor
             caveTilesDrawer = (CaveTilesDrawer)caveTilesDrawerSerializedProperty.objectReferenceValue;
             torchTilesDrawer = (TorchTilesDrawer)torchTilesDrawerSerializedProperty.objectReferenceValue;
             testDataOfCaveGenerationAlgorithm = (DataOfCaveGenerationAlgorithm)testDataOfCaveGenerationAlgorithmSerializedProperty.objectReferenceValue;
-            testFloorTilemap = (Tilemap)testFloorTilemapSerializedProperty.objectReferenceValue;
+            floorTilemap = (Tilemap)floorTilemapSerializedProperty.objectReferenceValue;
             testTorchesFrequency = testTorchesFrequencySerializedProperty.floatValue;
 
             if (GUILayout.Button("Generate Dungeon"))

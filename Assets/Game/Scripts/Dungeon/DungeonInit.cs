@@ -39,7 +39,6 @@ namespace Game.Scripts.Dungeon
 
         [Header("Test")]
         [SerializeField] private DataOfCaveGenerationAlgorithm testDataOfCaveGenerationAlgorithm;
-        [SerializeField] private Tilemap testFloorTilemap; 
         [SerializeField] [Range(0, 1)] private float testTorchesFrequency;
         
         private void Start()
