@@ -1,13 +1,13 @@
 using Game.Scripts.Dungeon.Cave;
 using Game.Scripts.Dungeon.Enemies_Spawner;
 using Game.Scripts.Dungeon.Menus;
-using Game.Scripts.Dungeon.Torches;
 using Game.Scripts.Game_Object;
 using Game.Scripts.Pause;
 using Game.Scripts.Tile_Drawers;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Serialization;
+using UnityEngine.Tilemaps;
 
 namespace Game.Scripts.Dungeon
 {
@@ -36,9 +36,11 @@ namespace Game.Scripts.Dungeon
         [SerializeField] private Window youDiedWindow;
         [SerializeField] private WinMenu winMenu;
 
-        public CaveTilesDrawer CaveTilesDrawer => caveTilesDrawer;
-        public TorchTilesDrawer TorchTilesDrawer => torchTilesDrawer;
-
+        [Header("Test")]
+        [SerializeField] private DataOfCaveGenerationAlgorithm testDataOfCaveGenerationAlgorithm;
+        [SerializeField] private Tilemap testFloorTilemap; 
+        [SerializeField] [Range(0, 1)] private float testTorchesFrequency;
+        
         private void Start()
         {
             Pauser.ClearRegisteredHandlers();
