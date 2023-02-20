@@ -15,8 +15,6 @@ namespace Game.Scripts
         [SerializeField] protected TileBase floorRuleTile;
         [SerializeField] protected TileBase wallRuleTile;
         [SerializeField] protected TileBase wallShadowRuleTile;
-        [FormerlySerializedAs("caveGenerationData")]
-        [FormerlySerializedAs("dungeonGenerationData")]
 
         public void EraseAndDraw( HashSet<Vector2Int> positionsOfFloorTiles, HashSet<Vector2Int> positionsOfWallTiles)
         {
