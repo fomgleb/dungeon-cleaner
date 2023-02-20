@@ -6,7 +6,6 @@ using Game.Scripts.Pause;
 using Game.Scripts.Tile_Drawers;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 namespace Game.Scripts.Dungeon
@@ -15,8 +14,6 @@ namespace Game.Scripts.Dungeon
     {
         [SerializeField] private AudioMixerSnapshot inAimTipAudioMixerSnapshot;
 
-        [FormerlySerializedAs("caveGenerationData")]
-        [FormerlySerializedAs("dungeonGenerationData")]
         [Header("Settings")]
         [SerializeField] private DataOfCaveGenerationAlgorithm dataOfCaveGenerationAlgorithm;
         [Range(0, 1)] [SerializeField] private float torchesFrequency;
