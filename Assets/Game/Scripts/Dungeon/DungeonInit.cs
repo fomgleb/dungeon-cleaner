@@ -26,6 +26,7 @@ namespace Game.Scripts.Dungeon
         [SerializeField] private GameObjectSpawner playerSpawner;
         [SerializeField] private SlimesCounter slimesCounter;
 
+        [Header("Windows")]
         [SerializeField] private Window playerHealthWindow;
         [SerializeField] private Window slimesCounterWindow;
         [SerializeField] private Window aimWindow;
