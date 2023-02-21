@@ -24,6 +24,7 @@ namespace Game.Scripts.Dungeon
         [SerializeField] private TorchTilesDrawer torchTilesDrawer;
         [SerializeField] private RandomEnemiesSpawner enemiesSpawner;
         [SerializeField] private GameObjectSpawner playerSpawner;
+        [SerializeField] private GameObjectSpawner entranceSpawner;
         [SerializeField] private SlimesCounter slimesCounter;
 
         [Header("Windows")]
@@ -50,15 +51,14 @@ namespace Game.Scripts.Dungeon
             dungeonMusicPlayer.PlayRandomMusic();
 
             var dungeonGeneration = new DungeonGeneration(dataOfCaveGenerationAlgorithm, torchesFrequency);
-            var playerPosition =
-                floorTilemap.CellToWorld((Vector3Int)dungeonGeneration.FindFurthestPoint(
-                dungeonGeneration.PositionsOfFloorTiles, dataOfCaveGenerationAlgorithm.StartPosition)) +
-                floorTilemap.tileAnchor;
+            var playerPosition = GeneratePlayerPosition(dungeonGeneration);
+            var entrancePosition = GenerateEntrancePosition(dungeonGeneration, playerPosition);
 
             caveTilesDrawer.EraseAndDraw(dungeonGeneration.PositionsOfFloorTiles, dungeonGeneration.PositionsOfWallTiles);
             torchTilesDrawer.EraseAndDraw(dungeonGeneration.DataOfTorchTiles);
             enemiesSpawner._SpawnEnemies();
             playerSpawner.Spawn(playerPosition);
+            entranceSpawner.Spawn(entrancePosition);
             slimesCounter.ShowEnemiesCount(enemiesSpawner.SpawnedEnemies.Count);
 
             playerHealthWindow.ShowAsync();
@@ -69,6 +69,22 @@ namespace Game.Scripts.Dungeon
             winMenu.Hide();
 
             Pauser.SetPaused(true);
+        }
+
+        private Vector3 GeneratePlayerPosition(DungeonGeneration dungeonGeneration)
+        {
+            var playerPosition =
+                floorTilemap.CellToWorld((Vector3Int)dungeonGeneration.FindFurthestPoint(
+                dungeonGeneration.PositionsOfFloorTiles, dataOfCaveGenerationAlgorithm.StartPosition)) +
+                floorTilemap.tileAnchor;
+            return playerPosition;
+        }
+
+        private Vector3 GenerateEntrancePosition(DungeonGeneration dungeonGeneration, Vector3 playerPosition)
+        {
+            var playerCellPosition = (Vector2Int)floorTilemap.WorldToCell(playerPosition);
+            return floorTilemap.CellToWorld((Vector3Int)dungeonGeneration.FindFurthestPoint(
+                dungeonGeneration.PositionsOfFloorTiles, playerCellPosition)) + floorTilemap.tileAnchor;
         }
     }
 }
