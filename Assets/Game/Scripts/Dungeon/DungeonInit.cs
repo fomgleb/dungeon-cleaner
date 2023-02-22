@@ -70,7 +70,7 @@ namespace Game.Scripts.Dungeon
 
             Pauser.SetPaused(true);
         }
-
+        
         private Vector3 GeneratePlayerPosition(DungeonGeneration dungeonGeneration)
         {
             var playerPosition =
