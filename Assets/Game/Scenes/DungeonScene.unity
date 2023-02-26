@@ -74333,7 +74333,7 @@ GameObject:
   - component: {fileID: 1639931485}
   - component: {fileID: 1639931486}
   m_Layer: 0
-  m_Name: Player Entered The Entrance
+  m_Name: Entrance Collided With Player Event
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
