@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Scripts
 {
-    public class PlayerEnteredTheEntranceEvent : MonoBehaviour
+    public class EntranceCollidedWithPlayerEvent : MonoBehaviour
     {
         [SerializeField] private GameObjectSpawner entranceSpawner;
 
