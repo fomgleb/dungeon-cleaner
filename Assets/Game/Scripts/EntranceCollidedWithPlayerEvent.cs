@@ -1,3 +1,4 @@
+using Game.Scripts.Dungeon;
 using Game.Scripts.Game_Object;
 using UnityEngine;
 
@@ -7,15 +8,21 @@ namespace Game.Scripts
     {
         [SerializeField] private GameObjectSpawner entranceSpawner;
 
+        [SerializeField] private DungeonInit dungeonInit;
+
         private void Start()
         {
-            entranceSpawner.SpawnedEvent += () =>
-                entranceSpawner.SpawnedObject.GetComponent<Entrance>().CollidedWithPlayerEvent += OnEntranceCollidedWithPlayer;;
+            entranceSpawner.SpawnedEvent += OnEntranceSpawned;
+        }
+
+        private void OnEntranceSpawned()
+        {
+            entranceSpawner.SpawnedObject.GetComponent<Entrance>().CollidedWithPlayerEvent += OnEntranceCollidedWithPlayer;
         }
 
         private void OnEntranceCollidedWithPlayer()
         {
-            Debug.Log("Player wanna get out of here.");
+            dungeonInit.Init();
         }
     }
 }

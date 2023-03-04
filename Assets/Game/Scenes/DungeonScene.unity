@@ -74367,6 +74367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entranceSpawner: {fileID: 1978823153}
+  dungeonInit: {fileID: 1729863839}
 --- !u!1 &1648773753
 GameObject:
   m_ObjectHideFlags: 0
@@ -74542,6 +74543,7 @@ MonoBehaviour:
   menuWindow: {fileID: 1632533873}
   youDiedWindow: {fileID: 1651020731}
   winMenu: {fileID: 1229866659}
+  clickedForTheFirstTimeEvent: {fileID: 1368697370}
   floorTilemap: {fileID: 511274360}
   testDataOfCaveGenerationAlgorithm: {fileID: 11400000, guid: a059f883eba13c649a0d9c7a9fbada8c, type: 2}
   testTorchesFrequency: 0.102

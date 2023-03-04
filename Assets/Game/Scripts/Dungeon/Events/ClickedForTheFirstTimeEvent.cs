@@ -1,3 +1,5 @@
+using System;
+using Cysharp.Threading.Tasks;
 using Game.Scripts.Dungeon.Menus;
 using Game.Scripts.Pause;
 using UnityEngine;
@@ -22,6 +24,12 @@ namespace Game.Scripts.Dungeon.Events
                 aimWindow.SetVisibilityAbruptly(false);
                 Pauser.SetPaused(false);
             }
+        }
+
+        public async void WaitAndReset(TimeSpan waitTime)
+        {
+            await UniTask.Delay(waitTime); 
+            clickedForTheFirstTime = false;
         }
     }
 }

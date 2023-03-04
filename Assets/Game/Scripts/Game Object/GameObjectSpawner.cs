@@ -23,5 +23,11 @@ namespace Game.Scripts.Game_Object
             SpawnedObject = Instantiate(prefab, position, Quaternion.identity);
             SpawnedEvent?.Invoke();
         }
+
+        public void DestroyAndSpawn(Vector3 position)
+        {
+            Destroy(SpawnedObject);
+            Spawn(position);
+        }
     }
 }

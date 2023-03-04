@@ -35,7 +35,7 @@ namespace Game.Scripts.Camera
                 if (Pauser.IsPaused)
                     continue;
 
-                if (lookingAtMouseCancellationToken.IsCancellationRequested) return;
+                if (lookingAtMouseCancellationToken.IsCancellationRequested || playerTransform == null) return;
 
                 var cameraTargetPosition = ((Vector3)MouseLocation.WorldPosition + (cameraTargetDivider - 1) *
                     playerTransform.position) / cameraTargetDivider;

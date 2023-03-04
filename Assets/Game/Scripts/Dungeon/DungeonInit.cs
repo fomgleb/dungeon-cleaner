@@ -1,5 +1,7 @@
+using System;
 using Game.Scripts.Dungeon.Cave;
 using Game.Scripts.Dungeon.Enemies_Spawner;
+using Game.Scripts.Dungeon.Events;
 using Game.Scripts.Dungeon.Menus;
 using Game.Scripts.Game_Object;
 using Game.Scripts.Pause;
@@ -35,6 +37,9 @@ namespace Game.Scripts.Dungeon
         [SerializeField] private Window youDiedWindow;
         [SerializeField] private WinMenu winMenu;
 
+        [Header("Events")]
+        [SerializeField] private ClickedForTheFirstTimeEvent clickedForTheFirstTimeEvent;
+
         [Header("Tilemaps")]
         [SerializeField] private Tilemap floorTilemap;
 
@@ -44,8 +49,15 @@ namespace Game.Scripts.Dungeon
         
         private void Start()
         {
-            Pauser.ClearRegisteredHandlers();
+            Init();
+        }
 
+        public void Init()
+        {
+            Pauser.ClearRegisteredHandlers();
+            
+            clickedForTheFirstTimeEvent.WaitAndReset(new TimeSpan(0, 0, 1));
+            
             inAimTipAudioMixerSnapshot.TransitionTo(0);
 
             dungeonMusicPlayer.PlayRandomMusic();
@@ -56,9 +68,10 @@ namespace Game.Scripts.Dungeon
 
             caveTilesDrawer.EraseAndDraw(dungeonGeneration.PositionsOfFloorTiles, dungeonGeneration.PositionsOfWallTiles);
             torchTilesDrawer.EraseAndDraw(dungeonGeneration.DataOfTorchTiles);
+            enemiesSpawner._DespawnEnemies();
             enemiesSpawner._SpawnEnemies();
-            playerSpawner.Spawn(playerPosition);
-            entranceSpawner.Spawn(entrancePosition);
+            playerSpawner.DestroyAndSpawn(playerPosition);
+            entranceSpawner.DestroyAndSpawn(entrancePosition);
             slimesCounter.ShowEnemiesCount(enemiesSpawner.SpawnedEnemies.Count);
 
             playerHealthWindow.ShowAsync();

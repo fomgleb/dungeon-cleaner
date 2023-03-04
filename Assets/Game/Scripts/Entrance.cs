@@ -12,14 +12,9 @@ namespace Game.Scripts
         
         private GameObject playerGameObject;
 
-        private void Awake()
-        {
-            playerGameObject = GameObject.FindWithTag(playerPrefabWithTag.tag);
-        }
-
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject == playerGameObject)
+            if (col.gameObject.CompareTag(playerPrefabWithTag.tag))
                 CollidedWithPlayerEvent?.Invoke();
         }
     }

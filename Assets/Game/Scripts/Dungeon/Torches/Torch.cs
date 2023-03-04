@@ -1,3 +1,4 @@
+using System;
 using Game.Scripts.Pause;
 using UnityEngine;
 
@@ -11,6 +12,16 @@ namespace Game.Scripts.Dungeon.Torches
         {
             animator = GetComponent<Animator>();
             Pauser.Register(this);
+        }
+
+        private void OnEnable()
+        {
+            Pauser.Register(this);
+        }
+
+        private void OnDisable()
+        {
+            Pauser.UnRegister(this);
         }
 
         void IPauseHandler.SetPaused(bool isPaused)
